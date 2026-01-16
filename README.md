@@ -2,7 +2,7 @@
 
 A WordPress plugin for importing product reviews from multiple sources into WooCommerce.
 
-**Version:** 0.3.0  
+**Version:** 0.4.0  
 **Author:** Paul Faulkner  
 **Website:** https://headwall-hosting.com/
 
@@ -11,6 +11,10 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 ## Features
 
 - **CSV Import:** Native PHP parsing with UTF-8 BOM detection
+- **AJAX Upload:** Secure file upload with validation and progress tracking
+- **Batch Processing:** Handles large files without timeouts (10 rows per batch)
+- **Real-time Progress:** Live progress bar with percentage updates
+- **Error Reporting:** Detailed row-level error feedback for failed imports
 - **Smart Product Matching:** Automatic product lookup via SKU (supports variations)
 - **Duplicate Handling:** Updates existing reviews (product + email unique key)
 - **User Management:** Creates WordPress accounts for new reviewers (optional)
@@ -24,19 +28,27 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 
 ## Current Status
 
-**Version 0.3.0** - CSV import engine complete, AJAX integration in progress
+**Version 0.4.0** - CSV import with AJAX orchestration complete
 
 ✅ **Completed:**
 - Core import engine with duplicate detection
-- CSV parser with validation
+- CSV parser with validation and batch reading
 - Settings management (5 configurable options)
 - Admin interface with tabbed navigation
-- Helper functions (SESE pattern)
+- AJAX file upload with security validation
+- Batch processing with progress tracking
+- Real-time error reporting with row numbers
+- All templates code-first (WordPress standards compliant)
 
-🚧 **In Progress:**
-- AJAX file upload handler
-- Batch processing orchestration
-- Progress bar and real-time feedback
+🚧 **Pending Testing:**
+- New user account creation (setting enabled)
+- Large CSV files (1000+ rows)
+- Client's actual CSV data
+
+📋 **Planned Features:**
+- Google Reviews import via Place ID
+- Export reviews to CSV
+- Import history tracking
 
 ---
 

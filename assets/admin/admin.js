@@ -6,118 +6,247 @@
  */
 
 (function($) {
-	'use strict';
+    'use strict';
 
-	/**
-	 * Tab navigation handler
-	 */
-	const TabNavigation = {
-		init: function() {
-			this.bindEvents();
-			this.activateFromHash();
-			this.handleHashChange();
-		},
+    /**
+     * Tab navigation handler
+     */
+    const TabNavigation = {
+        init: function() {
+            this.bindEvents();
+            this.activateFromHash();
+            this.handleHashChange();
+        },
 
-		bindEvents: function() {
-			$('.nav-tab').on('click', function(e) {
-				e.preventDefault();
-				const tabName = $(this).data('tab');
-				window.location.hash = tabName;
-				TabNavigation.activateTab(tabName);
+        bindEvents: function() {
+            $('.nav-tab').on('click', function(e) {
+                e.preventDefault();
+                const tabName = $(this).data('tab');
+                window.location.hash = tabName;
+                TabNavigation.activateTab(tabName);
+            });
+        },
+
+        activateFromHash: function() {
+            const hash = window.location.hash.substring(1);
+            const tabName = hash || 'import';
+            this.activateTab(tabName);
+        },
+
+        handleHashChange: function() {
+            $(window).on('hashchange', function() {
+                const hash = window.location.hash.substring(1);
+                const tabName = hash || 'import';
+                TabNavigation.activateTab(tabName);
+            });
+        },
+
+        activateTab: function(tabName) {
+            // Update nav tabs
+            $('.nav-tab').removeClass('nav-tab-active');
+            $('.nav-tab[data-tab="' + tabName + '"]').addClass('nav-tab-active');
+
+            // Show/hide panels
+            $('.tab-panel').hide().removeClass('active');
+            $('#' + tabName + '-panel').show().addClass('active');
+        }
+    };
+
+    /**
+     * CSV Import handler
+     */
+    const CSVImport = {
+        uploadId: null,
+        totalRows: 0,
+        processed: 0,
+
+        init: function() {
+            this.bindEvents();
+        },
+
+        bindEvents: function() {
+            $('#pri-upload-form').on('submit', this.handleUpload.bind(this));
+            $('#pri-start-import').on('click', this.startImport.bind(this));
+        },
+
+        handleUpload: function(e) {
+            e.preventDefault();
+
+            const fileInput = $('#pri-csv-file')[0];
+            const file = fileInput.files[0];
+
+            if (!file) {
+                this.showMessage('Please select a CSV file.', 'error');
+                return;
+            }
+
+            // Validate file type
+            if (!file.name.toLowerCase().endsWith('.csv')) {
+                this.showMessage('Please select a valid CSV file.', 'error');
+                return;
+            }
+
+            // Show loading state
+            $('#pri-validation-results').show();
+            $('#pri-validation-messages').html('<p>Uploading and validating CSV file...</p>');
+            $('#pri-upload-btn').prop('disabled', true);
+
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('action', 'pri_upload_csv');
+            formData.append('nonce', productReviewsImporter.uploadNonce);
+            formData.append('csv_file', file);
+
+            // Upload via AJAX
+            $.ajax({
+                url: productReviewsImporter.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: (response) => {
+                    if (response.success) {
+                        this.uploadId = response.data.uploadId;
+                        this.totalRows = response.data.totalRows;
+                        this.processed = 0;
+
+                        this.showMessage(
+                            `File uploaded successfully! Found ${this.totalRows} reviews to import.`,
+                            'success'
+                        );
+                        $('#pri-import-controls').show();
+                        $('#pri-upload-form').hide();
+                    } else {
+                        this.showMessage(response.message, 'error');
+                        $('#pri-upload-btn').prop('disabled', false);
+                    }
+                },
+                error: (xhr) => {
+                    this.showMessage('Upload failed. Please try again.', 'error');
+                    $('#pri-upload-btn').prop('disabled', false);
+                }
+            });
+        },
+
+        startImport: function() {
+            if (!this.uploadId) {
+                this.showMessage('No file uploaded. Please upload a CSV file first.', 'error');
+                return;
+            }
+
+            // Hide import button and validation
+            $('#pri-import-controls').hide();
+            $('#pri-validation-results').hide();
+
+            // Show progress section
+            $('#pri-progress-section').show();
+            $('#pri-results-section').hide();
+
+            // Reset progress
+            this.processed = 0;
+            this.updateProgress(0, 'Starting import...');
+
+            // Start batch processing
+            this.processBatch(0);
+        },
+
+        processBatch: function(offset) {
+            console.log('processBatch called with offset:', offset);
+            console.log('uploadId:', this.uploadId);
+            console.log('totalRows:', this.totalRows);
+            
+            const ajaxData = {
+                action: 'pri_import_batch',
+                nonce: productReviewsImporter.importNonce,
+                uploadId: this.uploadId,
+                offset: offset
+            };
+            console.log('AJAX data being sent:', ajaxData);
+            
+            $.ajax({
+				url: productReviewsImporter.ajaxUrl,
+				type: 'POST',
+				data: ajaxData,
+				success: (response) => {
+					if (!response.success) {
+						this.showResults(false, response.message);
+						return;
+					}
+
+					if (response.data.complete) {
+						// Import complete
+						this.showResults(true, response.message, response.data);
+						return;
+					}
+
+					// Update progress
+					this.processed = response.data.processed;
+					const percentage = Math.round((this.processed / this.totalRows) * 100);
+					this.updateProgress(percentage, response.message);
+
+					// Process next batch
+					this.processBatch(response.data.processed);
+				},
+				error: (xhr, status, error) => {
+					console.error('Import batch failed:', {
+						status: status,
+						error: error,
+						response: xhr.responseText
+					});
+					let errorMsg = 'Import failed. ';
+					if (xhr.responseText) {
+						try {
+							const errorData = JSON.parse(xhr.responseText);
+							errorMsg += errorData.message || error;
+						} catch (e) {
+							errorMsg += error;
+						}
+					} else {
+						errorMsg += error;
+					}
+					this.showResults(false, errorMsg);
+				}
 			});
 		},
 
-		activateFromHash: function() {
-			const hash = window.location.hash.substring(1);
-			const tabName = hash || 'import';
-			this.activateTab(tabName);
+		updateProgress: function(percentage, message) {
+			$('#pri-progress-bar-fill').css('width', percentage + '%');
+			$('#pri-progress-text').text(percentage + '%');
+			$('#pri-progress-message').text(message);
 		},
 
-		handleHashChange: function() {
-			$(window).on('hashchange', function() {
-				const hash = window.location.hash.substring(1);
-				const tabName = hash || 'import';
-				TabNavigation.activateTab(tabName);
-			});
-		},
-
-		activateTab: function(tabName) {
-			// Update nav tabs
-			$('.nav-tab').removeClass('nav-tab-active');
-			$('.nav-tab[data-tab="' + tabName + '"]').addClass('nav-tab-active');
-
-			// Show/hide panels
-			$('.tab-panel').hide().removeClass('active');
-			$('#' + tabName + '-panel').show().addClass('active');
-		}
-	};
-
-	/**
-	 * CSV Import handler
-	 */
-	const CSVImport = {
-		init: function() {
-			this.bindEvents();
-		},
-
-		bindEvents: function() {
-			$('#pri-upload-form').on('submit', this.handleUpload.bind(this));
-			$('#pri-start-import').on('click', this.startImport.bind(this));
-		},
-
-		handleUpload: function(e) {
-			e.preventDefault();
-			
-			const fileInput = $('#pri-csv-file')[0];
-			const file = fileInput.files[0];
-			
-			if (!file) {
-				alert('Please select a CSV file.');
-				return;
-			}
-
-			// Show loading state
-			$('#pri-validation-results').show();
-			$('#pri-validation-messages').html('<p>Validating CSV file...</p>');
-
-			// For now, show placeholder message (AJAX will be implemented in Milestone 4)
-			setTimeout(function() {
-				$('#pri-validation-messages').html(
-					'<div class="notice notice-info"><p>CSV upload and validation will be implemented in the next phase.</p></div>'
-				);
-				$('#pri-import-controls').show();
-			}, 500);
-		},
-
-		startImport: function() {
-			// Show progress section
-			$('#pri-progress-section').show();
-			$('#pri-results-section').hide();
-			
-			// Update progress (placeholder - AJAX will be implemented in Milestone 4)
-			this.updateProgress(0, 'Starting import...');
-			
-			setTimeout(() => {
-				this.updateProgress(50, 'Importing reviews...');
-				setTimeout(() => {
-					this.updateProgress(100, 'Import complete!');
-					this.showResults();
-				}, 1000);
-			}, 1000);
-		},
-
-		updateProgress: function(percent, message) {
-			$('.pri-progress-fill').css('width', percent + '%');
-			$('#pri-progress-text').text(message);
-		},
-
-		showResults: function() {
+		showResults: function(success, message, data) {
+			$('#pri-progress-section').hide();
 			$('#pri-results-section').show();
-			$('#pri-results-summary').html(
-				'<p>Import processing will be implemented in the next phase.</p>' +
-				'<p class="success">This is a placeholder for success count.</p>' +
-				'<p class="errors">This is a placeholder for error count.</p>'
-			);
+			
+			const resultClass = success ? 'notice-success' : 'notice-error';
+			let resultHTML = `<div class=\"notice ${resultClass}\"><p>${message}</p></div>`;
+			
+			// Add detailed error list if errors occurred
+			if (data && data.errorList && data.errorList.length > 0) {
+				resultHTML += '<div class=\"pri-error-details\">';
+				resultHTML += `<h4>Error Details (${data.errorList.length} errors)</h4>`;
+				resultHTML += '<ul class=\"pri-error-list\">';
+				
+				data.errorList.forEach((error) => {
+					resultHTML += `<li><strong>Row ${error.row}:</strong> ${error.message}</li>`;
+				});
+				
+				resultHTML += '</ul></div>';
+			}
+			
+			$('#pri-results-content').html(resultHTML);
+
+			// Show reset button
+			$('#pri-reset-import').show().on('click', () => {
+				location.reload();
+			});
+		},
+
+		showMessage: function(message, type) {
+			const noticeClass = type === 'error' ? 'notice-error' : 'notice-success';
+			const html = `<div class=\"notice ${noticeClass}\"><p>${message}</p></div>`;
+			$('#pri-validation-messages').html(html);
 		}
 	};
 

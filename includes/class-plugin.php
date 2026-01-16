@@ -76,6 +76,10 @@ class Plugin {
 
 		// Preserve hash fragment when redirecting after settings save.
 		add_filter( 'wp_redirect', array( $admin_hooks, 'preserve_settings_hash' ) );
+
+		// Register AJAX handlers.
+		add_action( 'wp_ajax_pri_upload_csv', array( $admin_hooks, 'ajax_upload_csv' ) );
+		add_action( 'wp_ajax_pri_import_batch', array( $admin_hooks, 'ajax_import_batch' ) );
 	}
 
 	/**

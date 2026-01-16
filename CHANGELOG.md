@@ -10,13 +10,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- AJAX file upload and batch processing
-- Progress bar and real-time import status
 - Google Reviews import via Place ID
 - Additional import sources
 - Export reviews to CSV
 - Import history tracking UI
 - Scheduled/automated imports via cron
+- Testing: New user account creation
+- Testing: Large CSV files (1000+ rows)
+- Testing: Cancel import mid-process
+
+---
+
+## [0.4.0] - 2026-01-16
+
+### Added
+- AJAX file upload handler with comprehensive security
+- Batch processing orchestration (10 rows per batch)
+- Real-time progress bar with percentage display
+- Detailed error reporting with row-level feedback
+- File upload validation (CSV only, 10MB max)
+- Secure temp file storage in wp-uploads/pri-temp/
+- Transient-based upload session management
+- Error list display with scrollable container
+- All admin templates refactored to code-first design (no inline HTML)
+
+### Security
+- Nonce verification on all AJAX endpoints
+- Capability checks: `manage_woocommerce` required for uploads and imports
+- File type enforcement: Only `.csv` extension allowed
+- File size limit: 10MB maximum
+- Random filename generation for uploaded files
+- Automatic cleanup of temp files after import
+
+### Changed
+- Error reporting now includes actual CSV row numbers (not array indices)
+- Progress updates shown during batch processing
+- Import completion message includes success/update/error counts
+- Settings save redirects to Settings tab (hash preserved)
+
+### Technical
+- All AJAX handlers follow WordPress best practices
+- Proper indentation and code formatting (PHPCS compliant)
+- Diagnostic `error_log()` calls for troubleshooting (to be removed before production)
+- Test CSV file created with deliberate errors for validation
+
+**Milestone 4 Complete:** AJAX Import Orchestration fully functional
 
 ---
 
