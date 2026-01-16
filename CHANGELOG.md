@@ -10,15 +10,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- Admin interface with tabbed navigation
-- CSV import functionality
-- Review import logic with duplicate detection
-- User account creation for new reviewers
+- AJAX file upload and batch processing
+- Progress bar and real-time import status
 - Google Reviews import via Place ID
 - Additional import sources
 - Export reviews to CSV
 - Import history tracking UI
 - Scheduled/automated imports via cron
+
+---
+
+## [0.3.0] - 2026-01-16
+
+### Added
+- CSV_Importer class with native PHP fgetcsv() parsing
+- UTF-8 BOM detection and handling
+- Multi-line CSV field support (quoted text)
+- Memory-efficient streaming for large CSV files
+- CSV validation (headers, required columns, data rows)
+- Column mapping from CSV to normalized review format
+- Batch reading with offset/limit support
+- Row-level error reporting with line numbers
+
+### Changed
+- Updated `get_server_ip()` to fetch public IP from icanhazip.com (cached 7 days)
+- Refactored all functions to SESE pattern (single-entry single-exit)
+- Review_Importer now uses WordPress user's display_name when email matches existing user
+- Settings tab preserves hash state after save
+
+### Fixed
+- Internal IP addresses no longer leaked (defaults to 127.0.0.1 on failure)
+
+### Documentation
+- Added SESE pattern to core coding standards (copilot-instructions.md v1.5.0)
+- Updated requirements.md with author name priority logic
+- CSV import fully tested with real product data
+
+**Milestone 3 Complete:** CSV Source Adapter fully functional
 
 ---
 

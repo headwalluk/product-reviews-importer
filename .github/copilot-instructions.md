@@ -1,9 +1,9 @@
 # WordPress Plugin Development Guidelines
 
-**Version:** 1.4.0  
+**Version:** 1.5.0  
 **Purpose:** Core coding standards and patterns for WordPress plugin development  
 **Portability:** Copy this file to any WordPress plugin project  
-**Last Updated:** 10 January 2026
+**Last Updated:** 16 January 2026
 
 **📚 Detailed Patterns:** See [`dev-notes/patterns/README.md`](../dev-notes/patterns/README.md) for implementation details
 
@@ -90,6 +90,46 @@ WordPress and WooCommerce do not use strict types. Using it causes type errors w
  */
 public function example_function( string $param1, int $param2 ): array {
     // Implementation
+}
+```
+
+### Function Structure - Single-Entry Single-Exit (SESE)
+
+**Rule:** Functions should have one return statement at the end.
+
+**Why:** Easier debugging and fault tracing - you can see all logic paths that affect the final value.
+
+```php
+// ✅ Good - Single exit point
+function get_value(): string {
+    $result = null;
+    
+    if ( condition_a() ) {
+        $result = 'value_a';
+    }
+    
+    if ( is_null( $result ) && condition_b() ) {
+        $result = 'value_b';
+    }
+    
+    if ( is_null( $result ) ) {
+        $result = 'default';
+    }
+    
+    return $result;
+}
+
+// ❌ Avoid - Multiple exit points obscure which path executed
+function get_value(): string {
+    if ( condition_a() ) {
+        return 'value_a';
+    }
+    
+    if ( condition_b() ) {
+        return 'value_b';
+    }
+    
+    return 'default';
 }
 ```
 

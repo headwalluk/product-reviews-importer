@@ -2,7 +2,7 @@
 
 A WordPress plugin for importing product reviews from multiple sources into WooCommerce.
 
-**Version:** 0.2.0  
+**Version:** 0.3.0  
 **Author:** Paul Faulkner  
 **Website:** https://headwall-hosting.com/
 
@@ -10,14 +10,33 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 
 ## Features
 
-- Import product reviews from CSV files
-- Automatic product matching via SKU
-- Support for variable products (reviews added to parent)
-- Smart duplicate handling (update existing reviews)
-- Optional user account creation for reviewers
-- Multi-line review text support
-- Batch processing for performance
-- WooCommerce HPOS compatible
+- **CSV Import:** Native PHP parsing with UTF-8 BOM detection
+- **Smart Product Matching:** Automatic product lookup via SKU (supports variations)
+- **Duplicate Handling:** Updates existing reviews (product + email unique key)
+- **User Management:** Creates WordPress accounts for new reviewers (optional)
+- **Multi-line Support:** Preserves line breaks in review text
+- **Memory Efficient:** Streams large CSV files without loading into memory
+- **Author Name Intelligence:** Uses WordPress user's display_name when email matches
+- **Public IP Detection:** Fetches server's public IP (cached, secure fallback)
+- **HPOS Compatible:** Full WooCommerce High-Performance Order Storage support
+
+---
+
+## Current Status
+
+**Version 0.3.0** - CSV import engine complete, AJAX integration in progress
+
+✅ **Completed:**
+- Core import engine with duplicate detection
+- CSV parser with validation
+- Settings management (5 configurable options)
+- Admin interface with tabbed navigation
+- Helper functions (SESE pattern)
+
+🚧 **In Progress:**
+- AJAX file upload handler
+- Batch processing orchestration
+- Progress bar and real-time feedback
 
 ---
 
