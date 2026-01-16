@@ -1,8 +1,8 @@
 # Product Reviews Importer - Project Tracker
 
 **Last Updated:** 16 January 2026  
-**Current Version:** 0.3.0  
-**Status:** Active Development - CSV Import Engine Complete
+**Current Version:** 0.4.0  
+**Status:** Active Development - AJAX Import Complete, Ready for Client Testing
 
 ---
 
@@ -50,16 +50,22 @@
 - All functions refactored to SESE pattern
 - Settings tab preserves hash on save
 - End-to-end CSV import tested and verified
+- AJAX file upload with security validation
+- Batch processing orchestration (10 rows per batch)
+- Real-time progress bar with percentage updates
+- Detailed error reporting with row-level feedback
+- All admin templates refactored to code-first design
 
 ---
 
-## Current Focus: AJAX Import Orchestration
+## Current Focus: Client Testing & Polish
 
 **Next Steps:**
-1. Add AJAX file upload handler in Admin_Hooks
-2. Implement batch processing AJAX endpoint
-3. Add frontend JavaScript for upload, validation, progress
-4. Wire up progress bar and results display
+1. Client testing with real CSV data
+2. Remove diagnostic error_log() and console.log() statements
+3. Test new user account creation (setting enabled)
+4. Test with large CSV file (1000+ rows)
+5. Documentation updates for Help tab
 
 **See:** [`dev-notes/architecture.md`](architecture.md) for component design and [`dev-notes/import-logic.md`](import-logic.md) for processing details.
 
@@ -189,53 +195,57 @@
 
 **Goal:** Wire up UI to CSV adapter and core importer with AJAX batching.
 
-**Status:** Not Started
+**Status:** ✅ COMPLETED
 
 ### Tasks
 
 **AJAX Handlers (in `class-admin-hooks.php`):**
-- [ ] `ajax_upload_csv()` - Handle file upload
-  - [ ] Security: Validate file type, size, nonce
-  - [ ] Move to secure temp directory
-  - [ ] Create CSV_Importer instance
-  - [ ] Call `validate()` and return results
-  - [ ] Store file path in transient
-  - [ ] Return JSON response
+- [x] `ajax_upload_csv()` - Handle file upload
+  - [x] Security: Validate file type, size, nonce
+  - [x] Move to secure temp directory
+  - [x] Create CSV_Importer instance
+  - [x] Call `validate()` and return results
+  - [x] Store file path in transient
+  - [x] Return JSON response
 
-- [ ] `ajax_import_batch()` - Process one batch
-  - [ ] Get file path from transient
-  - [ ] Create CSV_Importer instance
-  - [ ] Get batch: `get_batch($offset, BATCH_SIZE)`
-  - [ ] Create Review_Importer instance
-  - [ ] Import batch: `import_reviews($batch)`
-  - [ ] Update progress transient
-  - [ ] Return results (success count, errors) as JSON
+- [x] `ajax_import_batch()` - Process one batch
+  - [x] Get file path from transient
+  - [x] Create CSV_Importer instance
+  - [x] Get batch: `get_batch($offset, BATCH_SIZE)`
+  - [x] Create Review_Importer instance
+  - [x] Import batch: `import_reviews($batch)`
+  - [x] Update progress transient
+  - [x] Return results (success count, errors) as JSON
 
-- [ ] `ajax_cancel_import()` - Cancel in-progress import
-  - [ ] Delete transients
-  - [ ] Cleanup temp file
+- [x] `ajax_cancel_import()` - Cancel in-progress import
+  - [x] Delete transients
+  - [x] Cleanup temp file
 
 **Constants (add to `constants.php`):**
-- [ ] `NONCE_CSV_PROCESS` - for batch processing
-- [ ] `TRANSIENT_CSV_FILE_PATH` - store uploaded file path
-- [ ] `UPLOAD_TEMP_DIR` - relative path for temp uploads
+- [x] `NONCE_CSV_PROCESS` - for batch processing
+- [x] `TRANSIENT_CSV_FILE_PATH` - store uploaded file path
+- [x] `UPLOAD_TEMP_DIR` - relative path for temp uploads
 
 **Frontend (in `admin.js`):**
-- [ ] File upload handler
-- [ ] Trigger validation AJAX call
-- [ ] Display validation results
-- [ ] Import button click handler
-- [ ] Batch processing loop (recursive AJAX calls)
-- [ ] Progress bar updates
-- [ ] Display final results (success/error counts)
-- [ ] Error log display
+- [x] File upload handler
+- [x] Trigger validation AJAX call
+- [x] Display validation results
+- [x] Import button click handler
+- [x] Batch processing loop (recursive AJAX calls)
+- [x] Progress bar updates
+- [x] Display final results (success/error counts)
+- [x] Error log display
 
 **Import Tab Template Updates:**
-- [ ] File upload form with nonce
-- [ ] Validation results section
-- [ ] Progress bar HTML
-- [ ] Results summary section
-- [ ] Error log table
+- [x] File upload form with nonce
+- [x] Validation results section
+- [x] Progress bar HTML
+- [x] Results summary section
+- [x] Error log table
+
+**Code Standards:**
+- [x] All admin templates refactored to code-first design (no inline HTML)
+- [ ] Remove diagnostic console.log and error_log statements before production
 
 **Acceptance Criteria:**
 - ✅ User can upload CSV file
@@ -243,16 +253,24 @@
 - ✅ Progress bar updates in real-time during import
 - ✅ Import processes in batches (doesn't timeout)
 - ✅ Success/error counts display correctly
+- ✅ Error details with row numbers and messages
 - ✅ Can cancel in-progress import
 - ✅ Temp files cleaned up after import
 
-**Testing:**
-- Upload small CSV, verify imports correctly
-- Upload large CSV, verify batching works
-- Upload CSV with errors, verify validation catches them
-- Cancel import mid-process
-- Check temp directory cleanup
-- Test with slow server (verify no timeouts)
+**Testing Completed:**
+- ✅ Upload small CSV, imports correctly
+- ✅ Upload CSV with mixed valid/invalid data (test-errors.csv)
+- ✅ Validation catches missing columns and data errors
+- ✅ Progress bar shows accurate progress
+- ✅ Error reporting shows specific row numbers and messages
+- ✅ Works with existing and new reviews
+- ✅ Works with guest reviewers and registered users
+
+**Pending Testing:**
+- [ ] New user creation (setting enabled)
+- [ ] Large CSV file (1000+ rows)
+- [ ] Cancel import mid-process
+- [ ] Client's actual CSV data
 
 ---
 
@@ -461,22 +479,27 @@ product-reviews-importer/
 - ✅ Milestone 1: Core Import Engine - Review_Importer class fully functional
 - ✅ Milestone 2: Admin Interface - All templates and assets created
 - ✅ Milestone 3: CSV Source Adapter - CSV_Importer class complete and tested
+- ✅ Milestone 4: AJAX Import Orchestration - Upload, batch processing, progress tracking complete
 - ✅ Milestone 5: Settings Integration - Settings save/load working correctly
 
-**Current State (v0.3.0):**
+**Current State (v0.4.0):**
 - Plugin activated and functional
 - Admin page accessible at WooCommerce > Reviews Importer
 - CSV import working end-to-end (tested with real product data)
-- All code passes PHPCS (intentional warnings for filesystem operations)
+- AJAX upload with file validation and security checks
+- Batch processing prevents timeouts on large files
+- Real-time progress bar with error reporting
+- All code passes PHPCS (warnings are intentional)
 - Settings properly integrated and persisting
 - Tab navigation working with hash preservation
 - Public IP detection and caching implemented
 - Author name intelligence (uses WordPress user display_name)
+- All templates code-first per WordPress standards
 
 **Ready for Next Phase:**
-- AJAX file upload handler
-- Batch processing orchestration
-- Progress bar and real-time feedback
+- Client testing with real CSV data
+- Removal of diagnostic outputs
+- Milestone 6: Polish & Testing
 - Frontend JavaScript for import flow
 
 **Code Quality:**
@@ -492,18 +515,17 @@ product-reviews-importer/
 
 None at this time - all initial decisions documented in requirements.md
 
-**Version:** VERSION IN HERE
-**Last Updated:** DATE IN HERE
-
 ---
 
-## Overview
+## Pending Items for Future Milestones
 
-PROJECT SUMMARY
+**User Creation Testing:**
+- [ ] Test new user account creation with "Create user accounts" setting enabled
+- [ ] Verify user metadata populated correctly
+- [ ] Verify email notifications sent appropriately
+- [ ] Schedule for Milestone 7 or later
 
----
-
-## Active TODO Items
+**NOTE:** This item deferred - CSV import functionality complete and working for existing users and guest reviews.
 
 ---
 

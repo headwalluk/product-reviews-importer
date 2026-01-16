@@ -60,7 +60,7 @@ class Review_Importer {
 
 			if ( is_wp_error( $result ) ) {
 				$results['errors'][] = array(
-					'index'   => $index,
+					'row'     => isset( $review_data['_row_number'] ) ? $review_data['_row_number'] : ( $index + 2 ),
 					'message' => $result->get_error_message(),
 					'data'    => $review_data,
 				);

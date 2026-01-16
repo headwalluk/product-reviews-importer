@@ -145,6 +145,41 @@
 	font-size: 13px;
 }
 
+/* Error Details */
+.pri-error-details {
+	margin-top: 20px;
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-left: 4px solid #d63638;
+}
+
+.pri-error-details h4 {
+	margin-top: 0;
+	color: #d63638;
+}
+
+.pri-error-list {
+	max-height: 300px;
+	overflow-y: auto;
+	margin: 10px 0;
+	list-style: none;
+	padding: 0;
+}
+
+.pri-error-list li {
+	padding: 8px 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.pri-error-list li:last-child {
+	border-bottom: none;
+}
+
+.pri-error-list strong {
+	color: #d63638;
+}
+
 /* Responsive */
 @media screen and (max-width: 782px) {
 	.tab-panel {

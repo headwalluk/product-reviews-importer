@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, import, csv, products
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 8.0
-Stable tag: 0.3.0
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,10 @@ Product Reviews Importer allows you to easily import product reviews from variou
 **Features:**
 
 * CSV import with native PHP parsing (no dependencies)
+* AJAX file upload with comprehensive security validation
+* Batch processing (10 rows per batch) prevents timeouts
+* Real-time progress bar with percentage updates
+* Detailed error reporting with row-level feedback
 * UTF-8 encoding support with BOM detection
 * Memory-efficient streaming for large files
 * Automatic product matching via SKU
@@ -27,6 +31,7 @@ Product Reviews Importer allows you to easily import product reviews from variou
 * Multi-line review text with line break preservation
 * Public IP detection with secure fallback
 * WooCommerce HPOS compatible
+* All code-first templates (WordPress Coding Standards)
 
 **CSV Format:**
 
