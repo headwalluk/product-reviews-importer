@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<ruleset name="Product Reviews Importer Standards">
+	<description>WordPress Coding Standards for Product Reviews Importer</description>
+	
+	<file>.</file>
+	
+	<!-- Exclude patterns -->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/assets/*</exclude-pattern>
+	<exclude-pattern>*/.git/*</exclude-pattern>
+	<exclude-pattern>*/dev-notes/*</exclude-pattern>
+	<exclude-pattern>*/languages/*</exclude-pattern>
+	
+	<!-- Arguments -->
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="extensions" value="php"/>
+	<arg name="parallel" value="8"/>
+	
+	<!-- Rules -->
+	<rule ref="WordPress">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+	</rule>
+	
+	<!-- Prefixes -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="product_reviews_importer"/>
+				<element value="pri"/>
+				<element value="Product_Reviews_Importer"/>
+			</property>
+		</properties>
+	</rule>
+	
+	<!-- Minimum WP version -->
+	<config name="minimum_supported_wp_version" value="6.0"/>
+	
+	<!-- Text domain -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="product-reviews-importer"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>
