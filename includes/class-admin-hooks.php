@@ -80,4 +80,31 @@ class Admin_Hooks {
 		// Load admin template.
 		require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/main-page.php';
 	}
+
+	/**
+	 * Preserve hash fragment when redirecting after settings save.
+	 *
+	 * WordPress strips URL fragments during redirect. This restores the #settings hash
+	 * so users return to the Settings tab instead of the default Import tab.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $location Redirect URL.
+	 *
+	 * @return string Modified redirect URL with hash fragment.
+	 */
+	public function preserve_settings_hash( string $location ): string {
+		// Only modify redirect for our settings page.
+		if ( false === strpos( $location, 'page=' . ADMIN_PAGE_SLUG ) ) {
+			return $location;
+		}
+
+		// Check if this is a settings update (settings-updated query param present).
+		if ( false !== strpos( $location, 'settings-updated=true' ) ) {
+			// Add hash fragment to return to Settings tab.
+			$location .= '#settings';
+		}
+
+		return $location;
+	}
 }

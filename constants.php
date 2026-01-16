@@ -17,10 +17,14 @@ defined( 'ABSPATH' ) || die();
 const OPT_CREATE_USER_ACCOUNTS = 'pri_create_user_accounts';
 const OPT_MIN_REVIEW_LENGTH    = 'pri_min_review_length';
 const OPT_DEFAULT_IP_ADDRESS   = 'pri_default_ip_address';
+const OPT_AUTO_APPROVE_REVIEWS = 'pri_auto_approve_reviews';
+const OPT_REVIEWS_ARE_VERIFIED = 'pri_reviews_are_verified';
 
 // Default values - prefix with DEF_.
 const DEF_CREATE_USER_ACCOUNTS = false;
 const DEF_MIN_REVIEW_LENGTH    = 10;
+const DEF_AUTO_APPROVE_REVIEWS = true;
+const DEF_REVIEWS_ARE_VERIFIED = false;
 
 // CSV column mappings.
 const CSV_COL_SKU          = 'SKU';

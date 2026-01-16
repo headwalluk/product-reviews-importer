@@ -3,7 +3,7 @@
  * Plugin Name:       Product Reviews Importer
  * Plugin URI:        https://headwall-hosting.com/
  * Description:       Import product reviews from multiple sources (CSV, Google, etc.) into WooCommerce products.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
@@ -21,7 +21,7 @@
 
 defined( 'ABSPATH' ) || die();
 
-define( 'PRODUCT_REVIEWS_IMPORTER_VERSION', '0.2.0' );
+define( 'PRODUCT_REVIEWS_IMPORTER_VERSION', '0.3.0' );
 define( 'PRODUCT_REVIEWS_IMPORTER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PRODUCT_REVIEWS_IMPORTER_URL', plugin_dir_url( __FILE__ ) );
 define( 'PRODUCT_REVIEWS_IMPORTER_BASENAME', plugin_basename( __FILE__ ) );
@@ -33,6 +33,8 @@ require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'functions-private.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-plugin.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-settings.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-admin-hooks.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-importer.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-csv-importer.php';
 
 /**
  * Display admin notice if WooCommerce is not active.

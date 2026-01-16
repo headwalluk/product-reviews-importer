@@ -66,6 +66,28 @@ class Settings {
 				'default'           => '',
 			)
 		);
+
+		// Auto-approve reviews setting.
+		register_setting(
+			'product_reviews_importer',
+			OPT_AUTO_APPROVE_REVIEWS,
+			array(
+				'type'              => 'boolean',
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
+				'default'           => DEF_AUTO_APPROVE_REVIEWS,
+			)
+		);
+
+		// Reviews are verified setting.
+		register_setting(
+			'product_reviews_importer',
+			OPT_REVIEWS_ARE_VERIFIED,
+			array(
+				'type'              => 'boolean',
+				'sanitize_callback' => array( $this, 'sanitize_boolean' ),
+				'default'           => DEF_REVIEWS_ARE_VERIFIED,
+			)
+		);
 	}
 
 	/**
@@ -109,6 +131,34 @@ class Settings {
 		}
 
 		return $ip;
+	}
+
+	/**
+	 * Get auto-approve reviews setting.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool Whether to auto-approve imported reviews.
+	 */
+	public function get_auto_approve_reviews(): bool {
+		return (bool) filter_var(
+			get_option( OPT_AUTO_APPROVE_REVIEWS, DEF_AUTO_APPROVE_REVIEWS ),
+			FILTER_VALIDATE_BOOLEAN
+		);
+	}
+
+	/**
+	 * Get reviews are verified setting.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool Whether imported reviews are verified purchases.
+	 */
+	public function get_reviews_are_verified(): bool {
+		return (bool) filter_var(
+			get_option( OPT_REVIEWS_ARE_VERIFIED, DEF_REVIEWS_ARE_VERIFIED ),
+			FILTER_VALIDATE_BOOLEAN
+		);
 	}
 
 	/**

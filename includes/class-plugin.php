@@ -73,6 +73,9 @@ class Plugin {
 		// Register admin enqueue hook.
 		$admin_hooks = $this->get_admin_hooks();
 		add_action( 'admin_enqueue_scripts', array( $admin_hooks, 'enqueue_assets' ) );
+
+		// Preserve hash fragment when redirecting after settings save.
+		add_filter( 'wp_redirect', array( $admin_hooks, 'preserve_settings_hash' ) );
 	}
 
 	/**

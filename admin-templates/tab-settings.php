@@ -1,0 +1,142 @@
+<?php
+/**
+ * Settings tab template.
+ *
+ * Global plugin settings.
+ *
+ * @package Product_Reviews_Importer
+ * @since   1.0.0
+ */
+
+namespace Product_Reviews_Importer;
+
+defined( 'ABSPATH' ) || die();
+
+// Get settings instance.
+$pri_plugin_instance   = get_plugin_instance();
+$pri_settings_instance = $pri_plugin_instance ? $pri_plugin_instance->get_settings() : null;
+
+if ( ! $pri_settings_instance ) {
+	printf(
+		'<p>%s</p>',
+		esc_html__( 'Settings not available.', 'product-reviews-importer' )
+	);
+	return;
+}
+?>
+
+<div class="pri-settings-section">
+	<h2><?php esc_html_e( 'Import Settings', 'product-reviews-importer' ); ?></h2>
+	
+	<form method="post" action="options.php">
+		<?php
+		settings_fields( 'product_reviews_importer' );
+		?>
+		
+		<table class="form-table" role="presentation">
+			<tbody>
+				<tr>
+					<th scope="row">
+						<?php esc_html_e( 'Create User Accounts', 'product-reviews-importer' ); ?>
+					</th>
+					<td>
+						<?php
+						printf(
+							'<label><input type="checkbox" name="%s" value="1" %s /> %s</label>',
+							esc_attr( OPT_CREATE_USER_ACCOUNTS ),
+							checked( $pri_settings_instance->get_create_user_accounts(), true, false ),
+							esc_html__( 'Create WordPress user accounts for new reviewers (Customer role)', 'product-reviews-importer' )
+						);
+						printf(
+							'<p class="description">%s</p>',
+							esc_html__( 'If disabled, reviews will be created as guest comments (user_id = 0).', 'product-reviews-importer' )
+						);
+						?>
+					</td>
+				</tr>
+				
+				<tr>
+					<th scope="row">
+						<label for="pri_min_review_length"><?php esc_html_e( 'Minimum Review Length', 'product-reviews-importer' ); ?></label>
+					</th>
+					<td>
+						<?php
+						printf(
+							'<input type="number" id="pri_min_review_length" name="%s" value="%d" min="1" class="small-text" /> %s',
+							esc_attr( OPT_MIN_REVIEW_LENGTH ),
+							absint( $pri_settings_instance->get_min_review_length() ),
+							esc_html__( 'characters', 'product-reviews-importer' )
+						);
+						printf(
+							'<p class="description">%s</p>',
+							esc_html__( 'Reviews shorter than this will be rejected during import.', 'product-reviews-importer' )
+						);
+						?>
+					</td>
+				</tr>
+				
+				<tr>
+					<th scope="row">
+						<label for="pri_default_ip"><?php esc_html_e( 'Default IP Address', 'product-reviews-importer' ); ?></label>
+					</th>
+					<td>
+						<?php
+						printf(
+							'<input type="text" id="pri_default_ip" name="%s" value="%s" class="regular-text" placeholder="%s" />',
+							esc_attr( OPT_DEFAULT_IP_ADDRESS ),
+							esc_attr( get_option( OPT_DEFAULT_IP_ADDRESS, '' ) ),
+							esc_attr( get_server_ip() )
+						);
+						printf(
+							'<p class="description">%s</p>',
+							esc_html__( 'Used when CSV does not provide an author IP address. Leave blank to use server IP.', 'product-reviews-importer' )
+						);
+						?>
+					</td>
+				</tr>
+				
+				<tr>
+					<th scope="row">
+						<?php esc_html_e( 'Auto-Approve Reviews', 'product-reviews-importer' ); ?>
+					</th>
+					<td>
+						<?php
+						printf(
+							'<label><input type="checkbox" name="%s" value="1" %s /> %s</label>',
+							esc_attr( OPT_AUTO_APPROVE_REVIEWS ),
+							checked( $pri_settings_instance->get_auto_approve_reviews(), true, false ),
+							esc_html__( 'Automatically approve imported reviews', 'product-reviews-importer' )
+						);
+						printf(
+							'<p class="description">%s</p>',
+							esc_html__( 'If disabled, imported reviews will require manual moderation.', 'product-reviews-importer' )
+						);
+						?>
+					</td>
+				</tr>
+				
+				<tr>
+					<th scope="row">
+						<?php esc_html_e( 'Mark as Verified Purchase', 'product-reviews-importer' ); ?>
+					</th>
+					<td>
+						<?php
+						printf(
+							'<label><input type="checkbox" name="%s" value="1" %s /> %s</label>',
+							esc_attr( OPT_REVIEWS_ARE_VERIFIED ),
+							checked( $pri_settings_instance->get_reviews_are_verified(), true, false ),
+							esc_html__( 'Mark imported reviews as verified purchases', 'product-reviews-importer' )
+						);
+						printf(
+							'<p class="description">%s</p>',
+							esc_html__( 'Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store).', 'product-reviews-importer' )
+						);
+						?>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<?php submit_button(); ?>
+	</form>
+</div>

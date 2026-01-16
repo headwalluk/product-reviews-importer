@@ -314,19 +314,25 @@ interface Review_Import_Source {
 1. Match product by SKU (use parent ID if variable product)
 2. Validate reviewer email
 3. Check for duplicate (product_id + author_email)
-4. Determine user_id:
+4. Determine user_id and author name:
    - Check if email matches existing WordPress user
-   - If match: use existing user_id
-   - If no match and "Create accounts" enabled: create Customer user, use new user_id
-   - If no match and "Create accounts" disabled: user_id = 0
+   - If match: use existing user_id **and WordPress user's display_name**
+   - If no match and "Create accounts" enabled: create Customer user, use new user_id and CSV author name
+   - If no match and "Create accounts" disabled: user_id = 0, use CSV author name
 5. Sanitize review text (wp_kses with br/p tags only)
 6. If duplicate exists:
    - Update comment_content and rating meta only
+   - Do NOT update author name, email, date, or IP
 7. If new review:
    - Create comment with `comment_type=review`
-   - Set user_id, author name, email, IP, date
-   - Add rating meta
+   - Set user_id, author name (from WordPress user if exists, else CSV), email, IP, date
+   - Add rating meta and verified status
 8. WooCommerce automatically updates product rating average
+
+**Author Name Priority:**
+- Existing WordPress user: Use user's `display_name` (ignores CSV Author Name)
+- New user created: Use CSV Author Name as display_name
+- Guest comment: Use CSV Author Name
 
 ---
 

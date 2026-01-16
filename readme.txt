@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, import, csv, products
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 8.0
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,14 +16,17 @@ Product Reviews Importer allows you to easily import product reviews from variou
 
 **Features:**
 
-* Import reviews from CSV files
+* CSV import with native PHP parsing (no dependencies)
+* UTF-8 encoding support with BOM detection
+* Memory-efficient streaming for large files
 * Automatic product matching via SKU
 * Support for variable products (reviews added to parent product)
-* Handles duplicate reviews intelligently (updates existing reviews)
+* Smart duplicate handling (updates existing reviews)
+* Author name intelligence (uses WordPress user's display_name)
 * Optional user account creation for new reviewers
-* Multi-line review text support
-* Preserves review dates and ratings
-* Batch processing for large imports
+* Multi-line review text with line break preservation
+* Public IP detection with secure fallback
+* WooCommerce HPOS compatible
 
 **CSV Format:**
 
@@ -32,9 +35,9 @@ The plugin expects a CSV file with the following columns:
 * SKU (required)
 * Author Name (required)
 * Author Email (required)
-* Author IP (optional)
+* Author IP (optional - defaults to server public IP)
 * Review Date (required, format: Y-m-d H:i:s T)
-* Review Text (required, multi-line supported)
+* Review Text (required, multi-line supported in quotes)
 * Review Stars (required, 1-5)
 
 **Duplicate Handling:**
@@ -42,6 +45,12 @@ The plugin expects a CSV file with the following columns:
 Reviews are identified by product ID + author email. If a review already exists:
 * Review text and star rating are updated
 * Original author details, date, and IP are preserved
+
+**Author Name Priority:**
+
+* If email matches existing WordPress user: Uses user's display_name
+* If creating new user: Uses CSV Author Name
+* If guest comment: Uses CSV Author Name
 
 **User Account Creation:**
 
@@ -81,6 +90,16 @@ All fields should be quoted. The Review Text field can span multiple lines. See 
 
 == Changelog ==
 
+= 0.3.0 =
+* CSV importer engine complete with native PHP parsing
+* UTF-8 BOM detection and multi-line field support
+* Memory-efficient streaming for large CSV files
+* Public IP detection via icanhazip.com (cached, secure fallback)
+* Author name intelligence (uses WordPress user display_name)
+* SESE pattern refactoring for easier debugging
+* Settings tab hash preservation on save
+* Full end-to-end CSV import tested and verified
+
 = 0.2.0 =
 * Foundation complete and code standards verified
 * All core classes implemented (Plugin, Settings, Admin_Hooks)
@@ -92,6 +111,9 @@ All fields should be quoted. The Review Text field can span multiple lines. See 
 * Basic structure and infrastructure
 
 == Upgrade Notice ==
+
+= 0.3.0 =
+CSV import engine complete! Core functionality ready for AJAX integration.
 
 = 1.0.0 =
 Initial release of Product Reviews Importer.

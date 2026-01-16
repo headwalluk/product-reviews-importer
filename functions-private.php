@@ -37,15 +37,56 @@ function get_plugin_instance(): ?Plugin {
 }
 
 /**
- * Get server IP address.
+ * Get server public IP address.
+ *
+ * Fetches the server's public IP address from icanhazip.com and caches it.
+ * Falls back to 127.0.0.1 if unable to determine public IP (avoids leaking internal network info).
  *
  * @since 1.0.0
  *
- * @return string Server IP address.
+ * @return string Server public IP address or 127.0.0.1 fallback.
  */
 function get_server_ip(): string {
-	$server_addr = isset( $_SERVER['SERVER_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_ADDR'] ) ) : '127.0.0.1';
-	return $server_addr;
+	$ip_address = null;
+
+	// Check cache first.
+	$cached_ip = get_transient( 'pri_server_public_ip' );
+	if ( false !== $cached_ip && filter_var( $cached_ip, FILTER_VALIDATE_IP ) ) {
+		$ip_address = $cached_ip;
+	}
+
+	// If not cached, fetch public IP from icanhazip.com.
+	if ( is_null( $ip_address ) ) {
+		$response = wp_remote_get(
+			'https://icanhazip.com',
+			array(
+				'timeout'     => 5,
+				'redirection' => 0,
+				'headers'     => array( 'Accept' => 'text/plain' ),
+			)
+		);
+
+		// Validate response.
+		if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
+			$fetched_ip = trim( wp_remote_retrieve_body( $response ) );
+
+			// Validate IP address format.
+			if ( filter_var( $fetched_ip, FILTER_VALIDATE_IP ) ) {
+				$ip_address = $fetched_ip;
+				// Cache for 7 days.
+				set_transient( 'pri_server_public_ip', $ip_address, 7 * DAY_IN_SECONDS );
+			}
+		}
+	}
+
+	// If still no valid IP, use fallback.
+	if ( is_null( $ip_address ) ) {
+		$ip_address = '127.0.0.1';
+		// Cache fallback for 1 day (shorter TTL in case network issue is temporary).
+		set_transient( 'pri_server_public_ip', $ip_address, DAY_IN_SECONDS );
+	}
+
+	return $ip_address;
 }
 
 /**
@@ -87,9 +128,10 @@ function validate_star_rating( $rating ) {
 }
 
 /**
- * Get product ID by SKU.
+ * Get product ID by SKU for review attachment.
  *
  * If product is a variation, returns the parent product ID.
+ * Reviews always attach to parent products, not variations.
  *
  * @since 1.0.0
  *
@@ -110,11 +152,12 @@ function get_product_id_by_sku( string $sku ) {
 		return false;
 	}
 
-	// If variation, get parent product ID.
+	// If variation, reviews go on parent product.
 	if ( $product->is_type( 'variation' ) ) {
 		return $product->get_parent_id();
 	}
 
+	// For all other product types, use product_id directly.
 	return $product_id;
 }
 
