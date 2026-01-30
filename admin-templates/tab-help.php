@@ -29,44 +29,20 @@ printf(
 	esc_html__( 'Your CSV file must include the following columns (all values should be quoted):', 'product-reviews-importer' )
 );
 
-// Column list.
+// Column list from field definitions.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables, not globals.
+$field_definitions = get_csv_field_definitions();
+
 printf( '<ul>' );
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'SKU', 'product-reviews-importer' ),
-	esc_html__( 'Product SKU (required)', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'Author Name', 'product-reviews-importer' ),
-	esc_html__( 'Reviewer name (required)', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'Author Email', 'product-reviews-importer' ),
-	esc_html__( 'Reviewer email address (optional, recommended for duplicate detection)', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'Review Text', 'product-reviews-importer' ),
-	esc_html__( 'Review content (required, can span multiple lines)', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'Review Stars', 'product-reviews-importer' ),
-	esc_html__( 'Star rating 1-5 (required)', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'Author IP', 'product-reviews-importer' ),
-	esc_html__( 'IP address (optional)', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> - %s</li>',
-	esc_html__( 'Review Date', 'product-reviews-importer' ),
-	esc_html__( 'Date in Y-m-d H:i:s T format (optional)', 'product-reviews-importer' )
-);
+foreach ( $field_definitions as $field_name => $field_info ) {
+	printf(
+		'<li><strong>%s</strong> - %s</li>',
+		esc_html( $field_name ),
+		esc_html( $field_info['description'] )
+	);
+}
 printf( '</ul>' );
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 // Sample CSV.
 printf(
@@ -75,9 +51,8 @@ printf(
 );
 printf(
 	'<pre><code>%s</code></pre>',
-	'"SKU","Author Name","Author Email","Author IP","Review Date","Review Text","Review Stars"' . "\n" .
-	'"ABC123","John Doe","john.doe@example.com","123.123.123.123","2026-01-15 14:30:00 GMT","Great product, highly recommend!","5"' . "\n" .
-	'"ABC123","Jane Smith","jane.smith@example.com","","2026-01-16 10:00:00 GMT","Not what I expected.","2"'
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV sample data, safe by design.
+	get_sample_csv()
 );
 
 // Important Notes.
@@ -132,6 +107,34 @@ printf(
 	'<p><strong>%s</strong><br />%s</p>',
 	esc_html__( 'Review text too short:', 'product-reviews-importer' ),
 	esc_html__( 'Check the minimum review length setting in the Settings tab.', 'product-reviews-importer' )
+);
+
+// Developer Hooks.
+printf(
+	'<h3>%s</h3>',
+	esc_html__( 'Developer Hooks', 'product-reviews-importer' )
+);
+printf(
+	'<p>%s</p>',
+	esc_html__( 'The following filter hooks are available for developers to extend or customize plugin functionality:', 'product-reviews-importer' )
+);
+printf(
+	'<p><strong>%s</strong><br />%s</p>',
+	esc_html__( 'product_reviews_importer_csv_field_definitions', 'product-reviews-importer' ),
+	esc_html__( 'Customize CSV field definitions, add custom fields, or modify existing field behavior.', 'product-reviews-importer' )
+);
+printf(
+	'<pre><code>%s</code></pre>',
+	'add_filter( \'product_reviews_importer_csv_field_definitions\', function( $fields ) {' . "\n" .
+	'    // Add a custom field' . "\n" .
+	'    $fields[\'Custom Field\'] = array(' . "\n" .
+	'        \'required\'    => false,' . "\n" .
+	'        \'description\' => __( \'Custom field description\', \'my-plugin\' ),' . "\n" .
+	'        \'map_to\'      => \'custom_field_key\',' . "\n" .
+	'        \'sample\'      => \'Example Value\',' . "\n" .
+	'    );' . "\n" .
+	'    return $fields;' . "\n" .
+	'} );'
 );
 
 printf( '</div>' ); // pri-help-section.

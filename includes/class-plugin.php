@@ -91,7 +91,7 @@ class Plugin {
 		add_submenu_page(
 			'woocommerce',
 			__( 'Product Reviews Importer', 'product-reviews-importer' ),
-			__( 'Reviews Importer', 'product-reviews-importer' ),
+			__( 'Import Reviews', 'product-reviews-importer' ),
 			ADMIN_CAPABILITY,
 			ADMIN_PAGE_SLUG,
 			array( $this->get_admin_hooks(), 'render_admin_page' )

@@ -26,9 +26,46 @@ printf(
 	'<h3>%s</h3>',
 	esc_html__( 'Step 1: Upload CSV File', 'product-reviews-importer' )
 );
+
+// Build field list from CSV field definitions.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables, not globals.
+$field_definitions = get_csv_field_definitions();
+$required_fields   = array();
+
+foreach ( $field_definitions as $field_name => $field_info ) {
+	if ( $field_info['required'] ) {
+		$required_fields[] = '<strong>' . esc_html( $field_name ) . '</strong>';
+	}
+}
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
 printf(
-	'<p>%s</p>',
-	esc_html__( 'Select a CSV file containing product reviews. The file must include the following columns: SKU, Author Name, Author Email, Review Text, and Review Stars (1-5).', 'product-reviews-importer' )
+	'<p>%s %s</p>',
+	esc_html__( 'Select a CSV file containing product reviews. The file must include the following columns:', 'product-reviews-importer' ),
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped in loop above.
+	implode( ', ', $required_fields )
+);
+
+// Sample CSV.
+printf(
+	'<h4>%s</h4>',
+	esc_html__( 'Sample CSV Format', 'product-reviews-importer' )
+);
+printf(
+	'<pre><code>%s</code></pre>',
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV sample data, safe by design.
+	get_sample_csv()
+);
+printf(
+	'<p><a href="#help">%s</a></p>',
+	esc_html__( 'More details on CSV format and import options...', 'product-reviews-importer' )
+);
+
+// Important notice about author email and duplicate detection.
+printf(
+	'<div class="notice notice-warning inline" style="margin: 15px 0; padding: 10px;"><p><strong>%s</strong> %s</p></div>',
+	esc_html__( 'Important:', 'product-reviews-importer' ),
+	esc_html__( 'Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews.', 'product-reviews-importer' )
 );
 
 // Upload form.

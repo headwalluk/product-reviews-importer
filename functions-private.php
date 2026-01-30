@@ -109,6 +109,101 @@ function sanitize_review_text( string $text ): string {
 }
 
 /**
+ * Get CSV field definitions.
+ *
+ * Returns field info for UI display and internal mapping.
+ *
+ * @since 1.0.0
+ *
+ * @return array<string, array{required: bool, description: string, map_to: string, sample: string}> Field definitions.
+ */
+function get_csv_field_definitions(): array {
+	global $product_reviews_importer_fields;
+
+	if ( is_null( $product_reviews_importer_fields ) ) {
+		$product_reviews_importer_fields = array(
+			'SKU'          => array(
+				'required'    => true,
+				'description' => __( 'Product SKU (required)', 'product-reviews-importer' ),
+				'map_to'      => 'product_sku',
+				'sample'      => 'ABC-123',
+			),
+			'Author Name'  => array(
+				'required'    => true,
+				'description' => __( 'Reviewer name (required)', 'product-reviews-importer' ),
+				'map_to'      => 'author_name',
+				'sample'      => 'John Doe',
+			),
+			'Author Email' => array(
+				'required'    => false,
+				'description' => __( 'Reviewer email address (optional)', 'product-reviews-importer' ),
+				'map_to'      => 'author_email',
+				'sample'      => 'john.doe@example.com',
+			),
+			'Review Text'  => array(
+				'required'    => true,
+				'description' => __( 'Review content (required)', 'product-reviews-importer' ),
+				'map_to'      => 'review_text',
+				'sample'      => 'Great product, highly recommend!',
+			),
+			'Review Stars' => array(
+				'required'    => true,
+				'description' => __( 'Star rating 1-5 (required)', 'product-reviews-importer' ),
+				'map_to'      => 'review_stars',
+				'sample'      => '5',
+			),
+			'Author IP'    => array(
+				'required'    => false,
+				'description' => __( 'IP address (optional)', 'product-reviews-importer' ),
+				'map_to'      => 'author_ip',
+				'sample'      => '123.123.123.123',
+			),
+			'Review Date'  => array(
+				'required'    => false,
+				'description' => __( 'Date in Y-m-d H:i:s T format (optional)', 'product-reviews-importer' ),
+				'map_to'      => 'review_date',
+				'sample'      => '2026-01-15 14:30:00 GMT',
+			),
+		);
+
+		/**
+		 * Filter CSV field definitions.
+		 *
+		 * Allows developers to add, remove, or modify CSV field definitions.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array<string, array{required: bool, description: string, map_to: string}> $fields Field definitions.
+		 */
+		$product_reviews_importer_fields = apply_filters( 'product_reviews_importer_csv_field_definitions', $product_reviews_importer_fields );
+	}
+
+	return $product_reviews_importer_fields;
+}
+
+/**
+ * Get sample CSV output.
+ *
+ * Returns a two-row CSV string: headers and sample data.
+ *
+ * @since 1.0.0
+ *
+ * @return string Sample CSV with headers and one data row.
+ */
+function get_sample_csv(): string {
+	$field_definitions = get_csv_field_definitions();
+	$headers           = array();
+	$sample_data       = array();
+
+	foreach ( $field_definitions as $field_name => $field_info ) {
+		$headers[]     = '"' . $field_name . '"';
+		$sample_data[] = '"' . ( $field_info['sample'] ?? '' ) . '"';
+	}
+
+	return implode( ',', $headers ) . "\n" . implode( ',', $sample_data );
+}
+
+/**
  * Validate star rating.
  *
  * @since 1.0.0

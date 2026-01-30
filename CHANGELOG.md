@@ -18,6 +18,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-01-30
+
+### Added
+- Centralized CSV field definitions system (`get_csv_field_definitions()`)
+- `get_sample_csv()` helper function for dynamic CSV samples
+- `product_reviews_importer_csv_field_definitions` filter hook for extensibility
+- Sample data in field definitions for consistent UI rendering
+- Developer documentation for filter hook in Help tab and readme.txt
+- Field definitions now include `sample` data for UI generation
+
+### Changed
+- Admin menu item text from "Reviews Importer" to "Import Reviews"
+- Import tab now dynamically builds required fields list from definitions
+- Help tab now dynamically builds field list from definitions
+- Sample CSV now generated from field definitions (no hardcoding)
+- Removed 7 obsolete `CSV_COL_*` constants (replaced by field definitions)
+- CSV validation now uses dynamic required fields from definitions
+- Made column names bold in Import tab requirements text
+
+### Fixed
+- Undefined `$handle` variable in CSV_Importer (line 172)
+- Escaped HTML tags in Import tab field list (now properly rendered as bold)
+- Added horizontal scroll for CSV sample on narrow displays
+
+### Developer
+- Field definitions now cached to reduce redundant function calls
+- All CSV-related configuration now centralized in one function
+- Plugin is fully extensible - developers can add custom CSV fields via filter
+- PHPCS warnings properly suppressed with explanatory comments
+
+---
+
 ## [1.0.0] - 2026-01-30
 
 ### Added

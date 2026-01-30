@@ -168,7 +168,8 @@ class CSV_Importer {
 		if ( empty( $this->headers ) || ! file_exists( $this->file_path ) ) {
 			return $reviews;
 		}
-		// phpcs:disable WordPress.WP.AlternativeFunctions -- fopen/fread/fclose required for fgetcsv() streaming. WP_Filesystem doesn't provide compatible stream resources.		$handle = fopen( $this->file_path, 'r' );
+		// phpcs:disable WordPress.WP.AlternativeFunctions -- fopen/fread/fclose required for fgetcsv() streaming. WP_Filesystem doesn't provide compatible stream resources.
+		$handle = fopen( $this->file_path, 'r' );
 		if ( false === $handle ) {
 			return $reviews;
 		}
@@ -251,15 +252,12 @@ class CSV_Importer {
 	 * @return array<string, string> Column mapping.
 	 */
 	private function get_column_map(): array {
-		$map = array(
-			'SKU'          => 'product_sku',
-			'Author Name'  => 'author_name',
-			'Author Email' => 'author_email',
-			'Author IP'    => 'author_ip',
-			'Review Date'  => 'review_date',
-			'Review Text'  => 'review_text',
-			'Review Stars' => 'review_stars',
-		);
+		$field_definitions = get_csv_field_definitions();
+		$map               = array();
+
+		foreach ( $field_definitions as $csv_column => $field_info ) {
+			$map[ $csv_column ] = $field_info['map_to'];
+		}
 
 		return $map;
 	}
@@ -290,8 +288,16 @@ class CSV_Importer {
 		}
 
 		// Check for required columns.
-		$required_columns = array( 'SKU', 'Author Name', 'Review Text', 'Review Stars' );
-		$missing_columns  = array();
+		$field_definitions = get_csv_field_definitions();
+		$required_columns  = array();
+
+		foreach ( $field_definitions as $field_name => $field_info ) {
+			if ( $field_info['required'] ) {
+				$required_columns[] = $field_name;
+			}
+		}
+
+		$missing_columns = array();
 
 		foreach ( $required_columns as $column ) {
 			if ( ! in_array( $column, $this->headers, true ) ) {

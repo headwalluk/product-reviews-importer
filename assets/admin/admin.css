@@ -24,6 +24,39 @@
 	margin-bottom: 30px;
 }
 
+/* File Upload Form - Highlight Primary Action */
+#pri-upload-form {
+	background: #f6f7f7;
+	border: 2px solid #2271b1;
+	border-radius: 4px;
+	padding: 20px;
+	margin-top: 15px;
+}
+
+#pri-upload-form input[type="file"] {
+	font-size: 14px;
+	padding: 5px;
+}
+
+#pri-upload-form .button-primary {
+	font-size: 15px;
+	padding: 8px 20px;
+	height: auto;
+}
+
+.pri-import-section pre {
+	background: #f0f0f1;
+	padding: 15px;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	overflow-x: auto;
+}
+
+.pri-import-section code {
+	font-family: monospace;
+	font-size: 13px;
+}
+
 /* Progress Bar */
 .pri-progress-bar {
 	width: 100%;
