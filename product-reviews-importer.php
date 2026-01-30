@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Product Reviews Importer
- * Plugin URI:        https://headwall-hosting.com/
+ * Plugin URI:        https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/
  * Description:       Import product reviews from multiple sources (CSV, Google, etc.) into WooCommerce products.
  * Version:           1.0.0
  * Requires at least: 6.0
