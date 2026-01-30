@@ -2,7 +2,7 @@
 
 A WordPress plugin for importing product reviews from multiple sources into WooCommerce.
 
-**Version:** 0.4.0  
+**Version:** 1.0.0  
 **Author:** Paul Faulkner  
 **Website:** https://headwall-hosting.com/
 
@@ -28,9 +28,9 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 
 ## Current Status
 
-**Version 0.4.0** - CSV import with AJAX orchestration complete
+**Version 1.0.0** - Production ready
 
-✅ **Completed:**
+✅ **Production Features:**
 - Core import engine with duplicate detection
 - CSV parser with validation and batch reading
 - Settings management (5 configurable options)
@@ -38,14 +38,12 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 - AJAX file upload with security validation
 - Batch processing with progress tracking
 - Real-time error reporting with row numbers
+- WooCommerce dependency checking
 - All templates code-first (WordPress standards compliant)
+- Production-ready error handling
+- Optimized button states and loading indicators
 
-🚧 **Pending Testing:**
-- New user account creation (setting enabled)
-- Large CSV files (1000+ rows)
-- Client's actual CSV data
-
-📋 **Planned Features:**
+📋 **Future Features:**
 - Google Reviews import via Place ID
 - Export reviews to CSV
 - Import history tracking
@@ -76,7 +74,7 @@ Your CSV file should have the following columns (all fields quoted):
 |--------|----------|-------------|
 | SKU | Yes | Product SKU |
 | Author Name | Yes | Reviewer's name |
-| Author Email | Yes | Reviewer's email address |
+| Author Email | Optional (recommended) | Reviewer's email address (enables duplicate detection and user account creation) |
 | Author IP | No | IP address (defaults to server IP if blank) |
 | Review Date | Yes | Date in `Y-m-d H:i:s T` format |
 | Review Text | Yes | Review content (multi-line supported) |
@@ -93,6 +91,12 @@ Your CSV file should have the following columns (all fields quoted):
 ---
 
 ## How It Works
+
+### Duplicate Detection
+
+Reviews are uniquely identified by **product ID + author email** (when email is provided):
+- If both match an existing review, the review text and rating are updated
+- Without email: Each import creates a new review (no duplicate detection)
 
 ### Product Matching
 

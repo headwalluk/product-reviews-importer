@@ -1,0 +1,11 @@
+# Development and documentation files to exclude from distribution
+build/
+dev-notes/
+sample-data/
+.github/
+.git/
+.gitignore
+phpcs.xml
+README.md
+CHANGELOG.md
+.distignore

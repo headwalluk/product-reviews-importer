@@ -65,11 +65,14 @@ class Review_Importer {
 					'data'    => $review_data,
 				);
 			} else {
-				// Check if this was an update or new insert.
-				$existing = $this->find_existing_review(
-					$this->get_review_product_id( $review_data['product_sku'] ),
-					sanitize_email( $review_data['author_email'] )
-				);
+				// Check if this was an update or new insert (only if email provided).
+				$existing = false;
+				if ( ! empty( $review_data['author_email'] ) ) {
+					$existing = $this->find_existing_review(
+						$this->get_review_product_id( $review_data['product_sku'] ),
+						sanitize_email( $review_data['author_email'] )
+					);
+				}
 
 				if ( $existing ) {
 					++$results['updated'];
@@ -93,7 +96,7 @@ class Review_Importer {
 	 */
 	public function import_review( array $review_data ) {
 		// Step 1: Validate required fields.
-		$required = array( 'product_sku', 'author_name', 'author_email', 'review_text', 'review_stars' );
+		$required = array( 'product_sku', 'author_name', 'review_text', 'review_stars' );
 
 		foreach ( $required as $field ) {
 			if ( empty( $review_data[ $field ] ) ) {
@@ -115,11 +118,14 @@ class Review_Importer {
 			return new \WP_Error( 'product_not_found', sprintf( 'Product not found: %s', $review_data['product_sku'] ) );
 		}
 
-		// Step 4: Sanitize and validate email.
-		$author_email = sanitize_email( $review_data['author_email'] );
+		// Step 4: Sanitize and validate email (optional).
+		$author_email = '';
+		if ( ! empty( $review_data['author_email'] ) ) {
+			$author_email = sanitize_email( $review_data['author_email'] );
 
-		if ( ! is_email( $author_email ) ) {
-			return new \WP_Error( 'invalid_email', sprintf( 'Invalid email: %s', $review_data['author_email'] ) );
+			if ( ! is_email( $author_email ) ) {
+				return new \WP_Error( 'invalid_email', sprintf( 'Invalid email: %s', $review_data['author_email'] ) );
+			}
 		}
 
 		// Step 5: Sanitize and validate review text.
@@ -138,11 +144,17 @@ class Review_Importer {
 		$author_ip   = $this->process_author_ip( $review_data['author_ip'] ?? '' );
 		$review_date = $this->parse_review_date( $review_data['review_date'] ?? '' );
 
-		// Step 7: Get or create user account.
-		$user_id = $this->get_or_create_user( $author_email, $review_data['author_name'] );
+		// Step 7: Get or create user account (if email provided).
+		$user_id = 0;
+		if ( ! empty( $author_email ) ) {
+			$user_id = $this->get_or_create_user( $author_email, $review_data['author_name'] );
+		}
 
-		// Step 8: Check for existing review.
-		$existing = $this->find_existing_review( $product_id, $author_email );
+		// Step 8: Check for existing review (only if email provided).
+		$existing = false;
+		if ( ! empty( $author_email ) ) {
+			$existing = $this->find_existing_review( $product_id, $author_email );
+		}
 
 		if ( $existing ) {
 			// Update existing review (content and rating only).
@@ -263,7 +275,6 @@ class Review_Importer {
 
 		if ( is_wp_error( $user_id ) ) {
 			// User creation failed, return 0 (guest).
-			error_log( 'Product Reviews Importer: Failed to create user - ' . $user_id->get_error_message() );
 			return 0;
 		}
 
