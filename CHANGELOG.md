@@ -18,6 +18,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2026-01-30
+
+### Changed
+- Refactored main plugin file - moved functionality to appropriate locations
+- Moved `show_woocommerce_missing_notice()` to functions-private.php
+- Moved textdomain loading into Plugin::init() method
+- Moved HPOS compatibility declaration into Plugin::declare_hpos_compatibility() method
+- Added `PRODUCT_REVIEWS_IMPORTER_FILE` constant for proper HPOS declaration outside main file
+
+### Fixed
+- Code formatting and indentation in class-plugin.php
+- Missing PHPDoc comment for declare_hpos_compatibility() method
+- All code standards violations resolved
+
+---
+
 ## [1.1.0] - 2026-01-30
 
 ### Added

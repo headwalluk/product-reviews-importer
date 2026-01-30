@@ -269,3 +269,15 @@ function get_user_id_by_email( string $email ): int {
 	$user = get_user_by( 'email', $email );
 	return $user ? $user->ID : 0;
 }
+
+/**
+ * Display admin notice if WooCommerce is not active.
+ *
+ * @since 1.0.0
+ */
+function show_woocommerce_missing_notice(): void {
+	printf(
+		'<div class="notice notice-error"><p>%s</p></div>',
+		esc_html__( 'Product Reviews Importer requires WooCommerce to be installed and active.', 'product-reviews-importer' )
+	);
+}

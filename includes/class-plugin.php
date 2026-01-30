@@ -33,7 +33,6 @@ class Plugin {
 	 */
 	private ?Admin_Hooks $admin_hooks = null;
 
-
 	/**
 	 * Run the plugin.
 	 *
@@ -45,6 +44,7 @@ class Plugin {
 
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
 
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
@@ -59,7 +59,11 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function init(): void {
-		// Placeholder for future initialization code.
+		load_plugin_textdomain(
+			'product-reviews-importer',
+			false,
+			dirname( PRODUCT_REVIEWS_IMPORTER_BASENAME ) . '/languages'
+		);
 	}
 
 	/**
@@ -96,6 +100,21 @@ class Plugin {
 			ADMIN_PAGE_SLUG,
 			array( $this->get_admin_hooks(), 'render_admin_page' )
 		);
+	}
+
+	/**
+	 * Declare HPOS compatibility.
+	 *
+	 * @since 1.0.0
+	 */
+	public function declare_hpos_compatibility(): void {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility(
+				'custom_order_tables',
+				PRODUCT_REVIEWS_IMPORTER_FILE,
+				true
+			);
+		}
 	}
 
 	/**
