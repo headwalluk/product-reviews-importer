@@ -26,15 +26,6 @@ const DEF_MIN_REVIEW_LENGTH    = 10;
 const DEF_AUTO_APPROVE_REVIEWS = true;
 const DEF_REVIEWS_ARE_VERIFIED = false;
 
-// CSV column mappings.
-const CSV_COL_SKU          = 'SKU';
-const CSV_COL_AUTHOR_NAME  = 'Author Name';
-const CSV_COL_AUTHOR_EMAIL = 'Author Email';
-const CSV_COL_AUTHOR_IP    = 'Author IP';
-const CSV_COL_REVIEW_DATE  = 'Review Date';
-const CSV_COL_REVIEW_TEXT  = 'Review Text';
-const CSV_COL_REVIEW_STARS = 'Review Stars';
-
 // Comment meta keys.
 const META_RATING = 'rating';
 

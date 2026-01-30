@@ -1,0 +1,395 @@
+# Copyright (C) 2026 Paul Faulkner
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Product Reviews Importer 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-reviews-importer\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-01-30T12:25:14+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: product-reviews-importer\n"
+
+#. Plugin Name of the plugin
+#: product-reviews-importer.php
+#: includes/class-plugin.php:93
+msgid "Product Reviews Importer"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: product-reviews-importer.php
+msgid "https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/"
+msgstr ""
+
+#. Description of the plugin
+#: product-reviews-importer.php
+msgid "Import product reviews from multiple sources (CSV, Google, etc.) into WooCommerce products."
+msgstr ""
+
+#. Author of the plugin
+#: product-reviews-importer.php
+msgid "Paul Faulkner"
+msgstr ""
+
+#. Author URI of the plugin
+#: product-reviews-importer.php
+msgid "https://headwall-hosting.com/"
+msgstr ""
+
+#: admin-templates/main-page.php:27
+msgid "Secondary menu"
+msgstr ""
+
+#: admin-templates/main-page.php:31
+msgid "Import"
+msgstr ""
+
+#: admin-templates/main-page.php:35
+msgid "Settings"
+msgstr ""
+
+#: admin-templates/main-page.php:39
+msgid "Help"
+msgstr ""
+
+#: admin-templates/tab-help.php:19
+msgid "How to Import Product Reviews"
+msgstr ""
+
+#: admin-templates/tab-help.php:25
+msgid "CSV File Format"
+msgstr ""
+
+#: admin-templates/tab-help.php:29
+msgid "Your CSV file must include the following columns (all values should be quoted):"
+msgstr ""
+
+#: admin-templates/tab-help.php:50
+msgid "Sample CSV"
+msgstr ""
+
+#: admin-templates/tab-help.php:61
+msgid "Important Notes"
+msgstr ""
+
+#: admin-templates/tab-help.php:66
+msgid "Reviews are matched to products using the SKU field"
+msgstr ""
+
+#: admin-templates/tab-help.php:70
+msgid "If a product variation SKU is provided, the review will be attached to the parent product"
+msgstr ""
+
+#: admin-templates/tab-help.php:74
+msgid "Duplicate reviews (same email + product) will update the existing review"
+msgstr ""
+
+#: admin-templates/tab-help.php:78
+msgid "Review text supports line breaks and basic formatting"
+msgstr ""
+
+#: admin-templates/tab-help.php:82
+msgid "Invalid rows will be skipped and reported in the import results"
+msgstr ""
+
+#: admin-templates/tab-help.php:89
+msgid "Troubleshooting"
+msgstr ""
+
+#: admin-templates/tab-help.php:93
+msgid "Product not found errors:"
+msgstr ""
+
+#: admin-templates/tab-help.php:94
+msgid "Verify that the SKU exactly matches a product in your store. SKUs are case-sensitive."
+msgstr ""
+
+#: admin-templates/tab-help.php:98
+msgid "Invalid email errors:"
+msgstr ""
+
+#: admin-templates/tab-help.php:99
+msgid "Ensure email addresses are in valid format (e.g., user@example.com)."
+msgstr ""
+
+#: admin-templates/tab-help.php:103
+msgid "Invalid star rating errors:"
+msgstr ""
+
+#: admin-templates/tab-help.php:104
+msgid "Star ratings must be whole numbers from 1 to 5."
+msgstr ""
+
+#: admin-templates/tab-help.php:108
+msgid "Review text too short:"
+msgstr ""
+
+#: admin-templates/tab-help.php:109
+msgid "Check the minimum review length setting in the Settings tab."
+msgstr ""
+
+#: admin-templates/tab-help.php:115
+msgid "Developer Hooks"
+msgstr ""
+
+#: admin-templates/tab-help.php:119
+msgid "The following filter hooks are available for developers to extend or customize plugin functionality:"
+msgstr ""
+
+#: admin-templates/tab-help.php:123
+msgid "product_reviews_importer_csv_field_definitions"
+msgstr ""
+
+#: admin-templates/tab-help.php:124
+msgid "Customize CSV field definitions, add custom fields, or modify existing field behavior."
+msgstr ""
+
+#: admin-templates/tab-import.php:20
+msgid "Import Reviews from CSV"
+msgstr ""
+
+#: admin-templates/tab-import.php:27
+msgid "Step 1: Upload CSV File"
+msgstr ""
+
+#: admin-templates/tab-import.php:44
+msgid "Select a CSV file containing product reviews. The file must include the following columns:"
+msgstr ""
+
+#: admin-templates/tab-import.php:52
+msgid "Sample CSV Format"
+msgstr ""
+
+#: admin-templates/tab-import.php:61
+msgid "More details on CSV format and import options..."
+msgstr ""
+
+#: admin-templates/tab-import.php:67
+msgid "Important:"
+msgstr ""
+
+#: admin-templates/tab-import.php:68
+msgid "Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews."
+msgstr ""
+
+#: admin-templates/tab-import.php:77
+msgid "Upload and Validate"
+msgstr ""
+
+#: admin-templates/tab-import.php:85
+msgid "Validation Results"
+msgstr ""
+
+#: admin-templates/tab-import.php:91
+msgid "Start Import"
+msgstr ""
+
+#: admin-templates/tab-import.php:101
+msgid "Import Progress"
+msgstr ""
+
+#: admin-templates/tab-import.php:108
+msgid "Preparing import..."
+msgstr ""
+
+#: admin-templates/tab-import.php:116
+msgid "Import Results"
+msgstr ""
+
+#: admin-templates/tab-import.php:121
+msgid "Import Another File"
+msgstr ""
+
+#: admin-templates/tab-settings.php:22
+msgid "Settings not available."
+msgstr ""
+
+#: admin-templates/tab-settings.php:31
+msgid "Import Settings"
+msgstr ""
+
+#: admin-templates/tab-settings.php:42
+msgid "Create User Accounts"
+msgstr ""
+
+#: admin-templates/tab-settings.php:47
+msgid "Create WordPress user accounts for new reviewers (Customer role)"
+msgstr ""
+
+#: admin-templates/tab-settings.php:51
+msgid "If disabled, reviews will be created as guest comments (user_id = 0)."
+msgstr ""
+
+#: admin-templates/tab-settings.php:58
+msgid "Minimum Review Length"
+msgstr ""
+
+#: admin-templates/tab-settings.php:64
+msgid "characters"
+msgstr ""
+
+#: admin-templates/tab-settings.php:68
+msgid "Reviews shorter than this will be rejected during import."
+msgstr ""
+
+#: admin-templates/tab-settings.php:75
+msgid "Default IP Address"
+msgstr ""
+
+#: admin-templates/tab-settings.php:85
+msgid "Used when CSV does not provide an author IP address. Leave blank to use server IP."
+msgstr ""
+
+#: admin-templates/tab-settings.php:90
+msgid "Auto-Approve Reviews"
+msgstr ""
+
+#: admin-templates/tab-settings.php:95
+msgid "Automatically approve imported reviews"
+msgstr ""
+
+#: admin-templates/tab-settings.php:99
+msgid "If disabled, imported reviews will require manual moderation."
+msgstr ""
+
+#: admin-templates/tab-settings.php:104
+msgid "Mark as Verified Purchase"
+msgstr ""
+
+#: admin-templates/tab-settings.php:109
+msgid "Mark imported reviews as verified purchases"
+msgstr ""
+
+#: admin-templates/tab-settings.php:113
+msgid "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
+msgstr ""
+
+#: functions-private.php:127
+msgid "Product SKU (required)"
+msgstr ""
+
+#: functions-private.php:133
+msgid "Reviewer name (required)"
+msgstr ""
+
+#: functions-private.php:139
+msgid "Reviewer email address (optional)"
+msgstr ""
+
+#: functions-private.php:145
+msgid "Review content (required)"
+msgstr ""
+
+#: functions-private.php:151
+msgid "Star rating 1-5 (required)"
+msgstr ""
+
+#: functions-private.php:157
+msgid "IP address (optional)"
+msgstr ""
+
+#: functions-private.php:163
+msgid "Date in Y-m-d H:i:s T format (optional)"
+msgstr ""
+
+#: includes/class-admin-hooks.php:79
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: includes/class-admin-hooks.php:86
+msgid "Product Reviews Importer requires WooCommerce to be installed and activated."
+msgstr ""
+
+#: includes/class-admin-hooks.php:139
+#: includes/class-admin-hooks.php:252
+msgid "Security check failed."
+msgstr ""
+
+#: includes/class-admin-hooks.php:145
+#: includes/class-admin-hooks.php:258
+msgid "Insufficient permissions."
+msgstr ""
+
+#: includes/class-admin-hooks.php:151
+msgid "No file uploaded."
+msgstr ""
+
+#: includes/class-admin-hooks.php:160
+msgid "File upload failed."
+msgstr ""
+
+#: includes/class-admin-hooks.php:167
+msgid "Invalid file type. Only CSV files are allowed."
+msgstr ""
+
+#: includes/class-admin-hooks.php:174
+msgid "File too large. Maximum size is 10MB."
+msgstr ""
+
+#: includes/class-admin-hooks.php:190
+msgid "Failed to move uploaded file."
+msgstr ""
+
+#: includes/class-admin-hooks.php:202
+msgid "Failed to read CSV file."
+msgstr ""
+
+#: includes/class-admin-hooks.php:225
+msgid "File uploaded successfully."
+msgstr ""
+
+#: includes/class-admin-hooks.php:268
+msgid "Invalid upload ID."
+msgstr ""
+
+#: includes/class-admin-hooks.php:276
+msgid "Upload session expired. Please upload the file again."
+msgstr ""
+
+#: includes/class-admin-hooks.php:283
+msgid "CSV file not found."
+msgstr ""
+
+#. translators: 1: Success count, 2: Updated count, 3: Error count
+#: includes/class-admin-hooks.php:312
+#, php-format
+msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred."
+msgstr ""
+
+#. translators: 1: Success count, 2: Updated count
+#: includes/class-admin-hooks.php:320
+#, php-format
+msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews."
+msgstr ""
+
+#. translators: 1: Number of rows processed, 2: Total rows
+#: includes/class-admin-hooks.php:365
+#, php-format
+msgid "Processed %1$d of %2$d rows..."
+msgstr ""
+
+#: includes/class-csv-importer.php:285
+msgid "Unable to read CSV file."
+msgstr ""
+
+#. translators: %s: Comma-separated list of missing column names
+#: includes/class-csv-importer.php:312
+#, php-format
+msgid "Missing required columns: %s"
+msgstr ""
+
+#: includes/class-csv-importer.php:321
+msgid "CSV file contains no data rows."
+msgstr ""
+
+#: includes/class-plugin.php:94
+msgid "Import Reviews"
+msgstr ""
+
+#: product-reviews-importer.php:47
+msgid "Product Reviews Importer requires WooCommerce to be installed and active."
+msgstr ""

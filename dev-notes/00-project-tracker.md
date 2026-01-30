@@ -1,8 +1,23 @@
 # Product Reviews Importer - Project Tracker
 
 **Last Updated:** 30 January 2026  
-**Current Version:** 1.0.0 (in progress)  
-**Status:** Production Release - Final Polish & Testing
+**Current Version:** 1.1.0  
+**Status:** Production Release - Extensibility Complete
+
+---
+
+## Recent Achievements (v1.1.0)
+
+### ✅ Extensibility & Developer Experience
+- [x] Centralized CSV field definitions system
+- [x] `product_reviews_importer_csv_field_definitions` filter hook
+- [x] Dynamic sample CSV generation
+- [x] Developer documentation in Help tab and readme.txt
+- [x] Removed hardcoded field references throughout codebase
+- [x] UI improvements (bold field names, sample CSV with Help link)
+- [x] Fixed undefined variable bug in CSV_Importer
+- [x] Added responsive horizontal scroll for CSV samples
+- [x] All code quality checks passing
 
 ---
 

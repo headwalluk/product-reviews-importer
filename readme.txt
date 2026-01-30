@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, import, csv, products
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,40 @@ Yes. If a review already exists for a product by the same email address, the rev
 = What format should the CSV file use? =
 
 All fields should be quoted. The Review Text field can span multiple lines. See the Description section for required columns.
+
+= Can I customize the CSV field definitions? =
+
+Yes. Developers can use the `product_reviews_importer_csv_field_definitions` filter to add, remove, or modify CSV field definitions. See the Developer Hooks section below.
+
+== Developer Hooks ==
+
+= Filters =
+
+**product_reviews_importer_csv_field_definitions**
+
+Allows developers to customize CSV field definitions, add custom fields, or modify existing field behavior.
+
+Parameters:
+* `$fields` (array) - Array of field definitions with keys: `required`, `description`, `map_to`, `sample`
+
+Example:
+
+`
+add_filter( 'product_reviews_importer_csv_field_definitions', function( $fields ) {
+    // Add a custom field
+    $fields['Custom Field'] = array(
+        'required'    => false,
+        'description' => __( 'Custom field description', 'my-plugin' ),
+        'map_to'      => 'custom_field_key',
+        'sample'      => 'Example Value',
+    );
+    
+    // Make Author Email required
+    $fields['Author Email']['required'] = true;
+    
+    return $fields;
+} );
+`
 
 == Screenshots ==
 

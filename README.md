@@ -2,7 +2,7 @@
 
 A WordPress plugin for importing product reviews from multiple sources into WooCommerce.
 
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Author:** Paul Faulkner  
 **Website:** https://headwall-hosting.com/
 
@@ -28,9 +28,9 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 
 ## Current Status
 
-**Version 1.0.0** - Production ready
+**Version 1.1.0** - Production ready with extensibility
 
-✅ **Production Features:**
+✅ **Production Features:****
 - Core import engine with duplicate detection
 - CSV parser with validation and batch reading
 - Settings management (5 configurable options)
