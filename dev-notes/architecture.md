@@ -87,7 +87,7 @@ All source adapters must convert their data to this format before passing to Rev
 array(
     'product_sku'   => 'ABC123',        // Required - used to find product
     'author_name'   => 'John Doe',      // Required
-    'author_email'  => 'john@example.com', // Required
+    'author_email'  => 'john@example.com', // Optional (recommended)
     'author_ip'     => '123.45.67.89',  // Optional - defaults to server IP
     'review_date'   => '2026-01-15 14:30:00 GMT', // Required - Y-m-d H:i:s T format
     'review_text'   => 'Great product!', // Required

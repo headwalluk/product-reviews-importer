@@ -79,6 +79,15 @@ class Admin_Hooks {
 			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'product-reviews-importer' ) );
 		}
 
+		// Check if WooCommerce is active.
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			printf(
+				'<div class="wrap"><div class="notice notice-error"><p>%s</p></div></div>',
+				esc_html__( 'Product Reviews Importer requires WooCommerce to be installed and activated.', 'product-reviews-importer' )
+			);
+			return;
+		}
+
 		// Load admin template.
 		require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/main-page.php';
 	}
@@ -189,13 +198,13 @@ class Admin_Hooks {
 		$validation = $csv->validate();
 
 		if ( false === $headers ) {
-			unlink( $temp_filepath );
+			wp_delete_file( $temp_filepath );
 			$response['message'] = __( 'Failed to read CSV file.', 'product-reviews-importer' );
 			wp_send_json( $response );
 		}
 
 		if ( ! $validation['valid'] ) {
-			unlink( $temp_filepath );
+			wp_delete_file( $temp_filepath );
 			$response['message'] = implode( ' ', $validation['errors'] );
 			wp_send_json( $response );
 		}
@@ -241,14 +250,12 @@ class Admin_Hooks {
 		// Verify nonce.
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), NONCE_CSV_IMPORT ) ) {
 			$response['message'] = __( 'Security check failed.', 'product-reviews-importer' );
-			error_log( 'PRI: ajax_import_batch - Nonce verification failed' );
 			wp_send_json( $response );
 		}
 
 		// Check capability.
 		if ( ! current_user_can( ADMIN_CAPABILITY ) ) {
 			$response['message'] = __( 'Insufficient permissions.', 'product-reviews-importer' );
-			error_log( 'PRI: ajax_import_batch - Insufficient permissions for user ' . get_current_user_id() );
 			wp_send_json( $response );
 		}
 
@@ -259,7 +266,6 @@ class Admin_Hooks {
 
 		if ( empty( $upload_id ) ) {
 			$response['message'] = __( 'Invalid upload ID.', 'product-reviews-importer' );
-			error_log( 'PRI: ajax_import_batch - Empty upload ID' );
 			wp_send_json( $response );
 		}
 
@@ -268,7 +274,6 @@ class Admin_Hooks {
 
 		if ( false === $upload_data ) {
 			$response['message'] = __( 'Upload session expired. Please upload the file again.', 'product-reviews-importer' );
-			error_log( 'Product Reviews Importer: ajax_import_batch - Upload session expired or not found for ID: ' . $upload_id );
 			wp_send_json( $response );
 		}
 
@@ -276,7 +281,6 @@ class Admin_Hooks {
 		if ( ! file_exists( $upload_data['file_path'] ) ) {
 			delete_transient( TRANSIENT_UPLOAD_DATA . $upload_id );
 			$response['message'] = __( 'CSV file not found.', 'product-reviews-importer' );
-			error_log( 'Product Reviews Importer: ajax_import_batch - File not found: ' . $upload_data['file_path'] );
 			wp_send_json( $response );
 		}
 
@@ -296,7 +300,7 @@ class Admin_Hooks {
 			}
 
 			// Cleanup.
-			unlink( $upload_data['file_path'] );
+			wp_delete_file( $upload_data['file_path'] );
 			delete_transient( TRANSIENT_UPLOAD_DATA . $upload_id );
 			delete_transient( TRANSIENT_IMPORT_PROGRESS . $upload_id );
 

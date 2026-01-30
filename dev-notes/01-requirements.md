@@ -24,7 +24,7 @@ The plugin is designed with extensibility in mind - multiple import sources can 
 **Supported Fields:**
 - SKU (required - used to match product)
 - Author Name (required)
-- Author Email (required)
+- Author Email (optional, recommended - enables duplicate detection and user account creation)
 - Author IP (optional - defaults to server IP if blank)
 - Review Date (required - format: `Y-m-d H:i:s T`)
 - Review Text (required - multi-line supported)

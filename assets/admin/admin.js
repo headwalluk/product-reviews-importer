@@ -134,7 +134,9 @@
                 return;
             }
 
-            // Hide import button and validation
+            // Disable and hide import controls
+            const $importBtn = $('#pri-start-import');
+            $importBtn.prop('disabled', true).text('Importing...');
             $('#pri-import-controls').hide();
             $('#pri-validation-results').hide();
 
@@ -151,17 +153,12 @@
         },
 
         processBatch: function(offset) {
-            console.log('processBatch called with offset:', offset);
-            console.log('uploadId:', this.uploadId);
-            console.log('totalRows:', this.totalRows);
-            
             const ajaxData = {
                 action: 'pri_import_batch',
                 nonce: productReviewsImporter.importNonce,
                 uploadId: this.uploadId,
                 offset: offset
             };
-            console.log('AJAX data being sent:', ajaxData);
             
             $.ajax({
 				url: productReviewsImporter.ajaxUrl,

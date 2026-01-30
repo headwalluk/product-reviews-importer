@@ -67,6 +67,7 @@ class CSV_Importer {
 			return false;
 		}
 
+		// phpcs:disable WordPress.WP.AlternativeFunctions -- fopen/fread/fclose required for fgetcsv() streaming. WP_Filesystem doesn't provide compatible stream resources.
 		$handle = fopen( $this->file_path, 'r' );
 		if ( false === $handle ) {
 			return false;
@@ -82,6 +83,7 @@ class CSV_Importer {
 		// Read first row as headers.
 		$row = fgetcsv( $handle );
 		fclose( $handle );
+		// phpcs:enable WordPress.WP.AlternativeFunctions
 
 		if ( false === $row || empty( $row ) ) {
 			return false;
@@ -117,6 +119,7 @@ class CSV_Importer {
 			return $count;
 		}
 
+		// phpcs:disable WordPress.WP.AlternativeFunctions -- fopen/fread/fclose required for fgetcsv() streaming.
 		$handle = fopen( $this->file_path, 'r' );
 		if ( false === $handle ) {
 			return $count;
@@ -137,6 +140,7 @@ class CSV_Importer {
 		}
 
 		fclose( $handle );
+		// phpcs:enable WordPress.WP.AlternativeFunctions
 
 		$this->total_rows = $count;
 		return $count;
@@ -164,8 +168,7 @@ class CSV_Importer {
 		if ( empty( $this->headers ) || ! file_exists( $this->file_path ) ) {
 			return $reviews;
 		}
-
-		$handle = fopen( $this->file_path, 'r' );
+		// phpcs:disable WordPress.WP.AlternativeFunctions -- fopen/fread/fclose required for fgetcsv() streaming. WP_Filesystem doesn't provide compatible stream resources.		$handle = fopen( $this->file_path, 'r' );
 		if ( false === $handle ) {
 			return $reviews;
 		}
@@ -204,6 +207,7 @@ class CSV_Importer {
 		}
 
 		fclose( $handle );
+		// phpcs:enable WordPress.WP.AlternativeFunctions
 
 		return $reviews;
 	}
@@ -286,7 +290,7 @@ class CSV_Importer {
 		}
 
 		// Check for required columns.
-		$required_columns = array( 'SKU', 'Author Name', 'Author Email', 'Review Text', 'Review Stars' );
+		$required_columns = array( 'SKU', 'Author Name', 'Review Text', 'Review Stars' );
 		$missing_columns  = array();
 
 		foreach ( $required_columns as $column ) {

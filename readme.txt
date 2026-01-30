@@ -2,9 +2,9 @@
 Contributors: paulfaulkner
 Tags: woocommerce, reviews, import, csv, products
 Requires at least: 6.0
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 0.4.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,7 +39,7 @@ The plugin expects a CSV file with the following columns:
 
 * SKU (required)
 * Author Name (required)
-* Author Email (required)
+* Author Email (optional, but recommended - enables duplicate detection)
 * Author IP (optional - defaults to server public IP)
 * Review Date (required, format: Y-m-d H:i:s T)
 * Review Text (required, multi-line supported in quotes)
@@ -47,7 +47,7 @@ The plugin expects a CSV file with the following columns:
 
 **Duplicate Handling:**
 
-Reviews are identified by product ID + author email. If a review already exists:
+When author email is provided, reviews are identified by product ID + author email. If a review already exists:
 * Review text and star rating are updated
 * Original author details, date, and IP are preserved
 

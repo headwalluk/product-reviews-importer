@@ -15,9 +15,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Export reviews to CSV
 - Import history tracking UI
 - Scheduled/automated imports via cron
-- Testing: New user account creation
-- Testing: Large CSV files (1000+ rows)
-- Testing: Cancel import mid-process
+
+---
+
+## [1.0.0] - 2026-01-30
+
+### Added
+- WooCommerce dependency check with admin notice
+- Button loading states ("Uploading...", "Importing...")
+- Enhanced UX with proper button disable/enable states
+- PHPCS suppressions with documentation for required native file operations
+
+### Changed
+- **Author Email is now optional** (recommended for duplicate detection)
+- Reviews without email will be created as guest reviews
+- Duplicate detection only works when email is provided
+- User account creation skipped when no email provided
+- Removed all diagnostic console.log() and error_log() statements
+- Replaced unlink() with wp_delete_file() for WordPress best practices
+- Production-ready error handling
+
+### Fixed
+- Client compatibility: CSV files without email addresses now supported
+- Upload button properly re-enables on error
+- Import button shows processing state during batch operations
+
+### Code Quality
+- PHPCS compliant with only 1 intentional warning (standard CSV reading idiom)
+- All native file operations documented and justified
+- WordPress Coding Standards followed throughout
 
 ---
 

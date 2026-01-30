@@ -44,7 +44,7 @@ printf(
 printf(
 	'<li><strong>%s</strong> - %s</li>',
 	esc_html__( 'Author Email', 'product-reviews-importer' ),
-	esc_html__( 'Reviewer email address (required)', 'product-reviews-importer' )
+	esc_html__( 'Reviewer email address (optional, recommended for duplicate detection)', 'product-reviews-importer' )
 );
 printf(
 	'<li><strong>%s</strong> - %s</li>',
