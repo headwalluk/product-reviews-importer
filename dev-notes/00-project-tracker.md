@@ -499,6 +499,7 @@
 - [ ] Map Amazon data to normalized format
 
 ### Milestone 11: Export Enhancements
+- [ ] Standard CSV export on the Export tab (all reviews, generic format — re-importable)
 - [ ] Filter exports by product, date range, rating
 - [ ] Additional export formats (XLSX if needed)
 - [ ] Additional syndication targets beyond Walmart
