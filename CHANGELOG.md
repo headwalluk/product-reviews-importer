@@ -10,11 +10,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- Google Reviews import via Place ID
-- Additional import sources
-- Export reviews to CSV
 - Import history tracking UI
+- Additional export formats and syndication targets
 - Scheduled/automated imports via cron
+
+---
+
+## [1.2.0] - 2026-03-23
+
+### Added
+- Export tab with Walmart review syndication CSV export
+- Review Exporter class with streaming CSV download (UTF-8 BOM for Excel)
+- Settings link on Plugins page row actions
+- New constants: `NONCE_EXPORT`, `EXPORT_ACTION_WALMART`
+
+### Changed
+- Replaced `move_uploaded_file()` with `wp_handle_upload()` (Plugin Check compliance)
+- Renamed `pri_init()` to `product_reviews_importer_init()` (full plugin prefix)
+- Updated plugin description to reflect import and export capabilities
+- Updated WC tested up to 10.6
+- Updated WordPress tested up to 6.9
+- Updated readme.txt with complete changelog and accurate documentation
+- Export button disabled with helpful message when no approved reviews exist
+
+### Fixed
+- Plugin Check: resolved all errors (forbidden function, outdated tested-up-to)
+- readme.txt: batch size corrected from 10 to 50
+- readme.txt: Review Date corrected from required to optional
+
+### Security
+- `get_sample_csv()` output now escaped with `esc_html()` in Import and Help tabs
 
 ---
 
@@ -99,7 +124,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - AJAX file upload handler with comprehensive security
-- Batch processing orchestration (10 rows per batch)
+- Batch processing orchestration (50 rows per batch)
 - Real-time progress bar with percentage display
 - Detailed error reporting with row-level feedback
 - File upload validation (CSV only, 10MB max)
@@ -215,13 +240,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## Version History
-
-- **0.2.0** - Foundation complete (2026-01-16)
-- **0.1.0** - Initial development (2026-01-16)
-
----
-
-[Unreleased]: https://github.com/yourusername/product-reviews-importer/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/yourusername/product-reviews-importer/releases/tag/v0.2.0
-[0.1.0]: https://github.com/yourusername/product-reviews-importer/releases/tag/v0.1.0
+[Unreleased]: https://github.com/headwalluk/product-reviews-importer/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/headwalluk/product-reviews-importer/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/headwalluk/product-reviews-importer/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/headwalluk/product-reviews-importer/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/headwalluk/product-reviews-importer/compare/v0.4.0...v1.0.0
+[0.4.0]: https://github.com/headwalluk/product-reviews-importer/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/headwalluk/product-reviews-importer/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/headwalluk/product-reviews-importer/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/headwalluk/product-reviews-importer/releases/tag/v0.1.0

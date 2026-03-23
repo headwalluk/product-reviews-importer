@@ -145,6 +145,16 @@
 	font-weight: 600;
 }
 
+/* Export Section */
+.pri-export-section h2 {
+	margin-top: 0;
+}
+
+.pri-export-section ul {
+	list-style: disc;
+	margin-left: 20px;
+}
+
 /* Settings Section */
 .pri-settings-section h2 {
 	margin-top: 0;

@@ -2,6 +2,7 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
+"Language: de_DE\n"
 "Project-Id-Version: Product Reviews Importer 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-reviews-importer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -18,478 +19,478 @@ msgstr ""
 #: product-reviews-importer.php
 #: includes/class-plugin.php:109
 msgid "Product Reviews Importer"
-msgstr ""
+msgstr "Importeur von Produktbewertungen"
 
 #. Plugin URI of the plugin
 #: product-reviews-importer.php
 msgid "https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/"
-msgstr ""
+msgstr "https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/"
 
 #. Description of the plugin
 #: product-reviews-importer.php
 msgid "Import and export WooCommerce product reviews. CSV import with batch processing, and export for Walmart review syndication."
-msgstr ""
+msgstr "Importieren und exportieren Sie WooCommerce-Produktbewertungen. CSV-Import mit Stapelverarbeitung und Export für die Veröffentlichung von Bewertungen bei Walmart."
 
 #. Author of the plugin
 #: product-reviews-importer.php
 msgid "Paul Faulkner"
-msgstr ""
+msgstr "Paul Faulkner"
 
 #. Author URI of the plugin
 #: product-reviews-importer.php
 msgid "https://headwall-hosting.com/"
-msgstr ""
+msgstr "https://headwall-hosting.com/"
 
 #: admin-templates/main-page.php:27
 msgid "Secondary menu"
-msgstr ""
+msgstr "Untermenü"
 
 #: admin-templates/main-page.php:31
 msgid "Import"
-msgstr ""
+msgstr "Importieren"
 
 #: admin-templates/main-page.php:35
 msgid "Export"
-msgstr ""
+msgstr "Exportieren"
 
 #: admin-templates/main-page.php:39
 #: includes/class-plugin.php:187
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: admin-templates/main-page.php:43
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: admin-templates/tab-export.php:23
 msgid "Walmart Review Syndication"
-msgstr ""
+msgstr "Walmart-Bewertungen – Syndizierung"
 
 #: admin-templates/tab-export.php:28
 msgid "Export all approved product reviews in the format required for Walmart review syndication. The exported CSV follows Walmart's specification with the following columns:"
-msgstr ""
+msgstr "Exportieren Sie alle freigegebenen Produktbewertungen in dem für die Walmart-Bewertungssyndizierung erforderlichen Format. Die exportierte CSV-Datei entspricht den Vorgaben von Walmart und enthält folgende Spalten:"
 
 #: admin-templates/tab-export.php:34
 msgid "Walmart Item ID"
-msgstr ""
+msgstr "Walmart-Artikel-ID"
 
 #: admin-templates/tab-export.php:35
 msgid "Left blank — fill in with your Walmart Item IDs after export."
-msgstr ""
+msgstr "Leer lassen – nach dem Export mit Ihren Walmart-Artikel-IDs ausfüllen."
 
 #: admin-templates/tab-export.php:39
 msgid "SKU"
-msgstr ""
+msgstr "Artikelnummer"
 
 #: admin-templates/tab-export.php:40
 msgid "Your WooCommerce product SKU."
-msgstr ""
+msgstr "Ihre WooCommerce-Produkt-SKU."
 
 #: admin-templates/tab-export.php:44
 msgid "Review Title"
-msgstr ""
+msgstr "Titel der Rezension"
 
 #: admin-templates/tab-export.php:45
 msgid "Left blank — WooCommerce reviews do not have titles."
-msgstr ""
+msgstr "Leer gelassen – WooCommerce-Bewertungen haben keine Titel."
 
 #: admin-templates/tab-export.php:49
 msgid "Review Body"
-msgstr ""
+msgstr "Prüfungsgremium"
 
 #: admin-templates/tab-export.php:50
 msgid "The full review text."
-msgstr ""
+msgstr "Der vollständige Rezensionstext."
 
 #: admin-templates/tab-export.php:54
 msgid "Review Rating"
-msgstr ""
+msgstr "Bewertung"
 
 #: admin-templates/tab-export.php:55
 msgid "Star rating (1–5)."
-msgstr ""
+msgstr "Sternebewertung (1–5)."
 
 #: admin-templates/tab-export.php:59
 msgid "Review Created Date"
-msgstr ""
+msgstr "Erstellungsdatum der Bewertung"
 
 #: admin-templates/tab-export.php:60
 msgid "Formatted as MM/DD/YYYY per Walmart requirements."
-msgstr ""
+msgstr "Im Format MM/TT/JJJJ gemäß den Vorgaben von Walmart."
 
 #: admin-templates/tab-export.php:64
 msgid "Review User Name"
-msgstr ""
+msgstr "Benutzername anzeigen"
 
 #: admin-templates/tab-export.php:65
 msgid "The reviewer's name as it appears on your site."
-msgstr ""
+msgstr "Der Name des Rezensenten, wie er auf Ihrer Website erscheint."
 
 #: admin-templates/tab-export.php:69
 msgid "URL link"
-msgstr ""
+msgstr "URL-Link"
 
 #: admin-templates/tab-export.php:70
 msgid "Link to the product page on your website."
-msgstr ""
+msgstr "Link zur Produktseite auf Ihrer Website."
 
 #: admin-templates/tab-export.php:74
 msgid "Incentivized Review"
-msgstr ""
+msgstr "Bewertung mit Anreiz"
 
 #: admin-templates/tab-export.php:75
 msgid "Defaults to \"No\" — update manually if applicable."
-msgstr ""
+msgstr "Standardwert ist „Nein“ – gegebenenfalls manuell aktualisieren."
 
 #. translators: %d: number of approved reviews
 #: admin-templates/tab-export.php:84
 #, php-format
 msgid "There are currently %d approved reviews to export."
-msgstr ""
+msgstr "Derzeit stehen %d freigegebene Bewertungen zum Export bereit."
 
 #: admin-templates/tab-export.php:98
 msgid "Export Walmart CSV"
-msgstr ""
+msgstr "Walmart-CSV-Export"
 
 #: admin-templates/tab-export.php:103
 msgid "No approved reviews to export. Import some reviews first, or check that existing reviews are approved."
-msgstr ""
+msgstr "Es sind keine freigegebenen Bewertungen zum Exportieren vorhanden. Importieren Sie zunächst einige Bewertungen oder stellen Sie sicher, dass die vorhandenen Bewertungen freigegeben sind."
 
 #: admin-templates/tab-help.php:19
 msgid "How to Import Product Reviews"
-msgstr ""
+msgstr "So importieren Sie Produktbewertungen"
 
 #: admin-templates/tab-help.php:25
 msgid "CSV File Format"
-msgstr ""
+msgstr "CSV-Dateiformat"
 
 #: admin-templates/tab-help.php:29
 msgid "Your CSV file must include the following columns (all values should be quoted):"
-msgstr ""
+msgstr "Ihre CSV-Datei muss die folgenden Spalten enthalten (alle Werte sollten in Anführungszeichen stehen):"
 
 #: admin-templates/tab-help.php:50
 msgid "Sample CSV"
-msgstr ""
+msgstr "Beispiel-CSV"
 
 #: admin-templates/tab-help.php:60
 msgid "Important Notes"
-msgstr ""
+msgstr "Wichtige Hinweise"
 
 #: admin-templates/tab-help.php:65
 msgid "Reviews are matched to products using the SKU field"
-msgstr ""
+msgstr "Bewertungen werden anhand des SKU-Feldes den Produkten zugeordnet"
 
 #: admin-templates/tab-help.php:69
 msgid "If a product variation SKU is provided, the review will be attached to the parent product"
-msgstr ""
+msgstr "Wenn eine Artikelnummer für eine Produktvariante angegeben wird, wird die Bewertung dem übergeordneten Produkt zugeordnet"
 
 #: admin-templates/tab-help.php:73
 msgid "Duplicate reviews (same email + product) will update the existing review"
-msgstr ""
+msgstr "Bei doppelten Bewertungen (gleiche E-Mail-Adresse + Produkt) wird die bestehende Bewertung aktualisiert"
 
 #: admin-templates/tab-help.php:77
 msgid "Review text supports line breaks and basic formatting"
-msgstr ""
+msgstr "Der Rezensionstext unterstützt Zeilenumbrüche und grundlegende Formatierungen"
 
 #: admin-templates/tab-help.php:81
 msgid "Invalid rows will be skipped and reported in the import results"
-msgstr ""
+msgstr "Ungültige Zeilen werden übersprungen und in den Importergebnissen aufgeführt"
 
 #: admin-templates/tab-help.php:88
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Fehlerbehebung"
 
 #: admin-templates/tab-help.php:92
 msgid "Product not found errors:"
-msgstr ""
+msgstr "Fehlermeldung „Produkt nicht gefunden“:"
 
 #: admin-templates/tab-help.php:93
 msgid "Verify that the SKU exactly matches a product in your store. SKUs are case-sensitive."
-msgstr ""
+msgstr "Stellen Sie sicher, dass die SKU genau mit einem Produkt in Ihrem Shop übereinstimmt. Bei SKUs wird zwischen Groß- und Kleinschreibung unterschieden."
 
 #: admin-templates/tab-help.php:97
 msgid "Invalid email errors:"
-msgstr ""
+msgstr "Fehler bei ungültigen E-Mail-Adressen:"
 
 #: admin-templates/tab-help.php:98
 msgid "Ensure email addresses are in valid format (e.g., user@example.com)."
-msgstr ""
+msgstr "Stellen Sie sicher, dass die E-Mail-Adressen ein gültiges Format haben (z. B. user@example.com)."
 
 #: admin-templates/tab-help.php:102
 msgid "Invalid star rating errors:"
-msgstr ""
+msgstr "Fehler bei ungültigen Sternebewertungen:"
 
 #: admin-templates/tab-help.php:103
 msgid "Star ratings must be whole numbers from 1 to 5."
-msgstr ""
+msgstr "Sternbewertungen müssen ganze Zahlen zwischen 1 und 5 sein."
 
 #: admin-templates/tab-help.php:107
 msgid "Review text too short:"
-msgstr ""
+msgstr "Der Rezensionstext ist zu kurz:"
 
 #: admin-templates/tab-help.php:108
 msgid "Check the minimum review length setting in the Settings tab."
-msgstr ""
+msgstr "Überprüfen Sie die Einstellung für die Mindestlänge von Bewertungen auf der Registerkarte „Einstellungen“."
 
 #: admin-templates/tab-help.php:114
 msgid "Developer Hooks"
-msgstr ""
+msgstr "Entwickler-Hooks"
 
 #: admin-templates/tab-help.php:118
 msgid "The following filter hooks are available for developers to extend or customize plugin functionality:"
-msgstr ""
+msgstr "Entwicklern stehen die folgenden Filter-Hooks zur Verfügung, um die Funktionalität von Plugins zu erweitern oder anzupassen:"
 
 #: admin-templates/tab-help.php:122
 msgid "product_reviews_importer_csv_field_definitions"
-msgstr ""
+msgstr "Produktbewertungen-Importer-CSV-Felddefinitionen"
 
 #: admin-templates/tab-help.php:123
 msgid "Customize CSV field definitions, add custom fields, or modify existing field behavior."
-msgstr ""
+msgstr "Passen Sie CSV-Felddefinitionen an, fügen Sie benutzerdefinierte Felder hinzu oder ändern Sie das Verhalten bestehender Felder."
 
 #: admin-templates/tab-import.php:20
 msgid "Import Reviews from CSV"
-msgstr ""
+msgstr "Bewertungen aus CSV-Datei importieren"
 
 #: admin-templates/tab-import.php:27
 msgid "Step 1: Upload CSV File"
-msgstr ""
+msgstr "Schritt 1: CSV-Datei hochladen"
 
 #: admin-templates/tab-import.php:44
 msgid "Select a CSV file containing product reviews. The file must include the following columns:"
-msgstr ""
+msgstr "Wählen Sie eine CSV-Datei mit Produktbewertungen aus. Die Datei muss folgende Spalten enthalten:"
 
 #: admin-templates/tab-import.php:52
 msgid "Sample CSV Format"
-msgstr ""
+msgstr "Beispiel für ein CSV-Format"
 
 #: admin-templates/tab-import.php:60
 msgid "More details on CSV format and import options..."
-msgstr ""
+msgstr "Weitere Informationen zum CSV-Format und zu den Importoptionen..."
 
 #: admin-templates/tab-import.php:66
 msgid "Important:"
-msgstr ""
+msgstr "Wichtig:"
 
 #: admin-templates/tab-import.php:67
 msgid "Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews."
-msgstr ""
+msgstr "Wenn die E-Mail-Adresse des Autors weggelassen wird, verhindert dies die Erkennung von Duplikaten. Durch das erneute Importieren derselben Datei entstehen doppelte Rezensionen."
 
 #: admin-templates/tab-import.php:76
 msgid "Upload and Validate"
-msgstr ""
+msgstr "Hochladen und Validieren"
 
 #: admin-templates/tab-import.php:84
 msgid "Validation Results"
-msgstr ""
+msgstr "Validierungsergebnisse"
 
 #: admin-templates/tab-import.php:90
 msgid "Start Import"
-msgstr ""
+msgstr "Import starten"
 
 #: admin-templates/tab-import.php:100
 msgid "Import Progress"
-msgstr ""
+msgstr "Importfortschritt"
 
 #: admin-templates/tab-import.php:107
 msgid "Preparing import..."
-msgstr ""
+msgstr "Import wird vorbereitet..."
 
 #: admin-templates/tab-import.php:115
 msgid "Import Results"
-msgstr ""
+msgstr "Ergebnisse importieren"
 
 #: admin-templates/tab-import.php:120
 msgid "Import Another File"
-msgstr ""
+msgstr "Eine weitere Datei importieren"
 
 #: admin-templates/tab-settings.php:22
 msgid "Settings not available."
-msgstr ""
+msgstr "Einstellungen nicht verfügbar."
 
 #: admin-templates/tab-settings.php:31
 msgid "Import Settings"
-msgstr ""
+msgstr "Einstellungen importieren"
 
 #: admin-templates/tab-settings.php:42
 msgid "Create User Accounts"
-msgstr ""
+msgstr "Benutzerkonten erstellen"
 
 #: admin-templates/tab-settings.php:47
 msgid "Create WordPress user accounts for new reviewers (Customer role)"
-msgstr ""
+msgstr "Erstellen Sie WordPress-Benutzerkonten für neue Prüfer (Rolle „Kunde“)"
 
 #: admin-templates/tab-settings.php:51
 msgid "If disabled, reviews will be created as guest comments (user_id = 0)."
-msgstr ""
+msgstr "Wenn diese Option deaktiviert ist, werden Bewertungen als Gastkommentare erstellt (user_id = 0)."
 
 #: admin-templates/tab-settings.php:58
 msgid "Minimum Review Length"
-msgstr ""
+msgstr "Mindestlänge der Rezension"
 
 #: admin-templates/tab-settings.php:64
 msgid "characters"
-msgstr ""
+msgstr "Zeichen"
 
 #: admin-templates/tab-settings.php:68
 msgid "Reviews shorter than this will be rejected during import."
-msgstr ""
+msgstr "Bewertungen, die kürzer sind als diese, werden beim Import abgelehnt."
 
 #: admin-templates/tab-settings.php:75
 msgid "Default IP Address"
-msgstr ""
+msgstr "Standard-IP-Adresse"
 
 #: admin-templates/tab-settings.php:85
 msgid "Used when CSV does not provide an author IP address. Leave blank to use server IP."
-msgstr ""
+msgstr "Wird verwendet, wenn CSV keine Autoren-IP-Adresse angibt. Lassen Sie das Feld leer, um die Server-IP zu verwenden."
 
 #: admin-templates/tab-settings.php:90
 msgid "Auto-Approve Reviews"
-msgstr ""
+msgstr "Bewertungen automatisch genehmigen"
 
 #: admin-templates/tab-settings.php:95
 msgid "Automatically approve imported reviews"
-msgstr ""
+msgstr "Importierte Bewertungen automatisch genehmigen"
 
 #: admin-templates/tab-settings.php:99
 msgid "If disabled, imported reviews will require manual moderation."
-msgstr ""
+msgstr "Wenn diese Option deaktiviert ist, müssen importierte Bewertungen manuell geprüft werden."
 
 #: admin-templates/tab-settings.php:104
 msgid "Mark as Verified Purchase"
-msgstr ""
+msgstr "Als verifizierten Kauf markieren"
 
 #: admin-templates/tab-settings.php:109
 msgid "Mark imported reviews as verified purchases"
-msgstr ""
+msgstr "Mark hat Bewertungen als verifizierte Käufe importiert"
 
 #: admin-templates/tab-settings.php:113
 msgid "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
-msgstr ""
+msgstr "Aktivieren Sie diese Option, wenn Sie sich vergewissert haben, dass die Bewertungen auf tatsächlichen Käufen beruhen (z. B. beim Import aus einem anderen WooCommerce-Shop)."
 
 #: functions-private.php:127
 msgid "Product SKU (required)"
-msgstr ""
+msgstr "Produkt-SKU (erforderlich)"
 
 #: functions-private.php:133
 msgid "Reviewer name (required)"
-msgstr ""
+msgstr "Name des Rezensenten (erforderlich)"
 
 #: functions-private.php:139
 msgid "Reviewer email address (optional)"
-msgstr ""
+msgstr "E-Mail-Adresse des Rezensenten (optional)"
 
 #: functions-private.php:145
 msgid "Review content (required)"
-msgstr ""
+msgstr "Inhalt der Rezension (erforderlich)"
 
 #: functions-private.php:151
 msgid "Star rating 1-5 (required)"
-msgstr ""
+msgstr "Sternbewertung 1–5 (erforderlich)"
 
 #: functions-private.php:157
 msgid "IP address (optional)"
-msgstr ""
+msgstr "IP-Adresse (optional)"
 
 #: functions-private.php:163
 msgid "Date in Y-m-d H:i:s T format (optional)"
-msgstr ""
+msgstr "Datum im Format J-M-T H:i:s (optional)"
 
 #: functions-private.php:281
 msgid "Product Reviews Importer requires WooCommerce to be installed and active."
-msgstr ""
+msgstr "Für den Produktbewertungs-Importer muss WooCommerce installiert und aktiviert sein."
 
 #: includes/class-admin-hooks.php:79
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
+msgstr "Sie verfügen nicht über die erforderlichen Berechtigungen, um auf diese Seite zuzugreifen."
 
 #: includes/class-admin-hooks.php:86
 msgid "Product Reviews Importer requires WooCommerce to be installed and activated."
-msgstr ""
+msgstr "Für den Produktbewertungs-Importer muss WooCommerce installiert und aktiviert sein."
 
 #: includes/class-admin-hooks.php:159
 #: includes/class-admin-hooks.php:276
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
-msgstr ""
+msgstr "Die Sicherheitsprüfung ist fehlgeschlagen."
 
 #: includes/class-admin-hooks.php:165
 #: includes/class-admin-hooks.php:282
 msgid "Insufficient permissions."
-msgstr ""
+msgstr "Nicht ausreichende Berechtigungen."
 
 #: includes/class-admin-hooks.php:171
 msgid "No file uploaded."
-msgstr ""
+msgstr "Es wurde keine Datei hochgeladen."
 
 #: includes/class-admin-hooks.php:180
 msgid "File upload failed."
-msgstr ""
+msgstr "Das Hochladen der Datei ist fehlgeschlagen."
 
 #: includes/class-admin-hooks.php:187
 msgid "Invalid file type. Only CSV files are allowed."
-msgstr ""
+msgstr "Ungültiger Dateityp. Es sind nur CSV-Dateien zulässig."
 
 #: includes/class-admin-hooks.php:194
 msgid "File too large. Maximum size is 10MB."
-msgstr ""
+msgstr "Die Datei ist zu groß. Die maximale Größe beträgt 10 MB."
 
 #: includes/class-admin-hooks.php:226
 msgid "Failed to read CSV file."
-msgstr ""
+msgstr "Das Lesen der CSV-Datei ist fehlgeschlagen."
 
 #: includes/class-admin-hooks.php:249
 msgid "File uploaded successfully."
-msgstr ""
+msgstr "Die Datei wurde erfolgreich hochgeladen."
 
 #: includes/class-admin-hooks.php:292
 msgid "Invalid upload ID."
-msgstr ""
+msgstr "Ungültige Upload-ID."
 
 #: includes/class-admin-hooks.php:300
 msgid "Upload session expired. Please upload the file again."
-msgstr ""
+msgstr "Die Upload-Sitzung ist abgelaufen. Bitte laden Sie die Datei erneut hoch."
 
 #: includes/class-admin-hooks.php:307
 msgid "CSV file not found."
-msgstr ""
+msgstr "CSV-Datei nicht gefunden."
 
 #. translators: 1: Success count, 2: Updated count, 3: Error count
 #: includes/class-admin-hooks.php:336
 #, php-format
 msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred."
-msgstr ""
+msgstr "Import abgeschlossen! %1$d neue Bewertungen erstellt, %2$d bestehende Bewertungen aktualisiert. Es sind %3$d Fehler aufgetreten."
 
 #. translators: 1: Success count, 2: Updated count
 #: includes/class-admin-hooks.php:344
 #, php-format
 msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews."
-msgstr ""
+msgstr "Import abgeschlossen! %1$d neue Bewertungen erstellt, %2$d bestehende Bewertungen aktualisiert."
 
 #. translators: 1: Number of rows processed, 2: Total rows
 #: includes/class-admin-hooks.php:389
 #, php-format
 msgid "Processed %1$d of %2$d rows..."
-msgstr ""
+msgstr "%1$d von %2$d Zeilen wurden verarbeitet..."
 
 #: includes/class-csv-importer.php:285
 msgid "Unable to read CSV file."
-msgstr ""
+msgstr "Die CSV-Datei kann nicht gelesen werden."
 
 #. translators: %s: Comma-separated list of missing column names
 #: includes/class-csv-importer.php:312
 #, php-format
 msgid "Missing required columns: %s"
-msgstr ""
+msgstr "Erforderliche Spalten fehlen: %s"
 
 #: includes/class-csv-importer.php:321
 msgid "CSV file contains no data rows."
-msgstr ""
+msgstr "Die CSV-Datei enthält keine Datenzeilen."
 
 #: includes/class-plugin.php:110
 msgid "Import Reviews"
-msgstr ""
+msgstr "Bewertungen importieren"
 
 #: includes/class-review-exporter.php:37
 msgid "You do not have sufficient permissions."
-msgstr ""
+msgstr "Sie verfügen nicht über die erforderlichen Berechtigungen."

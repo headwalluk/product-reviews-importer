@@ -54,6 +54,10 @@ const ADMIN_CAPABILITY = 'manage_woocommerce';
 // Nonce actions.
 const NONCE_CSV_UPLOAD = 'pri_csv_upload';
 const NONCE_CSV_IMPORT = 'pri_csv_import';
+const NONCE_EXPORT     = 'pri_export';
+
+// Export action.
+const EXPORT_ACTION_WALMART = 'pri_export_walmart_csv';
 
 // Transient keys.
 const TRANSIENT_UPLOAD_DATA     = 'pri_upload_data_';
