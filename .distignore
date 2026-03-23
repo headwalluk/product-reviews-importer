@@ -6,6 +6,7 @@ sample-data/
 .git/
 .gitignore
 phpcs.xml
+CLAUDE.md
 README.md
 CHANGELOG.md
 .distignore
