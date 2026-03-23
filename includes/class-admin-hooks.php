@@ -120,6 +120,26 @@ class Admin_Hooks {
 	}
 
 	/**
+	 * Override upload directory for temporary CSV storage.
+	 *
+	 * Used as a filter callback during wp_handle_upload() to direct
+	 * uploaded CSV files to the pri-temp/ directory.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param array $dirs Upload directory information.
+	 *
+	 * @return array Modified upload directory information.
+	 */
+	public function override_upload_dir( array $dirs ): array {
+		$dirs['path']   = $dirs['basedir'] . '/pri-temp';
+		$dirs['url']    = $dirs['baseurl'] . '/pri-temp';
+		$dirs['subdir'] = '/pri-temp';
+
+		return $dirs;
+	}
+
+	/**
 	 * Handle CSV file upload via AJAX.
 	 *
 	 * Validates file, moves to temp location, validates CSV structure,
@@ -152,7 +172,7 @@ class Admin_Hooks {
 			wp_send_json( $response );
 		}
 
-		// phpcs:disable WordPress.Security.ValidatedSanitizedInput -- $_FILES array validated via file type, size, and upload error checks
+		// phpcs:disable WordPress.Security.ValidatedSanitizedInput -- $_FILES array validated via file type, size, and upload error checks.
 		$file = $_FILES['csv_file'];
 
 		// Check for upload errors.
@@ -175,21 +195,25 @@ class Admin_Hooks {
 			wp_send_json( $response );
 		}
 
-		// Move file to temp location.
-		$upload_dir = wp_upload_dir();
-		$temp_dir   = trailingslashit( $upload_dir['basedir'] ) . 'pri-temp';
+		// Move file to temp location using WordPress upload API.
+		add_filter( 'upload_dir', array( $this, 'override_upload_dir' ) );
 
-		if ( ! file_exists( $temp_dir ) ) {
-			wp_mkdir_p( $temp_dir );
-		}
+		$movefile = wp_handle_upload(
+			$file,
+			array(
+				'test_form' => false,
+				'test_type' => false, // Extension already validated above.
+			)
+		);
 
-		$temp_filename = 'import_' . time() . '_' . wp_generate_password( 8, false ) . '.csv';
-		$temp_filepath = trailingslashit( $temp_dir ) . $temp_filename;
+		remove_filter( 'upload_dir', array( $this, 'override_upload_dir' ) );
 
-		if ( ! move_uploaded_file( $file['tmp_name'], $temp_filepath ) ) {
-			$response['message'] = __( 'Failed to move uploaded file.', 'product-reviews-importer' );
+		if ( isset( $movefile['error'] ) ) {
+			$response['message'] = $movefile['error'];
 			wp_send_json( $response );
 		}
+
+		$temp_filepath = $movefile['file'];
 		// phpcs:enable
 
 		// Validate CSV structure.

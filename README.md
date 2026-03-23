@@ -1,60 +1,47 @@
 # Product Reviews Importer
 
-A WordPress plugin for importing product reviews from multiple sources into WooCommerce.
+A WordPress plugin for importing and exporting WooCommerce product reviews.
 
-**Version:** 1.1.1  
-**Author:** Paul Faulkner  
+**Version:** 1.2.0
+**Author:** Paul Faulkner
 **Website:** https://headwall-hosting.com/
 
 ---
 
 ## Features
 
-- **CSV Import:** Native PHP parsing with UTF-8 BOM detection
-- **AJAX Upload:** Secure file upload with validation and progress tracking
-- **Batch Processing:** Handles large files without timeouts (10 rows per batch)
-- **Real-time Progress:** Live progress bar with percentage updates
-- **Error Reporting:** Detailed row-level error feedback for failed imports
-- **Smart Product Matching:** Automatic product lookup via SKU (supports variations)
-- **Duplicate Handling:** Updates existing reviews (product + email unique key)
-- **User Management:** Creates WordPress accounts for new reviewers (optional)
-- **Multi-line Support:** Preserves line breaks in review text
-- **Memory Efficient:** Streams large CSV files without loading into memory
-- **Author Name Intelligence:** Uses WordPress user's display_name when email matches
-- **Public IP Detection:** Fetches server's public IP (cached, secure fallback)
-- **HPOS Compatible:** Full WooCommerce High-Performance Order Storage support
+**Import:**
+- CSV import with native PHP parsing and UTF-8 BOM detection
+- AJAX upload with secure file validation and progress tracking
+- Batch processing (50 rows per batch) prevents timeouts on large files
+- Real-time progress bar with percentage updates
+- Detailed row-level error reporting
+- Automatic product matching via SKU (supports variations)
+- Smart duplicate handling — updates existing reviews (product + email)
+- Optional WordPress user account creation for new reviewers
+- Multi-line review text with line break preservation
+- Memory-efficient streaming for large CSV files
 
----
+**Export:**
+- Walmart review syndication CSV export
+- All approved reviews in Walmart's required column format
+- Dates formatted as MM/DD/YYYY per Walmart specification
+- Product URLs and reviewer names included automatically
+- UTF-8 BOM for Excel compatibility
 
-## Current Status
-
-**Version 1.1.1** - Production ready with extensibility
-
-✅ **Production Features:****
-- Core import engine with duplicate detection
-- CSV parser with validation and batch reading
-- Settings management (5 configurable options)
-- Admin interface with tabbed navigation
-- AJAX file upload with security validation
-- Batch processing with progress tracking
-- Real-time error reporting with row numbers
-- WooCommerce dependency checking
-- All templates code-first (WordPress standards compliant)
-- Production-ready error handling
-- Optimized button states and loading indicators
-
-📋 **Future Features:**
-- Google Reviews import via Place ID
-- Export reviews to CSV
-- Import history tracking
+**General:**
+- WooCommerce HPOS compatible
+- Settings link on Plugins page
+- Translation ready
+- Extensible via filter hooks
 
 ---
 
 ## Requirements
 
-- WordPress 6.0 or higher
-- WooCommerce 7.0 or higher
-- PHP 8.0 or higher
+- WordPress 6.0+
+- WooCommerce 7.0+
+- PHP 8.0+
 
 ---
 
@@ -62,123 +49,64 @@ A WordPress plugin for importing product reviews from multiple sources into WooC
 
 1. Upload to `/wp-content/plugins/product-reviews-importer/`
 2. Activate the plugin through WordPress admin
-3. Navigate to **WooCommerce > Reviews Importer**
+3. Navigate to **WooCommerce > Import Reviews**
 
 ---
 
-## CSV Format
-
-Your CSV file should have the following columns (all fields quoted):
+## CSV Import Format
 
 | Column | Required | Description |
 |--------|----------|-------------|
 | SKU | Yes | Product SKU |
 | Author Name | Yes | Reviewer's name |
-| Author Email | Optional (recommended) | Reviewer's email address (enables duplicate detection and user account creation) |
-| Author IP | No | IP address (defaults to server IP if blank) |
-| Review Date | Yes | Date in `Y-m-d H:i:s T` format |
-| Review Text | Yes | Review content (multi-line supported) |
+| Author Email | No (recommended) | Enables duplicate detection and user account linking |
+| Review Text | Yes | Review content (multi-line supported in quotes) |
 | Review Stars | Yes | Star rating (1-5) |
+| Author IP | No | IP address (defaults to server IP if blank) |
+| Review Date | No | Date in `Y-m-d H:i:s T` format (defaults to current time) |
 
 ### Example CSV
 
 ```csv
-"SKU","Author Name","Author Email","Author IP","Review Date","Review Text","Review Stars"
-"ABC123","John Doe","john.doe@example.com","123.123.123.123","2026-01-01 09:00:00 GMT","The product is great - recommended","5"
-"ABC123","Jane Doe","jane.doe@example.com","","2026-01-02 09:00:00 CET","Terrible product, I hate it","1"
+"SKU","Author Name","Author Email","Review Text","Review Stars","Author IP","Review Date"
+"ABC123","John Doe","john.doe@example.com","The product is great - recommended","5","123.123.123.123","2026-01-01 09:00:00 GMT"
+"ABC123","Jane Doe","jane.doe@example.com","Terrible product, I hate it","1","","2026-01-02 09:00:00 CET"
 ```
 
 ---
 
 ## How It Works
 
-### Duplicate Detection
-
-Reviews are uniquely identified by **product ID + author email** (when email is provided):
-- If both match an existing review, the review text and rating are updated
-- Without email: Each import creates a new review (no duplicate detection)
-
 ### Product Matching
 
 - Products are matched by SKU
-- If the SKU belongs to a variable product, the review is added to the parent product
+- If the SKU belongs to a variation, the review is added to the parent product
 - Reviews for non-existent products are skipped and logged as errors
 
 ### Duplicate Detection
 
-Reviews are uniquely identified by **product ID + author email**.
-
-- If a review already exists: Updates review text and star rating only
-- If new review: Creates a new comment with all provided details
+Reviews are uniquely identified by **product ID + author email** (when email is provided):
+- If both match an existing review: updates review text and star rating only
+- Without email: each import creates a new review (no duplicate detection)
 
 ### User Account Creation
 
-Configure in settings whether to create WordPress user accounts:
-
+Configurable in Settings:
 - **Enabled:** Creates users in "Customer" role for new email addresses
 - **Disabled:** Reviews are added as guest comments (user_id = 0)
 - Existing users are always linked by email
-
-### Review Text Formatting
-
-- Review text can span multiple lines in CSV
-- Plain text line breaks are converted to `<br>` tags
-- Only `<br>` and `<p>` HTML tags are allowed (sanitized with `wp_kses()`)
 
 ---
 
 ## Settings
 
-Navigate to **WooCommerce > Reviews Importer > Settings** to configure:
+Navigate to **WooCommerce > Import Reviews > Settings** to configure:
 
 - **Create user accounts:** Enable/disable user account creation for new reviewers
 - **Minimum review length:** Minimum character count for review text
 - **Default IP address:** IP used when Author IP column is blank
-
----
-
-## Development
-
-### File Structure
-
-```
-product-reviews-importer/
-├── product-reviews-importer.php   # Main plugin file
-├── constants.php                   # Plugin constants
-├── functions.php                   # Helper functions
-├── includes/                       # Core classes
-│   ├── class-plugin.php
-│   ├── class-settings.php
-│   ├── class-admin-hooks.php
-│   └── class-csv-importer.php
-├── admin-templates/                # Admin template files
-├── assets/                         # CSS/JS files
-├── languages/                      # Translation files
-└── dev-notes/                      # Development documentation
-```
-
-### Coding Standards
-
-This plugin follows [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/).
-
-Run PHPCS to check code quality:
-
-```bash
-phpcs
-phpcbf  # Auto-fix issues
-```
-
----
-
-## Future Development
-
-Planned features for future releases:
-
-- Google Reviews import (via Place ID)
-- Additional import sources
-- Export reviews to CSV
-- Scheduled/automated imports
-- Import history tracking UI
+- **Auto-approve reviews:** Automatically approve imported reviews
+- **Mark as verified purchase:** Mark imported reviews as verified purchases
 
 ---
 

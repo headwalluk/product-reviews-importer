@@ -31,6 +31,10 @@ printf(
 	esc_html__( 'Import', 'product-reviews-importer' )
 );
 printf(
+	'<a href="#export" class="nav-tab" data-tab="export">%s</a>',
+	esc_html__( 'Export', 'product-reviews-importer' )
+);
+printf(
 	'<a href="#settings" class="nav-tab" data-tab="settings">%s</a>',
 	esc_html__( 'Settings', 'product-reviews-importer' )
 );
@@ -46,6 +50,11 @@ printf( '<div class="tab-content">' );
 // Import tab panel.
 printf( '<div id="import-panel" class="tab-panel active">' );
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/tab-import.php';
+printf( '</div>' );
+
+// Export tab panel.
+printf( '<div id="export-panel" class="tab-panel" style="display:none;">' );
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/tab-export.php';
 printf( '</div>' );
 
 // Settings tab panel.

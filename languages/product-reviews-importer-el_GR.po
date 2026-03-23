@@ -1,0 +1,496 @@
+# Copyright (C) 2026 Paul Faulkner
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Language: el_GR\n"
+"Project-Id-Version: Product Reviews Importer 1.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-reviews-importer\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-23T19:57:11+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: product-reviews-importer\n"
+
+#. Plugin Name of the plugin
+#: product-reviews-importer.php
+#: includes/class-plugin.php:109
+msgid "Product Reviews Importer"
+msgstr "Εισαγωγέας κριτικών προϊόντων"
+
+#. Plugin URI of the plugin
+#: product-reviews-importer.php
+msgid "https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/"
+msgstr "https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/"
+
+#. Description of the plugin
+#: product-reviews-importer.php
+msgid "Import and export WooCommerce product reviews. CSV import with batch processing, and export for Walmart review syndication."
+msgstr "Εισαγωγή και εξαγωγή κριτικών προϊόντων WooCommerce. Εισαγωγή αρχείων CSV με μαζική επεξεργασία και εξαγωγή για τη διανομή κριτικών στο Walmart."
+
+#. Author of the plugin
+#: product-reviews-importer.php
+msgid "Paul Faulkner"
+msgstr "Πολ Φόλκνερ"
+
+#. Author URI of the plugin
+#: product-reviews-importer.php
+msgid "https://headwall-hosting.com/"
+msgstr "https://headwall-hosting.com/"
+
+#: admin-templates/main-page.php:27
+msgid "Secondary menu"
+msgstr "Δευτερεύον μενού"
+
+#: admin-templates/main-page.php:31
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: admin-templates/main-page.php:35
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: admin-templates/main-page.php:39
+#: includes/class-plugin.php:187
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: admin-templates/main-page.php:43
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: admin-templates/tab-export.php:23
+msgid "Walmart Review Syndication"
+msgstr "Διανομή κριτικών για το Walmart"
+
+#: admin-templates/tab-export.php:28
+msgid "Export all approved product reviews in the format required for Walmart review syndication. The exported CSV follows Walmart's specification with the following columns:"
+msgstr "Εξαγάγετε όλες τις εγκεκριμένες κριτικές προϊόντων στη μορφή που απαιτείται για τη διανομή κριτικών στο Walmart. Το εξαγόμενο αρχείο CSV συμμορφώνεται με τις προδιαγραφές του Walmart και περιλαμβάνει τις ακόλουθες στήλες:"
+
+#: admin-templates/tab-export.php:34
+msgid "Walmart Item ID"
+msgstr "Κωδικός προϊόντος Walmart"
+
+#: admin-templates/tab-export.php:35
+msgid "Left blank — fill in with your Walmart Item IDs after export."
+msgstr "Αφήστε το κενό — συμπληρώστε τα με τους κωδικούς προϊόντων Walmart μετά την εξαγωγή."
+
+#: admin-templates/tab-export.php:39
+msgid "SKU"
+msgstr "Κωδικός προϊόντος"
+
+#: admin-templates/tab-export.php:40
+msgid "Your WooCommerce product SKU."
+msgstr "Ο κωδικός SKU του προϊόντος σας στο WooCommerce."
+
+#: admin-templates/tab-export.php:44
+msgid "Review Title"
+msgstr "Τίτλος κριτικής"
+
+#: admin-templates/tab-export.php:45
+msgid "Left blank — WooCommerce reviews do not have titles."
+msgstr "Αφήστε το κενό — Οι κριτικές στο WooCommerce δεν έχουν τίτλους."
+
+#: admin-templates/tab-export.php:49
+msgid "Review Body"
+msgstr "Φορέας αξιολόγησης"
+
+#: admin-templates/tab-export.php:50
+msgid "The full review text."
+msgstr "Το πλήρες κείμενο της κριτικής."
+
+#: admin-templates/tab-export.php:54
+msgid "Review Rating"
+msgstr "Βαθμολογία κριτικής"
+
+#: admin-templates/tab-export.php:55
+msgid "Star rating (1–5)."
+msgstr "Βαθμολογία με αστέρια (1–5)."
+
+#: admin-templates/tab-export.php:59
+msgid "Review Created Date"
+msgstr "Ημερομηνία δημιουργίας κριτικής"
+
+#: admin-templates/tab-export.php:60
+msgid "Formatted as MM/DD/YYYY per Walmart requirements."
+msgstr "Μορφοποιημένη ως ΜΜ/ΗΗ/ΕΕΕΕ σύμφωνα με τις απαιτήσεις της Walmart."
+
+#: admin-templates/tab-export.php:64
+msgid "Review User Name"
+msgstr "Όνομα χρήστη κριτικής"
+
+#: admin-templates/tab-export.php:65
+msgid "The reviewer's name as it appears on your site."
+msgstr "Το όνομα του κριτικού όπως εμφανίζεται στον ιστότοπό σας."
+
+#: admin-templates/tab-export.php:69
+msgid "URL link"
+msgstr "Σύνδεσμος URL"
+
+#: admin-templates/tab-export.php:70
+msgid "Link to the product page on your website."
+msgstr "Σύνδεσμος προς τη σελίδα του προϊόντος στον ιστότοπό σας."
+
+#: admin-templates/tab-export.php:74
+msgid "Incentivized Review"
+msgstr "Αξιολόγηση με κίνητρα"
+
+#: admin-templates/tab-export.php:75
+msgid "Defaults to \"No\" — update manually if applicable."
+msgstr "Η προεπιλεγμένη τιμή είναι «Όχι» — ενημερώστε τη χειροκίνητα, αν χρειάζεται."
+
+#. translators: %d: number of approved reviews
+#: admin-templates/tab-export.php:84
+#, php-format
+msgid "There are currently %d approved reviews to export."
+msgstr "Αυτή τη στιγμή υπάρχουν %d εγκεκριμένες κριτικές προς εξαγωγή."
+
+#: admin-templates/tab-export.php:98
+msgid "Export Walmart CSV"
+msgstr "Εξαγωγή δεδομένων Walmart σε μορφή CSV"
+
+#: admin-templates/tab-export.php:103
+msgid "No approved reviews to export. Import some reviews first, or check that existing reviews are approved."
+msgstr "Δεν υπάρχουν εγκεκριμένες κριτικές για εξαγωγή. Εισάγετε πρώτα κάποιες κριτικές ή βεβαιωθείτε ότι οι υπάρχουσες κριτικές έχουν εγκριθεί."
+
+#: admin-templates/tab-help.php:19
+msgid "How to Import Product Reviews"
+msgstr "Πώς να εισαγάγετε κριτικές προϊόντων"
+
+#: admin-templates/tab-help.php:25
+msgid "CSV File Format"
+msgstr "Μορφή αρχείου CSV"
+
+#: admin-templates/tab-help.php:29
+msgid "Your CSV file must include the following columns (all values should be quoted):"
+msgstr "Το αρχείο CSV σας πρέπει να περιλαμβάνει τις ακόλουθες στήλες (όλες οι τιμές πρέπει να βρίσκονται εντός εισαγωγικών):"
+
+#: admin-templates/tab-help.php:50
+msgid "Sample CSV"
+msgstr "Δείγμα CSV"
+
+#: admin-templates/tab-help.php:60
+msgid "Important Notes"
+msgstr "Σημαντικές σημειώσεις"
+
+#: admin-templates/tab-help.php:65
+msgid "Reviews are matched to products using the SKU field"
+msgstr "Οι κριτικές αντιστοιχίζονται στα προϊόντα με βάση το πεδίο SKU"
+
+#: admin-templates/tab-help.php:69
+msgid "If a product variation SKU is provided, the review will be attached to the parent product"
+msgstr "Εάν έχει καταχωρηθεί κωδικός SKU παραλλαγής προϊόντος, η κριτική θα συνδεθεί με το κύριο προϊόν"
+
+#: admin-templates/tab-help.php:73
+msgid "Duplicate reviews (same email + product) will update the existing review"
+msgstr "Οι διπλές κριτικές (ίδιο email + προϊόν) θα αντικαταστήσουν την υπάρχουσα κριτική"
+
+#: admin-templates/tab-help.php:77
+msgid "Review text supports line breaks and basic formatting"
+msgstr "Το κείμενο της κριτικής υποστηρίζει αλλαγές γραμμής και βασική μορφοποίηση"
+
+#: admin-templates/tab-help.php:81
+msgid "Invalid rows will be skipped and reported in the import results"
+msgstr "Οι μη έγκυρες σειρές θα παραλειφθούν και θα αναφερθούν στα αποτελέσματα της εισαγωγής"
+
+#: admin-templates/tab-help.php:88
+msgid "Troubleshooting"
+msgstr "Αντιμετώπιση προβλημάτων"
+
+#: admin-templates/tab-help.php:92
+msgid "Product not found errors:"
+msgstr "Σφάλματα «Το προϊόν δεν βρέθηκε»:"
+
+#: admin-templates/tab-help.php:93
+msgid "Verify that the SKU exactly matches a product in your store. SKUs are case-sensitive."
+msgstr "Βεβαιωθείτε ότι ο κωδικός SKU αντιστοιχεί ακριβώς σε ένα προϊόν του καταστήματός σας. Οι κωδικοί SKU διακρίνονται μεταξύ κεφαλαίων και μικρών γραμμάτων."
+
+#: admin-templates/tab-help.php:97
+msgid "Invalid email errors:"
+msgstr "Σφάλματα λόγω μη έγκυρου email:"
+
+#: admin-templates/tab-help.php:98
+msgid "Ensure email addresses are in valid format (e.g., user@example.com)."
+msgstr "Βεβαιωθείτε ότι οι διευθύνσεις ηλεκτρονικού ταχυδρομείου έχουν έγκυρη μορφή (π.χ. user@example.com)."
+
+#: admin-templates/tab-help.php:102
+msgid "Invalid star rating errors:"
+msgstr "Σφάλματα μη έγκυρης βαθμολογίας με αστέρια:"
+
+#: admin-templates/tab-help.php:103
+msgid "Star ratings must be whole numbers from 1 to 5."
+msgstr "Οι βαθμολογίες με αστέρια πρέπει να είναι ακέραιοι αριθμοί από το 1 έως το 5."
+
+#: admin-templates/tab-help.php:107
+msgid "Review text too short:"
+msgstr "Το κείμενο της κριτικής είναι πολύ σύντομο:"
+
+#: admin-templates/tab-help.php:108
+msgid "Check the minimum review length setting in the Settings tab."
+msgstr "Ελέγξτε τη ρύθμιση για το ελάχιστο μήκος κριτικής στην καρτέλα «Ρυθμίσεις»."
+
+#: admin-templates/tab-help.php:114
+msgid "Developer Hooks"
+msgstr "Συνδέσεις προγραμματιστή"
+
+#: admin-templates/tab-help.php:118
+msgid "The following filter hooks are available for developers to extend or customize plugin functionality:"
+msgstr "Οι παρακάτω άγκιστρα φίλτρων είναι διαθέσιμα στους προγραμματιστές για την επέκταση ή την προσαρμογή των λειτουργιών του πρόσθετου:"
+
+#: admin-templates/tab-help.php:122
+msgid "product_reviews_importer_csv_field_definitions"
+msgstr "προσδιορισμοί_πεδίων_του_αρχείου_CSV_εισαγωγής_κριτικών_προϊόντων"
+
+#: admin-templates/tab-help.php:123
+msgid "Customize CSV field definitions, add custom fields, or modify existing field behavior."
+msgstr "Προσαρμόστε τους ορισμούς των πεδίων CSV, προσθέστε προσαρμοσμένα πεδία ή τροποποιήστε τη λειτουργία των υφιστάμενων πεδίων."
+
+#: admin-templates/tab-import.php:20
+msgid "Import Reviews from CSV"
+msgstr "Εισαγωγή κριτικών από αρχείο CSV"
+
+#: admin-templates/tab-import.php:27
+msgid "Step 1: Upload CSV File"
+msgstr "Βήμα 1: Ανέβασμα αρχείου CSV"
+
+#: admin-templates/tab-import.php:44
+msgid "Select a CSV file containing product reviews. The file must include the following columns:"
+msgstr "Επιλέξτε ένα αρχείο CSV που περιέχει κριτικές προϊόντων. Το αρχείο πρέπει να περιλαμβάνει τις ακόλουθες στήλες:"
+
+#: admin-templates/tab-import.php:52
+msgid "Sample CSV Format"
+msgstr "Παράδειγμα μορφής CSV"
+
+#: admin-templates/tab-import.php:60
+msgid "More details on CSV format and import options..."
+msgstr "Περισσότερες λεπτομέρειες σχετικά με τη μορφή CSV και τις επιλογές εισαγωγής..."
+
+#: admin-templates/tab-import.php:66
+msgid "Important:"
+msgstr "Σημαντικό:"
+
+#: admin-templates/tab-import.php:67
+msgid "Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews."
+msgstr "Η παράλειψη του email του συγγραφέα εμποδίζει τον εντοπισμό διπλών εγγραφών. Η εκ νέου εισαγωγή του ίδιου αρχείου θα δημιουργήσει διπλές κριτικές."
+
+#: admin-templates/tab-import.php:76
+msgid "Upload and Validate"
+msgstr "Ανεβάστε και επαληθεύστε"
+
+#: admin-templates/tab-import.php:84
+msgid "Validation Results"
+msgstr "Αποτελέσματα επικύρωσης"
+
+#: admin-templates/tab-import.php:90
+msgid "Start Import"
+msgstr "Έναρξη εισαγωγής"
+
+#: admin-templates/tab-import.php:100
+msgid "Import Progress"
+msgstr "Πρόοδος εισαγωγής"
+
+#: admin-templates/tab-import.php:107
+msgid "Preparing import..."
+msgstr "Προετοιμασία εισαγωγής..."
+
+#: admin-templates/tab-import.php:115
+msgid "Import Results"
+msgstr "Αποτελέσματα εισαγωγής"
+
+#: admin-templates/tab-import.php:120
+msgid "Import Another File"
+msgstr "Εισαγωγή άλλου αρχείου"
+
+#: admin-templates/tab-settings.php:22
+msgid "Settings not available."
+msgstr "Οι ρυθμίσεις δεν είναι διαθέσιμες."
+
+#: admin-templates/tab-settings.php:31
+msgid "Import Settings"
+msgstr "Εισαγωγή ρυθμίσεων"
+
+#: admin-templates/tab-settings.php:42
+msgid "Create User Accounts"
+msgstr "Δημιουργία λογαριασμών χρηστών"
+
+#: admin-templates/tab-settings.php:47
+msgid "Create WordPress user accounts for new reviewers (Customer role)"
+msgstr "Δημιουργήστε λογαριασμούς χρηστών WordPress για νέους αξιολογητές (ρόλος «Πελάτης»)"
+
+#: admin-templates/tab-settings.php:51
+msgid "If disabled, reviews will be created as guest comments (user_id = 0)."
+msgstr "Εάν η λειτουργία είναι απενεργοποιημένη, οι κριτικές θα δημιουργούνται ως σχόλια επισκεπτών (user_id = 0)."
+
+#: admin-templates/tab-settings.php:58
+msgid "Minimum Review Length"
+msgstr "Ελάχιστο μήκος κριτικής"
+
+#: admin-templates/tab-settings.php:64
+msgid "characters"
+msgstr "χαρακτήρες"
+
+#: admin-templates/tab-settings.php:68
+msgid "Reviews shorter than this will be rejected during import."
+msgstr "Οι κριτικές που είναι πιο σύντομες από αυτή θα απορριφθούν κατά την εισαγωγή."
+
+#: admin-templates/tab-settings.php:75
+msgid "Default IP Address"
+msgstr "Προεπιλεγμένη διεύθυνση IP"
+
+#: admin-templates/tab-settings.php:85
+msgid "Used when CSV does not provide an author IP address. Leave blank to use server IP."
+msgstr "Χρησιμοποιείται όταν το CSV δεν παρέχει τη διεύθυνση IP του συντάκτη. Αφήστε το κενό για να χρησιμοποιήσετε τη διεύθυνση IP του διακομιστή."
+
+#: admin-templates/tab-settings.php:90
+msgid "Auto-Approve Reviews"
+msgstr "Αυτόματη έγκριση κριτικών"
+
+#: admin-templates/tab-settings.php:95
+msgid "Automatically approve imported reviews"
+msgstr "Αυτόματη έγκριση των εισαγόμενων κριτικών"
+
+#: admin-templates/tab-settings.php:99
+msgid "If disabled, imported reviews will require manual moderation."
+msgstr "Εάν η λειτουργία είναι απενεργοποιημένη, οι εισαγόμενες κριτικές θα απαιτούν χειροκίνητο έλεγχο."
+
+#: admin-templates/tab-settings.php:104
+msgid "Mark as Verified Purchase"
+msgstr "Επισήμανση ως επαληθευμένη αγορά"
+
+#: admin-templates/tab-settings.php:109
+msgid "Mark imported reviews as verified purchases"
+msgstr "Ο Mark εισήγαγε κριτικές ως επαληθευμένες αγορές"
+
+#: admin-templates/tab-settings.php:113
+msgid "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
+msgstr "Ενεργοποιήστε αυτή την επιλογή αν έχετε βεβαιωθεί ότι οι κριτικές προέρχονται από πραγματικές αγορές (π.χ. κατά την εισαγωγή δεδομένων από άλλο κατάστημα WooCommerce)."
+
+#: functions-private.php:127
+msgid "Product SKU (required)"
+msgstr "Κωδικός προϊόντος (απαιτείται)"
+
+#: functions-private.php:133
+msgid "Reviewer name (required)"
+msgstr "Όνομα κριτικού (απαιτείται)"
+
+#: functions-private.php:139
+msgid "Reviewer email address (optional)"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου του κριτικού (προαιρετικό)"
+
+#: functions-private.php:145
+msgid "Review content (required)"
+msgstr "Περιεχόμενο κριτικής (απαιτείται)"
+
+#: functions-private.php:151
+msgid "Star rating 1-5 (required)"
+msgstr "Βαθμολογία με αστέρια 1-5 (απαιτείται)"
+
+#: functions-private.php:157
+msgid "IP address (optional)"
+msgstr "Διεύθυνση IP (προαιρετικά)"
+
+#: functions-private.php:163
+msgid "Date in Y-m-d H:i:s T format (optional)"
+msgstr "Ημερομηνία σε μορφή Y-μ-η Ω:λ:σ Τ (προαιρετικό)"
+
+#: functions-private.php:281
+msgid "Product Reviews Importer requires WooCommerce to be installed and active."
+msgstr "Το Product Reviews Importer απαιτεί την εγκατάσταση και ενεργοποίηση του WooCommerce."
+
+#: includes/class-admin-hooks.php:79
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Δεν διαθέτετε τα απαραίτητα δικαιώματα για να αποκτήσετε πρόσβαση σε αυτή τη σελίδα."
+
+#: includes/class-admin-hooks.php:86
+msgid "Product Reviews Importer requires WooCommerce to be installed and activated."
+msgstr "Το Product Reviews Importer απαιτεί την εγκατάσταση και ενεργοποίηση του WooCommerce."
+
+#: includes/class-admin-hooks.php:159
+#: includes/class-admin-hooks.php:276
+#: includes/class-review-exporter.php:33
+msgid "Security check failed."
+msgstr "Ο έλεγχος ασφαλείας απέτυχε."
+
+#: includes/class-admin-hooks.php:165
+#: includes/class-admin-hooks.php:282
+msgid "Insufficient permissions."
+msgstr "Ανεπαρκή δικαιώματα."
+
+#: includes/class-admin-hooks.php:171
+msgid "No file uploaded."
+msgstr "Δεν έχει μεταφορτωθεί κανένα αρχείο."
+
+#: includes/class-admin-hooks.php:180
+msgid "File upload failed."
+msgstr "Η αποστολή του αρχείου απέτυχε."
+
+#: includes/class-admin-hooks.php:187
+msgid "Invalid file type. Only CSV files are allowed."
+msgstr "Μη έγκυρος τύπος αρχείου. Επιτρέπονται μόνο αρχεία CSV."
+
+#: includes/class-admin-hooks.php:194
+msgid "File too large. Maximum size is 10MB."
+msgstr "Το αρχείο είναι πολύ μεγάλο. Το μέγιστο μέγεθος είναι 10 MB."
+
+#: includes/class-admin-hooks.php:226
+msgid "Failed to read CSV file."
+msgstr "Δεν κατέστη δυνατή η ανάγνωση του αρχείου CSV."
+
+#: includes/class-admin-hooks.php:249
+msgid "File uploaded successfully."
+msgstr "Το αρχείο μεταφορτώθηκε με επιτυχία."
+
+#: includes/class-admin-hooks.php:292
+msgid "Invalid upload ID."
+msgstr "Μη έγκυρο αναγνωριστικό μεταφόρτωσης."
+
+#: includes/class-admin-hooks.php:300
+msgid "Upload session expired. Please upload the file again."
+msgstr "Η περίοδος σύνδεσης για τη μεταφόρτωση έληξε. Παρακαλώ μεταφορτώστε ξανά το αρχείο."
+
+#: includes/class-admin-hooks.php:307
+msgid "CSV file not found."
+msgstr "Δεν βρέθηκε το αρχείο CSV."
+
+#. translators: 1: Success count, 2: Updated count, 3: Error count
+#: includes/class-admin-hooks.php:336
+#, php-format
+msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred."
+msgstr "Η εισαγωγή ολοκληρώθηκε! Δημιουργήθηκαν %1$d νέες κριτικές, ενημερώθηκαν %2$d υπάρχουσες κριτικές. Προέκυψαν %3$d σφάλματα."
+
+#. translators: 1: Success count, 2: Updated count
+#: includes/class-admin-hooks.php:344
+#, php-format
+msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews."
+msgstr "Η εισαγωγή ολοκληρώθηκε! Δημιουργήθηκαν %1$d νέες κριτικές, ενώ ενημερώθηκαν %2$d υπάρχουσες κριτικές."
+
+#. translators: 1: Number of rows processed, 2: Total rows
+#: includes/class-admin-hooks.php:389
+#, php-format
+msgid "Processed %1$d of %2$d rows..."
+msgstr "Επεξεργάστηκαν %1$d από τις %2$d σειρές..."
+
+#: includes/class-csv-importer.php:285
+msgid "Unable to read CSV file."
+msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου CSV."
+
+#. translators: %s: Comma-separated list of missing column names
+#: includes/class-csv-importer.php:312
+#, php-format
+msgid "Missing required columns: %s"
+msgstr "Λείπουν υποχρεωτικές στήλες: %s"
+
+#: includes/class-csv-importer.php:321
+msgid "CSV file contains no data rows."
+msgstr "Το αρχείο CSV δεν περιέχει σειρές δεδομένων."
+
+#: includes/class-plugin.php:110
+msgid "Import Reviews"
+msgstr "Εισαγωγή κριτικών"
+
+#: includes/class-review-exporter.php:37
+msgid "You do not have sufficient permissions."
+msgstr "Δεν διαθέτετε τα απαραίτητα δικαιώματα."

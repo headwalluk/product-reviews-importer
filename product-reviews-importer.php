@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       Product Reviews Importer
  * Plugin URI:        https://headwall-hosting.com/plugins/product-reviews-importer-for-woocommerce/
- * Description:       Import product reviews from multiple sources (CSV, Google, etc.) into WooCommerce products.
- * Version:           1.1.1
+ * Description:       Import and export WooCommerce product reviews. CSV import with batch processing, and export for Walmart review syndication.
+ * Version:           1.2.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
@@ -14,7 +14,7 @@
  * Text Domain:       product-reviews-importer
  * Domain Path:       /languages
  * WC requires at least: 7.0
- * WC tested up to:   9.0
+ * WC tested up to:   10.6
  *
  * @package Product_Reviews_Importer
  */
@@ -22,7 +22,7 @@
 // Block direct access.
 defined( 'ABSPATH' ) || die();
 
-define( 'PRODUCT_REVIEWS_IMPORTER_VERSION', '1.1.1' );
+define( 'PRODUCT_REVIEWS_IMPORTER_VERSION', '1.2.0' );
 define( 'PRODUCT_REVIEWS_IMPORTER_FILE', __FILE__ );
 define( 'PRODUCT_REVIEWS_IMPORTER_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PRODUCT_REVIEWS_IMPORTER_URL', plugin_dir_url( __FILE__ ) );
@@ -36,13 +36,14 @@ require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-settings.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-admin-hooks.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-importer.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-csv-importer.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-exporter.php';
 
 /**
  * Initialize the plugin.
  *
  * @since 1.0.0
  */
-function pri_init(): void {
+function product_reviews_importer_init(): void {
 	// Check if WooCommerce is active.
 	if ( ! \Product_Reviews_Importer\is_woocommerce_active() ) {
 		add_action( 'admin_notices', '\\Product_Reviews_Importer\\show_woocommerce_missing_notice' );
@@ -54,4 +55,4 @@ function pri_init(): void {
 	$product_reviews_importer = new Product_Reviews_Importer\Plugin();
 	$product_reviews_importer->run();
 }
-add_action( 'plugins_loaded', 'pri_init' );
+add_action( 'plugins_loaded', 'product_reviews_importer_init' );

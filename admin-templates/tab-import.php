@@ -53,8 +53,7 @@ printf(
 );
 printf(
 	'<pre><code>%s</code></pre>',
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV sample data, safe by design.
-	get_sample_csv()
+	esc_html( get_sample_csv() )
 );
 printf(
 	'<p><a href="#help">%s</a></p>',

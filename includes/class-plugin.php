@@ -34,6 +34,14 @@ class Plugin {
 	private ?Admin_Hooks $admin_hooks = null;
 
 	/**
+	 * Review Exporter instance.
+	 *
+	 * @since 1.2.0
+	 * @var Review_Exporter|null
+	 */
+	private ?Review_Exporter $review_exporter = null;
+
+	/**
 	 * Run the plugin.
 	 *
 	 * @since 1.0.0
@@ -48,7 +56,11 @@ class Plugin {
 
 		if ( is_admin() ) {
 			add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
+			add_filter( 'plugin_action_links_' . PRODUCT_REVIEWS_IMPORTER_BASENAME, array( $this, 'add_settings_link' ) );
 		}
+
+		// Register export handler (admin-post.php).
+		add_action( 'admin_post_' . EXPORT_ACTION_WALMART, array( $this->get_review_exporter(), 'export_walmart_csv' ) );
 	}
 
 	/**
@@ -143,6 +155,41 @@ class Plugin {
 			$this->admin_hooks = new Admin_Hooks();
 		}
 		return $this->admin_hooks;
+	}
+
+	/**
+	 * Get Review Exporter instance.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @return Review_Exporter Review Exporter instance.
+	 */
+	public function get_review_exporter(): Review_Exporter {
+		if ( is_null( $this->review_exporter ) ) {
+			$this->review_exporter = new Review_Exporter();
+		}
+		return $this->review_exporter;
+	}
+
+	/**
+	 * Add Settings link to plugin action links on the Plugins page.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param array $links Existing plugin action links.
+	 *
+	 * @return array Modified plugin action links.
+	 */
+	public function add_settings_link( array $links ): array {
+		$settings_link = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( admin_url( 'admin.php?page=' . ADMIN_PAGE_SLUG . '#settings' ) ),
+			esc_html__( 'Settings', 'product-reviews-importer' )
+		);
+
+		array_unshift( $links, $settings_link );
+
+		return $links;
 	}
 
 	/**

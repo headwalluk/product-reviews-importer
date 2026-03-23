@@ -1,8 +1,8 @@
 # Product Reviews Importer - Project Tracker
 
-**Last Updated:** 30 January 2026  
-**Current Version:** 1.1.1  
-**Status:** Production Release - Code Cleanup Complete
+**Last Updated:** 23 March 2026
+**Current Version:** 1.2.0
+**Status:** Production Release - Export & Plugin Check Compliance
 
 ---
 
@@ -425,25 +425,83 @@
 
 ---
 
+## Milestone 7: Export Functionality ✅
+
+**Goal:** Export WooCommerce product reviews for Walmart review syndication.
+
+**Status:** ✅ COMPLETED (v1.2.0)
+
+### Completed
+- [x] New `Review_Exporter` class with Walmart CSV format
+- [x] Export tab added to admin UI (between Import and Settings)
+- [x] Streams CSV download via `admin_post_` action (no temp files)
+- [x] UTF-8 BOM for Excel compatibility
+- [x] All approved reviews exported with Walmart column mapping
+- [x] Review count shown on Export tab
+- [x] Settings link added to Plugins page row actions
+- [x] New constants: `NONCE_EXPORT`, `EXPORT_ACTION_WALMART`
+- [x] All files pass PHPCS
+
+---
+
+## Milestone 8: Plugin Check Compliance & Polish
+
+**Goal:** Address all WP Plugin Check errors and warnings, update stale documentation, and bring the plugin to submission-ready quality.
+
+**Status:** ✅ COMPLETED (v1.2.0)
+
+### Errors (Plugin Check — fixed)
+
+- [x] **Replaced `move_uploaded_file()` with `wp_handle_upload()`** in `class-admin-hooks.php`
+  - Added `override_upload_dir()` method to direct uploads to `pri-temp/`
+  - Removed manual `wp_mkdir_p` and filename generation — WordPress handles it
+
+- [x] **Updated `readme.txt` "Tested up to" from 6.7 to 6.9**
+
+### Warnings (Plugin Check — addressed)
+
+- [x] ~~**`load_plugin_textdomain()` warning**~~ — KEPT. Plugin is self-hosted with manual translation files in `languages/`. Warning only applies to WordPress.org-hosted plugins.
+
+- [x] **Renamed `pri_init()` to `product_reviews_importer_init()`** in `product-reviews-importer.php`
+
+- [ ] **Template global variable prefix warnings** — NOT FIXED (accepted)
+  - Plugin Check doesn't recognise `pri_` as a valid prefix for template variables
+  - These are severity 6 warnings, not errors
+  - Variables are in the `Product_Reviews_Importer` namespace — false positives
+  - Affected files: `tab-settings.php`, `tab-export.php`
+
+### Documentation (fixed)
+
+- [x] **Updated `readme.txt`** — full changelog from 0.1.0 through 1.2.0, all inaccuracies corrected
+- [x] **Fixed batch size** — corrected from "10 rows" to "50 rows" in all documentation
+- [x] **Fixed Review Date** — corrected from "required" to "optional"
+- [x] **Removed "Google, etc." claims** — description now accurately reflects CSV import + Walmart export
+- [x] **Added export features** to readme.txt feature list and FAQ
+- [x] **Updated `CHANGELOG.md`** — added 1.2.0 entry, fixed all comparison links to `headwalluk/product-reviews-importer`
+- [x] **Updated plugin header** — `WC tested up to: 10.6`, updated description
+- [x] **PHPCS clean** — only pre-existing `fgetcsv()` assignment-in-condition warning remains
+
+---
+
 ## Future Milestones (Post-MVP)
 
-### Milestone 7: Import History & Logging
+### Milestone 9: Import History & Logging
 - [ ] Create database table for import history
 - [ ] Track import source, date, counts
 - [ ] Display import history in admin
 - [ ] Download error logs
 
-### Milestone 8: Amazon Reviews Importer
+### Milestone 10: Amazon Reviews Importer
 - [ ] Create `class-amazon-importer.php`
 - [ ] Amazon API integration
 - [ ] Add Amazon Settings tab
 - [ ] Cron handler for automated sync
 - [ ] Map Amazon data to normalized format
 
-### Milestone 9: Export Functionality
-- [ ] Export reviews to CSV
-- [ ] Filter by product, date range, rating
-- [ ] Download generated CSV
+### Milestone 11: Export Enhancements
+- [ ] Filter exports by product, date range, rating
+- [ ] Additional export formats (XLSX if needed)
+- [ ] Additional syndication targets beyond Walmart
 
 ---
 
