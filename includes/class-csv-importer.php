@@ -191,20 +191,21 @@ class CSV_Importer {
 
 		// Read batch.
 		$rows_read = 0;
-		while ( $rows_read < $limit && ( $row = fgetcsv( $handle ) ) !== false ) {
+		$row       = $rows_read < $limit ? fgetcsv( $handle ) : false;
+		while ( false !== $row ) {
 			if ( empty( $row ) || ( 1 === count( $row ) && empty( $row[0] ) ) ) {
-				// Skip empty rows.
-				++$current_row;
-				continue;
+				// Empty row: skipped, and not counted against the batch limit.
+			} else {
+				$review = $this->normalize_row( $row, $current_row + 1 );
+				if ( ! empty( $review ) ) {
+					$reviews[] = $review;
+				}
+
+				++$rows_read;
 			}
 
-			$review = $this->normalize_row( $row, $current_row + 1 );
-			if ( ! empty( $review ) ) {
-				$reviews[] = $review;
-			}
-
-			++$rows_read;
 			++$current_row;
+			$row = $rows_read < $limit ? fgetcsv( $handle ) : false;
 		}
 
 		fclose( $handle );
