@@ -137,7 +137,7 @@
 #pri-error-log td {
 	padding: 8px;
 	border: 1px solid #c3c4c7;
-	text-align: left;
+	text-align: start;
 }
 
 #pri-error-log th {
@@ -152,7 +152,7 @@
 
 .pri-export-section ul {
 	list-style: disc;
-	margin-left: 20px;
+	margin-inline-start: 20px;
 }
 
 /* Settings Section */
@@ -172,7 +172,7 @@
 
 .pri-help-section ul {
 	list-style: disc;
-	margin-left: 20px;
+	margin-inline-start: 20px;
 }
 
 .pri-help-section pre {
@@ -194,7 +194,7 @@
 	padding: 15px;
 	background: #fff;
 	border: 1px solid #c3c4c7;
-	border-left: 4px solid #d63638;
+	border-inline-start: 4px solid #d63638;
 }
 
 .pri-error-details h4 {
