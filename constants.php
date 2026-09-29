@@ -65,3 +65,15 @@ const TRANSIENT_IMPORT_PROGRESS = 'pri_import_progress_';
 
 // Transient expiration (1 hour).
 const TRANSIENT_EXPIRATION = HOUR_IN_SECONDS;
+
+// GitHub updater.
+const UPDATER_GITHUB_REPO = 'headwalluk/product-reviews-importer';
+const UPDATER_CACHE_TTL   = 12 * HOUR_IN_SECONDS;
+const UPDATER_CACHE_KEY   = 'pri_github_release';
+
+// Back-off after a failed release lookup, shorter than UPDATER_CACHE_TTL.
+const UPDATER_FAILURE_CACHE_KEY = 'pri_github_failed';
+const UPDATER_FAILURE_CACHE_TTL = HOUR_IN_SECONDS;
+
+// Seconds to wait on the GitHub API before giving up.
+const UPDATER_REQUEST_TIMEOUT = 10;

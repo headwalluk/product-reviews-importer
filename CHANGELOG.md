@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- In-plugin GitHub updater: releases published on GitHub now arrive as standard WordPress plugin updates. Disable with the `product_reviews_importer_updater_enabled` filter
+
 ### Planned
 - Import history tracking UI
 - Additional export formats and syndication targets

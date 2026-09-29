@@ -38,6 +38,12 @@ require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-importer.php'
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-csv-importer.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-exporter.php';
 
+// GitHub auto-updates (admin, cron and WP-CLI only — no need to load on front-end requests).
+if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+	require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-github-updater.php';
+	new Product_Reviews_Importer\Github_Updater();
+}
+
 /**
  * Initialize the plugin.
  *

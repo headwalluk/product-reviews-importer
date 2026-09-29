@@ -11,6 +11,7 @@
 	<exclude-pattern>*/.git/*</exclude-pattern>
 	<exclude-pattern>*/dev-notes/*</exclude-pattern>
 	<exclude-pattern>*/languages/*</exclude-pattern>
+	<exclude-pattern>*/docs/*</exclude-pattern>
 	
 	<!-- Arguments -->
 	<arg value="sp"/>
@@ -22,6 +23,14 @@
 	<!-- Rules -->
 	<rule ref="WordPress">
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+
+		<!-- An if with elseif branches ends in an explicit else, with no-op branches
+		     holding only a comment (see CLAUDE.md, PHP Style). This sniff counts a comment as
+		     empty, so only its if/elseif/else codes are excluded; empty catch, loop and
+		     switch bodies are still errors. -->
+		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedIf"/>
+		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedElseif"/>
+		<exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedElse"/>
 	</rule>
 	
 	<!-- Prefixes -->
@@ -31,6 +40,7 @@
 				<element value="product_reviews_importer"/>
 				<element value="pri"/>
 				<element value="Product_Reviews_Importer"/>
+				<element value="PRODUCT_REVIEWS_IMPORTER"/>
 			</property>
 		</properties>
 	</rule>
