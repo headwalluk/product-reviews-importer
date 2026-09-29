@@ -89,7 +89,7 @@ class Admin_Hooks {
 		}
 
 		// Load admin template.
-		require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/main-page.php';
+		require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'views/main-page.php';
 	}
 
 	/**

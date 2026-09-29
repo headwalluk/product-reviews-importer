@@ -49,22 +49,22 @@ printf( '<div class="tab-content">' );
 
 // Import tab panel.
 printf( '<div id="import-panel" class="tab-panel active">' );
-require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/tab-import.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'views/tab-import.php';
 printf( '</div>' );
 
 // Export tab panel.
 printf( '<div id="export-panel" class="tab-panel" style="display:none;">' );
-require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/tab-export.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'views/tab-export.php';
 printf( '</div>' );
 
 // Settings tab panel.
 printf( '<div id="settings-panel" class="tab-panel" style="display:none;">' );
-require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/tab-settings.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'views/tab-settings.php';
 printf( '</div>' );
 
 // Help tab panel.
 printf( '<div id="help-panel" class="tab-panel" style="display:none;">' );
-require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'admin-templates/tab-help.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'views/tab-help.php';
 printf( '</div>' );
 
 // Close containers.
