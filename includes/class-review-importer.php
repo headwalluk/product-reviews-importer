@@ -100,7 +100,14 @@ class Review_Importer {
 
 		foreach ( $required as $field ) {
 			if ( empty( $review_data[ $field ] ) ) {
-				return new \WP_Error( 'missing_field', sprintf( 'Missing required field: %s', $field ) );
+				return new \WP_Error(
+					'missing_field',
+					sprintf(
+						/* translators: %s: internal field key, e.g. review_text */
+						__( 'Missing required field: %s', 'product-reviews-importer' ),
+						$field
+					)
+				);
 			}
 		}
 
@@ -108,14 +115,29 @@ class Review_Importer {
 		$rating = validate_star_rating( $review_data['review_stars'] );
 
 		if ( false === $rating ) {
-			return new \WP_Error( 'invalid_rating', 'Star rating must be 1-5' );
+			return new \WP_Error(
+				'invalid_rating',
+				sprintf(
+					/* translators: 1: lowest star rating, 2: highest star rating */
+					__( 'Star rating must be a whole number from %1$d to %2$d.', 'product-reviews-importer' ),
+					MIN_STAR_RATING,
+					MAX_STAR_RATING
+				)
+			);
 		}
 
 		// Step 3: Get product ID.
 		$product_id = $this->get_review_product_id( $review_data['product_sku'] );
 
 		if ( ! $product_id ) {
-			return new \WP_Error( 'product_not_found', sprintf( 'Product not found: %s', $review_data['product_sku'] ) );
+			return new \WP_Error(
+				'product_not_found',
+				sprintf(
+					/* translators: %s: product SKU from the CSV */
+					__( 'Product not found: %s', 'product-reviews-importer' ),
+					$review_data['product_sku']
+				)
+			);
 		}
 
 		// Step 4: Sanitize and validate email (optional).
@@ -124,7 +146,14 @@ class Review_Importer {
 			$author_email = sanitize_email( $review_data['author_email'] );
 
 			if ( ! is_email( $author_email ) ) {
-				return new \WP_Error( 'invalid_email', sprintf( 'Invalid email: %s', $review_data['author_email'] ) );
+				return new \WP_Error(
+					'invalid_email',
+					sprintf(
+						/* translators: %s: email address from the CSV */
+						__( 'Invalid email: %s', 'product-reviews-importer' ),
+						$review_data['author_email']
+					)
+				);
 			}
 		}
 
@@ -136,7 +165,11 @@ class Review_Importer {
 		if ( strlen( $review_text ) < $min_length ) {
 			return new \WP_Error(
 				'review_too_short',
-				sprintf( 'Review text too short (minimum %d characters)', $min_length )
+				sprintf(
+					/* translators: %d: minimum number of characters */
+					_n( 'Review text too short (minimum %d character)', 'Review text too short (minimum %d characters)', $min_length, 'product-reviews-importer' ),
+					$min_length
+				)
 			);
 		}
 
@@ -389,7 +422,7 @@ class Review_Importer {
 		);
 
 		if ( ! $comment_id || is_wp_error( $comment_id ) ) {
-			return new \WP_Error( 'comment_insert_failed', 'Failed to create review' );
+			return new \WP_Error( 'comment_insert_failed', __( 'Failed to create review.', 'product-reviews-importer' ) );
 		}
 
 		// Add rating metadata.

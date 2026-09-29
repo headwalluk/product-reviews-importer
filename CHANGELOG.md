@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Messages with a count use proper plural forms (`_n()`), so "1 review" no longer reads "1 reviews", and locales with more than two plural forms translate correctly
 - Short labels (tab names, menu and action links) carry translator context (`_x()`)
-- Admin JavaScript messages are now translatable
+- Admin JavaScript messages and row-level import errors are now translatable
 - Export tab lists the Walmart column headers untranslated, exactly as they appear in the exported file
 
 ### Fixed

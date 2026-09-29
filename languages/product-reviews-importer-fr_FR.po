@@ -371,17 +371,17 @@ msgstr "La session de téléchargement a expiré. Veuillez télécharger à nouv
 msgid "CSV file not found."
 msgstr "Fichier CSV introuvable."
 
-#: includes/class-csv-importer.php:285
+#: includes/class-csv-importer.php:286
 msgid "Unable to read CSV file."
 msgstr "Impossible de lire le fichier CSV."
 
 #. translators: %s: Comma-separated list of missing column names
-#: includes/class-csv-importer.php:312
+#: includes/class-csv-importer.php:313
 #, php-format
 msgid "Missing required columns: %s"
 msgstr "Colonnes obligatoires manquantes : %s"
 
-#: includes/class-csv-importer.php:321
+#: includes/class-csv-importer.php:322
 msgid "CSV file contains no data rows."
 msgstr "Le fichier CSV ne contient aucune ligne de données."
 
@@ -547,3 +547,39 @@ msgstr[1] "Il y a actuellement %d avis approuvés à exporter."
 msgctxt "unit shown after the minimum review length input"
 msgid "characters"
 msgstr "caractères"
+
+#. translators: %s: internal field key, e.g. review_text
+#: includes/class-review-importer.php:107
+#, php-format
+msgid "Missing required field: %s"
+msgstr "Champ obligatoire manquant : %s"
+
+#. translators: 1: lowest star rating, 2: highest star rating
+#: includes/class-review-importer.php:122
+#, php-format
+msgid "Star rating must be a whole number from %1$d to %2$d."
+msgstr "La note doit être un nombre entier compris entre %1$d et %2$d."
+
+#. translators: %s: product SKU from the CSV
+#: includes/class-review-importer.php:137
+#, php-format
+msgid "Product not found: %s"
+msgstr "Produit introuvable : %s"
+
+#. translators: %s: email address from the CSV
+#: includes/class-review-importer.php:153
+#, php-format
+msgid "Invalid email: %s"
+msgstr "Adresse e-mail non valide : %s"
+
+#. translators: %d: minimum number of characters
+#: includes/class-review-importer.php:170
+#, php-format
+msgid "Review text too short (minimum %d character)"
+msgid_plural "Review text too short (minimum %d characters)"
+msgstr[0] "Texte de l'avis trop court (minimum %d caractère)"
+msgstr[1] "Texte de l'avis trop court (minimum %d caractères)"
+
+#: includes/class-review-importer.php:425
+msgid "Failed to create review."
+msgstr "Impossible de créer un avis."

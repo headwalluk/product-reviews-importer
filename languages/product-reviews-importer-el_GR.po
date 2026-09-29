@@ -371,17 +371,17 @@ msgstr "Η περίοδος σύνδεσης για τη μεταφόρτωση 
 msgid "CSV file not found."
 msgstr "Δεν βρέθηκε το αρχείο CSV."
 
-#: includes/class-csv-importer.php:285
+#: includes/class-csv-importer.php:286
 msgid "Unable to read CSV file."
 msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου CSV."
 
 #. translators: %s: Comma-separated list of missing column names
-#: includes/class-csv-importer.php:312
+#: includes/class-csv-importer.php:313
 #, php-format
 msgid "Missing required columns: %s"
 msgstr "Λείπουν υποχρεωτικές στήλες: %s"
 
-#: includes/class-csv-importer.php:321
+#: includes/class-csv-importer.php:322
 msgid "CSV file contains no data rows."
 msgstr "Το αρχείο CSV δεν περιέχει σειρές δεδομένων."
 
@@ -547,3 +547,39 @@ msgstr[1] "Αυτή τη στιγμή υπάρχουν %d εγκεκριμένε
 msgctxt "unit shown after the minimum review length input"
 msgid "characters"
 msgstr "χαρακτήρες"
+
+#. translators: %s: internal field key, e.g. review_text
+#: includes/class-review-importer.php:107
+#, php-format
+msgid "Missing required field: %s"
+msgstr "Λείπει υποχρεωτικό πεδίο: %s"
+
+#. translators: 1: lowest star rating, 2: highest star rating
+#: includes/class-review-importer.php:122
+#, php-format
+msgid "Star rating must be a whole number from %1$d to %2$d."
+msgstr "Η βαθμολογία με αστέρια πρέπει να είναι ακέραιος αριθμός από %1$d έως %2$d."
+
+#. translators: %s: product SKU from the CSV
+#: includes/class-review-importer.php:137
+#, php-format
+msgid "Product not found: %s"
+msgstr "Δεν βρέθηκε το προϊόν: %s"
+
+#. translators: %s: email address from the CSV
+#: includes/class-review-importer.php:153
+#, php-format
+msgid "Invalid email: %s"
+msgstr "Μη έγκυρο email: %s"
+
+#. translators: %d: minimum number of characters
+#: includes/class-review-importer.php:170
+#, php-format
+msgid "Review text too short (minimum %d character)"
+msgid_plural "Review text too short (minimum %d characters)"
+msgstr[0] "Το κείμενο της αξιολόγησης είναι πολύ σύντομο (ελάχιστος αριθμός %d χαρακτήρα)"
+msgstr[1] "Το κείμενο της κριτικής είναι πολύ σύντομο (ελάχιστος αριθμός %d χαρακτήρων)"
+
+#: includes/class-review-importer.php:425
+msgid "Failed to create review."
+msgstr "Δεν κατέστη δυνατή η δημιουργία κριτικής."
