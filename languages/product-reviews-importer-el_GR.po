@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: product-reviews-importer.php
-#: includes/class-plugin.php:109
+#: includes/class-plugin.php:120
 msgid "Product Reviews Importer"
 msgstr "Εισαγωγέας κριτικών προϊόντων"
 
@@ -325,13 +325,13 @@ msgid "Product Reviews Importer requires WooCommerce to be installed and activat
 msgstr "Το Product Reviews Importer απαιτεί την εγκατάσταση και ενεργοποίηση του WooCommerce."
 
 #: includes/class-admin-hooks.php:172
-#: includes/class-admin-hooks.php:297
+#: includes/class-admin-hooks.php:303
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr "Ο έλεγχος ασφαλείας απέτυχε."
 
 #: includes/class-admin-hooks.php:178
-#: includes/class-admin-hooks.php:303
+#: includes/class-admin-hooks.php:309
 msgid "Insufficient permissions."
 msgstr "Ανεπαρκή δικαιώματα."
 
@@ -351,23 +351,23 @@ msgstr "Μη έγκυρος τύπος αρχείου. Επιτρέπονται 
 msgid "File too large. Maximum size is 10MB."
 msgstr "Το αρχείο είναι πολύ μεγάλο. Το μέγιστο μέγεθος είναι 10 MB."
 
-#: includes/class-admin-hooks.php:239
+#: includes/class-admin-hooks.php:245
 msgid "Failed to read CSV file."
 msgstr "Δεν κατέστη δυνατή η ανάγνωση του αρχείου CSV."
 
-#: includes/class-admin-hooks.php:264
+#: includes/class-admin-hooks.php:270
 msgid "File uploaded successfully."
 msgstr "Το αρχείο μεταφορτώθηκε με επιτυχία."
 
-#: includes/class-admin-hooks.php:313
+#: includes/class-admin-hooks.php:319
 msgid "Invalid upload ID."
 msgstr "Μη έγκυρο αναγνωριστικό μεταφόρτωσης."
 
-#: includes/class-admin-hooks.php:321
+#: includes/class-admin-hooks.php:327
 msgid "Upload session expired. Please upload the file again."
 msgstr "Η περίοδος σύνδεσης για τη μεταφόρτωση έληξε. Παρακαλώ μεταφορτώστε ξανά το αρχείο."
 
-#: includes/class-admin-hooks.php:328
+#: includes/class-admin-hooks.php:334
 msgid "CSV file not found."
 msgstr "Δεν βρέθηκε το αρχείο CSV."
 
@@ -437,19 +437,19 @@ msgid "Row %d:"
 msgstr "Σειρά %d:"
 
 #. translators: %d: number of reviews found in the uploaded CSV
-#: includes/class-admin-hooks.php:267
+#: includes/class-admin-hooks.php:273
 #, php-format
 msgid "Found %d review to import."
 msgid_plural "Found %d reviews to import."
 msgstr[0] "Βρέθηκε %d κριτική προς εισαγωγή."
 msgstr[1] "Βρέθηκαν %d κριτικές προς εισαγωγή."
 
-#: includes/class-admin-hooks.php:355
+#: includes/class-admin-hooks.php:361
 msgid "Import complete!"
 msgstr "Η εισαγωγή ολοκληρώθηκε!"
 
 #. translators: %d: number of reviews created
-#: includes/class-admin-hooks.php:358
+#: includes/class-admin-hooks.php:364
 #, php-format
 msgid "Created %d new review."
 msgid_plural "Created %d new reviews."
@@ -457,7 +457,7 @@ msgstr[0] "Δημιουργήθηκε %d νέα κριτική."
 msgstr[1] "Δημιουργήθηκαν %d νέες κριτικές."
 
 #. translators: %d: number of existing reviews updated
-#: includes/class-admin-hooks.php:363
+#: includes/class-admin-hooks.php:369
 #, php-format
 msgid "Updated %d existing review."
 msgid_plural "Updated %d existing reviews."
@@ -465,7 +465,7 @@ msgstr[0] "Ενημερώθηκε %d υπάρχουσα κριτική."
 msgstr[1] "Ενημερώθηκαν %d υπάρχουσες κριτικές."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:371
+#: includes/class-admin-hooks.php:377
 #, php-format
 msgid "%d error occurred."
 msgid_plural "%d errors occurred."
@@ -473,7 +473,7 @@ msgstr[0] "Προέκυψε %d σφάλμα."
 msgstr[1] "Παρουσιάστηκαν %d σφάλματα."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:386
+#: includes/class-admin-hooks.php:392
 #, php-format
 msgid "Error details (%d error)"
 msgid_plural "Error details (%d errors)"
@@ -481,19 +481,19 @@ msgstr[0] "Λεπτομέρειες σφάλματος (%d σφάλμα)"
 msgstr[1] "Λεπτομέρειες σφάλματος (%d σφάλματα)"
 
 #. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:422
+#: includes/class-admin-hooks.php:428
 #, php-format
 msgid "Processed %1$d of %2$d row..."
 msgid_plural "Processed %1$d of %2$d rows..."
 msgstr[0] "Επεξεργάστηκε η %1$d από τις %2$d σειρές..."
 msgstr[1] "Επεξεργάστηκαν %1$d από %2$d σειρές..."
 
-#: includes/class-plugin.php:110
+#: includes/class-plugin.php:121
 msgctxt "admin menu label"
 msgid "Import Reviews"
 msgstr "Εισαγωγή κριτικών"
 
-#: includes/class-plugin.php:187
+#: includes/class-plugin.php:213
 msgctxt "plugin action link"
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -583,3 +583,20 @@ msgstr[1] "Το κείμενο της κριτικής είναι πολύ σύ�
 #: includes/class-review-importer.php:425
 msgid "Failed to create review."
 msgstr "Δεν κατέστη δυνατή η δημιουργία κριτικής."
+
+#: includes/class-admin-hooks.php:213
+msgid "Could not secure the temporary upload directory. Check that wp-content/uploads is writable."
+msgstr "Δεν ήταν δυνατή η εξασφάλιση του προσωρινού φακέλου μεταφόρτωσης. Βεβαιωθείτε ότι ο φάκελος wp-content/uploads έχει δικαιώματα εγγραφής."
+
+#: views/tab-settings.php:120
+msgid "Delete Unfinished Uploads After"
+msgstr "Διαγραφή ημιτελών μεταφορτώσεων μετά από"
+
+#: views/tab-settings.php:128
+msgctxt "unit shown after the upload retention input"
+msgid "days"
+msgstr "ημέρες"
+
+#: views/tab-settings.php:132
+msgid "Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old."
+msgstr "Τα αρχεία CSV που έχουν μεταφορτωθεί διαγράφονται όταν ολοκληρωθεί η εισαγωγή. Τα αρχεία που έχουν απομείνει από μια εισαγωγή που δεν ολοκληρώθηκε ποτέ διαγράφονται μόλις συμπληρώσουν αυτή την ηλικία."

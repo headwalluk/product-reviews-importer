@@ -42,6 +42,14 @@ class Plugin {
 	private ?Review_Exporter $review_exporter = null;
 
 	/**
+	 * Temporary upload storage instance.
+	 *
+	 * @since 1.3.0
+	 * @var Temp_Files|null
+	 */
+	private ?Temp_Files $temp_files = null;
+
+	/**
 	 * Run the plugin.
 	 *
 	 * @since 1.0.0
@@ -58,6 +66,9 @@ class Plugin {
 			add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
 			add_filter( 'plugin_action_links_' . PRODUCT_REVIEWS_IMPORTER_BASENAME, array( $this, 'add_settings_link' ) );
 		}
+
+		// Protect and purge the temporary upload directory.
+		$this->get_temp_files()->register();
 
 		// Register export handler (admin-post.php).
 		add_action( 'admin_post_' . EXPORT_ACTION_WALMART, array( $this->get_review_exporter(), 'export_walmart_csv' ) );
@@ -169,6 +180,21 @@ class Plugin {
 			$this->review_exporter = new Review_Exporter();
 		}
 		return $this->review_exporter;
+	}
+
+	/**
+	 * Get temporary upload storage instance.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return Temp_Files Temporary upload storage instance.
+	 */
+	public function get_temp_files(): Temp_Files {
+		if ( is_null( $this->temp_files ) ) {
+			$this->temp_files = new Temp_Files( $this->get_settings() );
+		}
+
+		return $this->temp_files;
 	}
 
 	/**

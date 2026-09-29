@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: product-reviews-importer.php
-#: includes/class-plugin.php:109
+#: includes/class-plugin.php:120
 msgid "Product Reviews Importer"
 msgstr "Product Reviews Importer"
 
@@ -325,13 +325,13 @@ msgid "Product Reviews Importer requires WooCommerce to be installed and activat
 msgstr "Product Reviews Importer requires WooCommerce to be installed and activated."
 
 #: includes/class-admin-hooks.php:172
-#: includes/class-admin-hooks.php:297
+#: includes/class-admin-hooks.php:303
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr "Security check failed."
 
 #: includes/class-admin-hooks.php:178
-#: includes/class-admin-hooks.php:303
+#: includes/class-admin-hooks.php:309
 msgid "Insufficient permissions."
 msgstr "Insufficient permissions."
 
@@ -351,23 +351,23 @@ msgstr "Invalid file type. Only CSV files are allowed."
 msgid "File too large. Maximum size is 10MB."
 msgstr "File too large. Maximum size is 10MB."
 
-#: includes/class-admin-hooks.php:239
+#: includes/class-admin-hooks.php:245
 msgid "Failed to read CSV file."
 msgstr "Failed to read CSV file."
 
-#: includes/class-admin-hooks.php:264
+#: includes/class-admin-hooks.php:270
 msgid "File uploaded successfully."
 msgstr "File uploaded successfully."
 
-#: includes/class-admin-hooks.php:313
+#: includes/class-admin-hooks.php:319
 msgid "Invalid upload ID."
 msgstr "Invalid upload ID."
 
-#: includes/class-admin-hooks.php:321
+#: includes/class-admin-hooks.php:327
 msgid "Upload session expired. Please upload the file again."
 msgstr "Upload session expired. Please upload the file again."
 
-#: includes/class-admin-hooks.php:328
+#: includes/class-admin-hooks.php:334
 msgid "CSV file not found."
 msgstr "CSV file not found."
 
@@ -437,19 +437,19 @@ msgid "Row %d:"
 msgstr "Row %d:"
 
 #. translators: %d: number of reviews found in the uploaded CSV
-#: includes/class-admin-hooks.php:267
+#: includes/class-admin-hooks.php:273
 #, php-format
 msgid "Found %d review to import."
 msgid_plural "Found %d reviews to import."
 msgstr[0] "Found %d review to import."
 msgstr[1] "Found %d reviews to import."
 
-#: includes/class-admin-hooks.php:355
+#: includes/class-admin-hooks.php:361
 msgid "Import complete!"
 msgstr "Import complete!"
 
 #. translators: %d: number of reviews created
-#: includes/class-admin-hooks.php:358
+#: includes/class-admin-hooks.php:364
 #, php-format
 msgid "Created %d new review."
 msgid_plural "Created %d new reviews."
@@ -457,7 +457,7 @@ msgstr[0] "Created %d new review."
 msgstr[1] "Created %d new reviews."
 
 #. translators: %d: number of existing reviews updated
-#: includes/class-admin-hooks.php:363
+#: includes/class-admin-hooks.php:369
 #, php-format
 msgid "Updated %d existing review."
 msgid_plural "Updated %d existing reviews."
@@ -465,7 +465,7 @@ msgstr[0] "Updated %d existing review."
 msgstr[1] "Updated %d existing reviews."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:371
+#: includes/class-admin-hooks.php:377
 #, php-format
 msgid "%d error occurred."
 msgid_plural "%d errors occurred."
@@ -473,7 +473,7 @@ msgstr[0] "%d error occurred."
 msgstr[1] "%d errors occurred."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:386
+#: includes/class-admin-hooks.php:392
 #, php-format
 msgid "Error details (%d error)"
 msgid_plural "Error details (%d errors)"
@@ -481,19 +481,19 @@ msgstr[0] "Error details (%d error)"
 msgstr[1] "Error details (%d errors)"
 
 #. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:422
+#: includes/class-admin-hooks.php:428
 #, php-format
 msgid "Processed %1$d of %2$d row..."
 msgid_plural "Processed %1$d of %2$d rows..."
 msgstr[0] "Processed %1$d of %2$d row..."
 msgstr[1] "Processed %1$d of %2$d rows..."
 
-#: includes/class-plugin.php:110
+#: includes/class-plugin.php:121
 msgctxt "admin menu label"
 msgid "Import Reviews"
 msgstr "Import Reviews"
 
-#: includes/class-plugin.php:187
+#: includes/class-plugin.php:213
 msgctxt "plugin action link"
 msgid "Settings"
 msgstr "Settings"
@@ -583,3 +583,20 @@ msgstr[1] "Review text too short (minimum %d characters)"
 #: includes/class-review-importer.php:425
 msgid "Failed to create review."
 msgstr "Failed to create review."
+
+#: includes/class-admin-hooks.php:213
+msgid "Could not secure the temporary upload directory. Check that wp-content/uploads is writable."
+msgstr "Could not secure the temporary upload directory. Check that wp-content/uploads is writable."
+
+#: views/tab-settings.php:120
+msgid "Delete Unfinished Uploads After"
+msgstr "Delete Unfinished Uploads After"
+
+#: views/tab-settings.php:128
+msgctxt "unit shown after the upload retention input"
+msgid "days"
+msgstr "days"
+
+#: views/tab-settings.php:132
+msgid "Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old."
+msgstr "Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old."

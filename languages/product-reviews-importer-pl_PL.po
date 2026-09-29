@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: product-reviews-importer.php
-#: includes/class-plugin.php:109
+#: includes/class-plugin.php:120
 msgid "Product Reviews Importer"
 msgstr "Importowanie recenzji produktów"
 
@@ -325,13 +325,13 @@ msgid "Product Reviews Importer requires WooCommerce to be installed and activat
 msgstr "Wtyczka „Product Reviews Importer” wymaga zainstalowania i aktywacji WooCommerce."
 
 #: includes/class-admin-hooks.php:172
-#: includes/class-admin-hooks.php:297
+#: includes/class-admin-hooks.php:303
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr "Kontrola bezpieczeństwa zakończyła się niepowodzeniem."
 
 #: includes/class-admin-hooks.php:178
-#: includes/class-admin-hooks.php:303
+#: includes/class-admin-hooks.php:309
 msgid "Insufficient permissions."
 msgstr "Brak odpowiednich uprawnień."
 
@@ -351,23 +351,23 @@ msgstr "Nieprawidłowy typ pliku. Dopuszczalne są wyłącznie pliki CSV."
 msgid "File too large. Maximum size is 10MB."
 msgstr "Plik jest zbyt duży. Maksymalny rozmiar to 10 MB."
 
-#: includes/class-admin-hooks.php:239
+#: includes/class-admin-hooks.php:245
 msgid "Failed to read CSV file."
 msgstr "Nie udało się odczytać pliku CSV."
 
-#: includes/class-admin-hooks.php:264
+#: includes/class-admin-hooks.php:270
 msgid "File uploaded successfully."
 msgstr "Plik został pomyślnie przesłany."
 
-#: includes/class-admin-hooks.php:313
+#: includes/class-admin-hooks.php:319
 msgid "Invalid upload ID."
 msgstr "Nieprawidłowy identyfikator przesłanego pliku."
 
-#: includes/class-admin-hooks.php:321
+#: includes/class-admin-hooks.php:327
 msgid "Upload session expired. Please upload the file again."
 msgstr "Sesja przesyłania wygasła. Prześlij plik ponownie."
 
-#: includes/class-admin-hooks.php:328
+#: includes/class-admin-hooks.php:334
 msgid "CSV file not found."
 msgstr "Nie znaleziono pliku CSV."
 
@@ -437,7 +437,7 @@ msgid "Row %d:"
 msgstr "Wiersz %d:"
 
 #. translators: %d: number of reviews found in the uploaded CSV
-#: includes/class-admin-hooks.php:267
+#: includes/class-admin-hooks.php:273
 #, php-format
 msgid "Found %d review to import."
 msgid_plural "Found %d reviews to import."
@@ -445,12 +445,12 @@ msgstr[0] "Znaleziono %d recenzję do zaimportowania."
 msgstr[1] "Znaleziono %d recenzje do zaimportowania."
 msgstr[2] "Znaleziono %d recenzji do zaimportowania."
 
-#: includes/class-admin-hooks.php:355
+#: includes/class-admin-hooks.php:361
 msgid "Import complete!"
 msgstr "Import zakończony!"
 
 #. translators: %d: number of reviews created
-#: includes/class-admin-hooks.php:358
+#: includes/class-admin-hooks.php:364
 #, php-format
 msgid "Created %d new review."
 msgid_plural "Created %d new reviews."
@@ -459,7 +459,7 @@ msgstr[1] "Utworzono %d nowe recenzje."
 msgstr[2] "Utworzono %d nowych recenzji."
 
 #. translators: %d: number of existing reviews updated
-#: includes/class-admin-hooks.php:363
+#: includes/class-admin-hooks.php:369
 #, php-format
 msgid "Updated %d existing review."
 msgid_plural "Updated %d existing reviews."
@@ -468,7 +468,7 @@ msgstr[1] "Zaktualizowano %d istniejące recenzje."
 msgstr[2] "Zaktualizowano %d istniejących recenzji."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:371
+#: includes/class-admin-hooks.php:377
 #, php-format
 msgid "%d error occurred."
 msgid_plural "%d errors occurred."
@@ -477,7 +477,7 @@ msgstr[1] "Wystąpiły %d błędy."
 msgstr[2] "Wystąpiło %d błędów."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:386
+#: includes/class-admin-hooks.php:392
 #, php-format
 msgid "Error details (%d error)"
 msgid_plural "Error details (%d errors)"
@@ -486,7 +486,7 @@ msgstr[1] "Szczegóły błędu (%d błędy)"
 msgstr[2] "Szczegóły błędu (%d błędów)"
 
 #. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:422
+#: includes/class-admin-hooks.php:428
 #, php-format
 msgid "Processed %1$d of %2$d row..."
 msgid_plural "Processed %1$d of %2$d rows..."
@@ -494,12 +494,12 @@ msgstr[0] "Przetworzono %1$d z %2$d wiersza..."
 msgstr[1] "Przetworzono %1$d z %2$d wierszy..."
 msgstr[2] "Processed %1$d of %2$d rows..."
 
-#: includes/class-plugin.php:110
+#: includes/class-plugin.php:121
 msgctxt "admin menu label"
 msgid "Import Reviews"
 msgstr "Importuj recenzje"
 
-#: includes/class-plugin.php:187
+#: includes/class-plugin.php:213
 msgctxt "plugin action link"
 msgid "Settings"
 msgstr "Ustawienia"
@@ -591,3 +591,20 @@ msgstr[2] "Tekst recenzji jest zbyt krótki (minimum %d znaków)"
 #: includes/class-review-importer.php:425
 msgid "Failed to create review."
 msgstr "Nie udało się utworzyć recenzji."
+
+#: includes/class-admin-hooks.php:213
+msgid "Could not secure the temporary upload directory. Check that wp-content/uploads is writable."
+msgstr "Nie udało się zabezpieczyć tymczasowego katalogu do przesyłania plików. Sprawdź, czy katalog wp-content/uploads ma uprawnienia do zapisu."
+
+#: views/tab-settings.php:120
+msgid "Delete Unfinished Uploads After"
+msgstr "Usuń niedokończone przesyłania po"
+
+#: views/tab-settings.php:128
+msgctxt "unit shown after the upload retention input"
+msgid "days"
+msgstr "dni"
+
+#: views/tab-settings.php:132
+msgid "Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old."
+msgstr "Przesłane pliki CSV są usuwane po zakończeniu importu. Pliki pozostałe po importach, które nie zostały zakończone, są usuwane po upływie określonego czasu."

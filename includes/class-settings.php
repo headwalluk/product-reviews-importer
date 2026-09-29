@@ -88,6 +88,17 @@ class Settings {
 				'default'           => DEF_REVIEWS_ARE_VERIFIED,
 			)
 		);
+
+		// Temporary file retention setting.
+		register_setting(
+			'product_reviews_importer',
+			OPT_TEMP_RETENTION_DAYS,
+			array(
+				'type'              => 'integer',
+				'sanitize_callback' => array( $this, 'sanitize_temp_retention_days' ),
+				'default'           => DEF_TEMP_RETENTION_DAYS,
+			)
+		);
 	}
 
 	/**
@@ -162,6 +173,17 @@ class Settings {
 	}
 
 	/**
+	 * Get the number of days an uploaded CSV is kept before the purge deletes it.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return int Retention in days, within MIN_TEMP_RETENTION_DAYS and MAX_TEMP_RETENTION_DAYS.
+	 */
+	public function get_temp_retention_days(): int {
+		return $this->sanitize_temp_retention_days( get_option( OPT_TEMP_RETENTION_DAYS, DEF_TEMP_RETENTION_DAYS ) );
+	}
+
+	/**
 	 * Sanitize boolean value.
 	 *
 	 * @since 1.0.0
@@ -186,6 +208,21 @@ class Settings {
 	public function sanitize_min_length( $value ): int {
 		$length = absint( $value );
 		return max( 1, $length );
+	}
+
+	/**
+	 * Sanitize temporary file retention, clamped to the allowed range of days.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed $value Value to sanitize.
+	 *
+	 * @return int Retention in days.
+	 */
+	public function sanitize_temp_retention_days( mixed $value ): int {
+		$days = is_numeric( $value ) ? (int) $value : DEF_TEMP_RETENTION_DAYS;
+
+		return max( MIN_TEMP_RETENTION_DAYS, min( MAX_TEMP_RETENTION_DAYS, $days ) );
 	}
 
 	/**

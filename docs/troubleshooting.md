@@ -27,6 +27,11 @@ Every skipped row is listed with its row number when the import finishes.
 **File too large**
 : The limit is 10 MB. Split the file and import each part.
 
+**Could not secure the temporary upload directory**
+: The plugin couldn't create `wp-content/uploads/pri-temp/`, or couldn't write its `.htaccess`
+  and `index.php` there, so it refused to store the file. Check that the web server user can
+  write to `wp-content/uploads/`. The PHP error log names the path that failed.
+
 **Upload session expired**
 : More than an hour passed between upload and import. Upload the file again.
 

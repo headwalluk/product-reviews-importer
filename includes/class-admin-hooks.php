@@ -145,9 +145,9 @@ class Admin_Hooks {
 	 * @return array Modified upload directory information.
 	 */
 	public function override_upload_dir( array $dirs ): array {
-		$dirs['path']   = $dirs['basedir'] . '/pri-temp';
-		$dirs['url']    = $dirs['baseurl'] . '/pri-temp';
-		$dirs['subdir'] = '/pri-temp';
+		$dirs['path']   = $dirs['basedir'] . '/' . TEMP_DIR_NAME;
+		$dirs['url']    = $dirs['baseurl'] . '/' . TEMP_DIR_NAME;
+		$dirs['subdir'] = '/' . TEMP_DIR_NAME;
 
 		return $dirs;
 	}
@@ -205,6 +205,12 @@ class Admin_Hooks {
 		$max_size = 10 * 1024 * 1024;
 		if ( $file['size'] > $max_size ) {
 			$response['message'] = __( 'File too large. Maximum size is 10MB.', 'product-reviews-importer' );
+			wp_send_json( $response );
+		}
+
+		// Refuse the upload rather than store customer data in a directory the web can read.
+		if ( ! get_plugin_instance()->get_temp_files()->protect_dir() ) {
+			$response['message'] = __( 'Could not secure the temporary upload directory. Check that wp-content/uploads is writable.', 'product-reviews-importer' );
 			wp_send_json( $response );
 		}
 

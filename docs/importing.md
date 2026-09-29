@@ -58,3 +58,21 @@ the user's display name. For an email with no account:
 
 The uploaded CSV is stored in `wp-content/uploads/pri-temp/` while the import runs, and deleted
 when the final batch completes. The upload session expires after one hour.
+
+An import that never finishes — the browser tab was closed, or the upload was validated but not
+imported — leaves its file behind. A daily WP-Cron task deletes any file in `pri-temp/` older
+than the *Delete Unfinished Uploads After* setting (2 days by default). The task is removed when
+the plugin is deactivated.
+
+Uploaded CSVs hold reviewer names and email addresses, so the plugin writes an `.htaccess` file
+into `pri-temp/` that blocks all web access, and an empty `index.php` against directory listing.
+If it can't write them, it refuses the upload.
+
+**nginx ignores `.htaccess`.** On an nginx server, add an equivalent rule to the site
+configuration:
+
+```nginx
+location ^~ /wp-content/uploads/pri-temp/ {
+    deny all;
+}
+```

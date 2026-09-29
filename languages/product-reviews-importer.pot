@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-29T12:23:58+00:00\n"
+"POT-Creation-Date: 2026-09-29T13:32:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: product-reviews-importer\n"
 
 #. Plugin Name of the plugin
 #: product-reviews-importer.php
-#: includes/class-plugin.php:109
+#: includes/class-plugin.php:120
 msgid "Product Reviews Importer"
 msgstr ""
 
@@ -124,13 +124,13 @@ msgid "Product Reviews Importer requires WooCommerce to be installed and activat
 msgstr ""
 
 #: includes/class-admin-hooks.php:172
-#: includes/class-admin-hooks.php:297
+#: includes/class-admin-hooks.php:303
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr ""
 
 #: includes/class-admin-hooks.php:178
-#: includes/class-admin-hooks.php:303
+#: includes/class-admin-hooks.php:309
 msgid "Insufficient permissions."
 msgstr ""
 
@@ -150,40 +150,44 @@ msgstr ""
 msgid "File too large. Maximum size is 10MB."
 msgstr ""
 
-#: includes/class-admin-hooks.php:239
+#: includes/class-admin-hooks.php:213
+msgid "Could not secure the temporary upload directory. Check that wp-content/uploads is writable."
+msgstr ""
+
+#: includes/class-admin-hooks.php:245
 msgid "Failed to read CSV file."
 msgstr ""
 
-#: includes/class-admin-hooks.php:264
+#: includes/class-admin-hooks.php:270
 msgid "File uploaded successfully."
 msgstr ""
 
 #. translators: %d: number of reviews found in the uploaded CSV
-#: includes/class-admin-hooks.php:267
+#: includes/class-admin-hooks.php:273
 #, php-format
 msgid "Found %d review to import."
 msgid_plural "Found %d reviews to import."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-admin-hooks.php:313
+#: includes/class-admin-hooks.php:319
 msgid "Invalid upload ID."
 msgstr ""
 
-#: includes/class-admin-hooks.php:321
+#: includes/class-admin-hooks.php:327
 msgid "Upload session expired. Please upload the file again."
 msgstr ""
 
-#: includes/class-admin-hooks.php:328
+#: includes/class-admin-hooks.php:334
 msgid "CSV file not found."
 msgstr ""
 
-#: includes/class-admin-hooks.php:355
+#: includes/class-admin-hooks.php:361
 msgid "Import complete!"
 msgstr ""
 
 #. translators: %d: number of reviews created
-#: includes/class-admin-hooks.php:358
+#: includes/class-admin-hooks.php:364
 #, php-format
 msgid "Created %d new review."
 msgid_plural "Created %d new reviews."
@@ -191,7 +195,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of existing reviews updated
-#: includes/class-admin-hooks.php:363
+#: includes/class-admin-hooks.php:369
 #, php-format
 msgid "Updated %d existing review."
 msgid_plural "Updated %d existing reviews."
@@ -199,7 +203,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:371
+#: includes/class-admin-hooks.php:377
 #, php-format
 msgid "%d error occurred."
 msgid_plural "%d errors occurred."
@@ -207,7 +211,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:386
+#: includes/class-admin-hooks.php:392
 #, php-format
 msgid "Error details (%d error)"
 msgid_plural "Error details (%d errors)"
@@ -215,7 +219,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:422
+#: includes/class-admin-hooks.php:428
 #, php-format
 msgid "Processed %1$d of %2$d row..."
 msgid_plural "Processed %1$d of %2$d rows..."
@@ -236,12 +240,12 @@ msgstr ""
 msgid "CSV file contains no data rows."
 msgstr ""
 
-#: includes/class-plugin.php:110
+#: includes/class-plugin.php:121
 msgctxt "admin menu label"
 msgid "Import Reviews"
 msgstr ""
 
-#: includes/class-plugin.php:187
+#: includes/class-plugin.php:213
 msgctxt "plugin action link"
 msgid "Settings"
 msgstr ""
@@ -582,4 +586,17 @@ msgstr ""
 
 #: views/tab-settings.php:113
 msgid "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
+msgstr ""
+
+#: views/tab-settings.php:120
+msgid "Delete Unfinished Uploads After"
+msgstr ""
+
+#: views/tab-settings.php:128
+msgctxt "unit shown after the upload retention input"
+msgid "days"
+msgstr ""
+
+#: views/tab-settings.php:132
+msgid "Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old."
 msgstr ""

@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - In-plugin GitHub updater: releases published on GitHub now arrive as standard WordPress plugin updates. Disable with the `product_reviews_importer_updater_enabled` filter
 
+- Uploaded CSVs are protected: an `.htaccess` blocking web access and an `index.php` are written into `uploads/pri-temp/`, and an upload is refused if they can't be written
+- Daily cron task deletes uploads left behind by unfinished imports, after a configurable number of days (**Delete Unfinished Uploads After**, default 2)
+
 ### Changed
 - Messages with a count use proper plural forms (`_n()`), so "1 review" no longer reads "1 reviews", and locales with more than two plural forms translate correctly
 - Short labels (tab names, menu and action links) carry translator context (`_x()`)

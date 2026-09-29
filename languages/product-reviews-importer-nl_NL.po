@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: product-reviews-importer.php
-#: includes/class-plugin.php:109
+#: includes/class-plugin.php:120
 msgid "Product Reviews Importer"
 msgstr "Importeur van productrecensies"
 
@@ -325,13 +325,13 @@ msgid "Product Reviews Importer requires WooCommerce to be installed and activat
 msgstr "Voor de module 'Product Reviews Importer' moet WooCommerce zijn geïnstalleerd en geactiveerd."
 
 #: includes/class-admin-hooks.php:172
-#: includes/class-admin-hooks.php:297
+#: includes/class-admin-hooks.php:303
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr "De veiligheidscontrole is mislukt."
 
 #: includes/class-admin-hooks.php:178
-#: includes/class-admin-hooks.php:303
+#: includes/class-admin-hooks.php:309
 msgid "Insufficient permissions."
 msgstr "Onvoldoende rechten."
 
@@ -351,23 +351,23 @@ msgstr "Ongeldig bestandstype. Alleen CSV-bestanden zijn toegestaan."
 msgid "File too large. Maximum size is 10MB."
 msgstr "Het bestand is te groot. De maximale grootte is 10 MB."
 
-#: includes/class-admin-hooks.php:239
+#: includes/class-admin-hooks.php:245
 msgid "Failed to read CSV file."
 msgstr "Het lukte niet om het CSV-bestand te lezen."
 
-#: includes/class-admin-hooks.php:264
+#: includes/class-admin-hooks.php:270
 msgid "File uploaded successfully."
 msgstr "Het bestand is succesvol geüpload."
 
-#: includes/class-admin-hooks.php:313
+#: includes/class-admin-hooks.php:319
 msgid "Invalid upload ID."
 msgstr "Ongeldige upload-ID."
 
-#: includes/class-admin-hooks.php:321
+#: includes/class-admin-hooks.php:327
 msgid "Upload session expired. Please upload the file again."
 msgstr "De uploadsessie is verlopen. Upload het bestand opnieuw."
 
-#: includes/class-admin-hooks.php:328
+#: includes/class-admin-hooks.php:334
 msgid "CSV file not found."
 msgstr "CSV-bestand niet gevonden."
 
@@ -437,19 +437,19 @@ msgid "Row %d:"
 msgstr "Rij %d:"
 
 #. translators: %d: number of reviews found in the uploaded CSV
-#: includes/class-admin-hooks.php:267
+#: includes/class-admin-hooks.php:273
 #, php-format
 msgid "Found %d review to import."
 msgid_plural "Found %d reviews to import."
 msgstr[0] "Er is %d recensie gevonden om te importeren."
 msgstr[1] "Er zijn %d beoordelingen gevonden om te importeren."
 
-#: includes/class-admin-hooks.php:355
+#: includes/class-admin-hooks.php:361
 msgid "Import complete!"
 msgstr "Importeren voltooid!"
 
 #. translators: %d: number of reviews created
-#: includes/class-admin-hooks.php:358
+#: includes/class-admin-hooks.php:364
 #, php-format
 msgid "Created %d new review."
 msgid_plural "Created %d new reviews."
@@ -457,7 +457,7 @@ msgstr[0] "Er is %d nieuwe recensie aangemaakt."
 msgstr[1] "Er zijn %d nieuwe beoordelingen aangemaakt."
 
 #. translators: %d: number of existing reviews updated
-#: includes/class-admin-hooks.php:363
+#: includes/class-admin-hooks.php:369
 #, php-format
 msgid "Updated %d existing review."
 msgid_plural "Updated %d existing reviews."
@@ -465,7 +465,7 @@ msgstr[0] "%d bestaande recensie bijgewerkt."
 msgstr[1] "%d bestaande beoordelingen bijgewerkt."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:371
+#: includes/class-admin-hooks.php:377
 #, php-format
 msgid "%d error occurred."
 msgid_plural "%d errors occurred."
@@ -473,7 +473,7 @@ msgstr[0] "Er is %d fout opgetreden."
 msgstr[1] "Er zijn %d fouten opgetreden."
 
 #. translators: %d: number of rows that failed to import
-#: includes/class-admin-hooks.php:386
+#: includes/class-admin-hooks.php:392
 #, php-format
 msgid "Error details (%d error)"
 msgid_plural "Error details (%d errors)"
@@ -481,19 +481,19 @@ msgstr[0] "Foutdetails (%d fout)"
 msgstr[1] "Foutdetails (%d fouten)"
 
 #. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:422
+#: includes/class-admin-hooks.php:428
 #, php-format
 msgid "Processed %1$d of %2$d row..."
 msgid_plural "Processed %1$d of %2$d rows..."
 msgstr[0] "%1$d van %2$d rij verwerkt..."
 msgstr[1] "%1$d van %2$d rijen verwerkt..."
 
-#: includes/class-plugin.php:110
+#: includes/class-plugin.php:121
 msgctxt "admin menu label"
 msgid "Import Reviews"
 msgstr "Recensies importeren"
 
-#: includes/class-plugin.php:187
+#: includes/class-plugin.php:213
 msgctxt "plugin action link"
 msgid "Settings"
 msgstr "Instellingen"
@@ -583,3 +583,20 @@ msgstr[1] "Beoordelingstekst te kort (minimaal %d tekens)"
 #: includes/class-review-importer.php:425
 msgid "Failed to create review."
 msgstr "Het is niet gelukt om een recensie aan te maken."
+
+#: includes/class-admin-hooks.php:213
+msgid "Could not secure the temporary upload directory. Check that wp-content/uploads is writable."
+msgstr "De tijdelijke uploadmap kon niet worden beveiligd. Controleer of wp-content/uploads schrijftoegang heeft."
+
+#: views/tab-settings.php:120
+msgid "Delete Unfinished Uploads After"
+msgstr "Onvoltooide uploads verwijderen na"
+
+#: views/tab-settings.php:128
+msgctxt "unit shown after the upload retention input"
+msgid "days"
+msgstr "dagen"
+
+#: views/tab-settings.php:132
+msgid "Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old."
+msgstr "Geüploade CSV-bestanden worden verwijderd zodra een import is voltooid. Bestanden die zijn achtergebleven na een import die nooit is voltooid, worden verwijderd zodra ze zo oud zijn."

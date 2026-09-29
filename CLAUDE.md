@@ -99,6 +99,7 @@ reviews, users and `pri-temp/` files behind. Reviews have `comment_type` `review
 | `includes/class-csv-importer.php` | Streaming CSV reader (`fgetcsv`): UTF-8 BOM, header validation, batch reads, row normalisation |
 | `includes/class-review-importer.php` | Source-agnostic engine: validate, match product by SKU, deduplicate, create/update review, optionally create user |
 | `includes/class-review-exporter.php` | Walmart export: column definitions, row mapping, CSV streaming |
+| `includes/class-temp-files.php` | The `pri-temp/` upload directory: writes its `.htaccess` and `index.php`, and the daily cron purge of files older than `OPT_TEMP_RETENTION_DAYS` |
 | `includes/class-github-updater.php` | In-plugin updater: checks GitHub Releases and feeds the WordPress update transient. Holds the `log()` / `log_error()` split described under **Logging** |
 | `views/` | The admin page and its four tabs |
 
@@ -108,6 +109,8 @@ reviews, users and `pri-temp/` files behind. Reviews have `comment_type` `review
 - **Options** hold the settings, all prefixed `pri_`
 - **Transients** hold the upload session and import progress (one hour), the updater's release cache, and the server's public IP (`pri_server_public_ip`)
 - **Users** may be created in the Customer role, depending on `OPT_CREATE_USER_ACCOUNTS`
+- **Files:** uploaded CSVs wait in `uploads/pri-temp/`. They hold customer names and emails, so `Temp_Files::protect_dir()` must succeed before an upload is stored; if it can't write the `.htaccess`, the upload is refused. Files an unfinished import leaves behind are deleted by the daily `pri_purge_temp_files` cron event
+- **Cron:** `pri_purge_temp_files`, scheduled on first load if missing and cleared on deactivation (`product_reviews_importer_deactivate()`)
 - There is no `uninstall.php`: options remain after the plugin is deleted
 
 ### Where the Plugin Runs
@@ -129,6 +132,8 @@ everything in this table as a contract, whether or not it is documented as publi
 | Walmart export format | `Walmart Item ID`, `MM/DD/YYYY` | a header, the column order or a value format changes. Walmart rejects the file |
 | Script and style handles | `product-reviews-importer-admin` | renamed |
 | AJAX and admin-post actions | `pri_upload_csv`, `pri_import_batch`, `pri_export_walmart_csv` | renamed. Bookmarked export links and any scripted use break |
+| Cron event | `pri_purge_temp_files` | renamed. The old event stays scheduled on existing sites and fires into nothing |
+| Upload directory | `uploads/pri-temp/` | renamed. Server rules blocking it (the nginx rule in `docs/importing.md`) stop applying |
 
 - **Expose behaviour, not storage.** Give integrations functions and hooks rather than option names to read
 - **Add, don't change.** New filter arguments go at the end. New behaviour gets a new filter, not a new meaning for an existing one

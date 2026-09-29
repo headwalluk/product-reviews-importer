@@ -114,6 +114,25 @@ printf(
 );
 printf( '</td></tr>' );
 
+// Temporary File Retention.
+printf(
+	'<tr><th scope="row"><label for="pri_temp_retention_days">%s</label></th><td>',
+	esc_html__( 'Delete Unfinished Uploads After', 'product-reviews-importer' )
+);
+printf(
+	'<input type="number" id="pri_temp_retention_days" name="%s" value="%d" min="%d" max="%d" class="small-text" /> %s',
+	esc_attr( OPT_TEMP_RETENTION_DAYS ),
+	absint( $pri_settings_instance->get_temp_retention_days() ),
+	absint( MIN_TEMP_RETENTION_DAYS ),
+	absint( MAX_TEMP_RETENTION_DAYS ),
+	esc_html_x( 'days', 'unit shown after the upload retention input', 'product-reviews-importer' )
+);
+printf(
+	'<p class="description">%s</p>',
+	esc_html__( 'Uploaded CSV files are deleted when an import finishes. Files left behind by an import that never finished are deleted once they are this old.', 'product-reviews-importer' )
+);
+printf( '</td></tr>' );
+
 // Close table.
 printf( '</tbody></table>' );
 

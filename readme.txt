@@ -104,6 +104,14 @@ All fields should be quoted. The Review Text field can span multiple lines. See 
 
 Yes. Developers can use the `product_reviews_importer_csv_field_definitions` filter to add, remove, or modify CSV field definitions. See the Developer Hooks section below.
 
+= Are uploaded CSV files kept on the server? =
+
+Only while an import runs. Each file is deleted when its import finishes, and a daily task deletes files left behind by unfinished imports after a configurable number of days (2 by default, under Settings). While they exist, files are stored in `wp-content/uploads/pri-temp/`, which the plugin blocks from web access with an `.htaccess` file.
+
+nginx ignores `.htaccess`. On nginx, add this to your site configuration:
+
+`location ^~ /wp-content/uploads/pri-temp/ { deny all; }`
+
 = How do I export reviews for Walmart? =
 
 Go to WooCommerce > Import Reviews, click the Export tab, then click "Export Walmart CSV". The downloaded file will contain all approved reviews in Walmart's syndication format. You will need to fill in the Walmart Item ID column manually.

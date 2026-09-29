@@ -37,6 +37,7 @@ require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-admin-hooks.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-importer.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-csv-importer.php';
 require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-review-exporter.php';
+require_once PRODUCT_REVIEWS_IMPORTER_DIR . 'includes/class-temp-files.php';
 
 // GitHub auto-updates (admin, cron and WP-CLI only — no need to load on front-end requests).
 if ( is_admin() || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
@@ -62,3 +63,13 @@ function product_reviews_importer_init(): void {
 	$product_reviews_importer->run();
 }
 add_action( 'plugins_loaded', 'product_reviews_importer_init' );
+
+/**
+ * Remove the plugin's scheduled cron events on deactivation.
+ *
+ * @since 1.3.0
+ */
+function product_reviews_importer_deactivate(): void {
+	Product_Reviews_Importer\Temp_Files::unschedule();
+}
+register_deactivation_hook( __FILE__, 'product_reviews_importer_deactivate' );
