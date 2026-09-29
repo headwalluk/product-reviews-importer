@@ -29,60 +29,25 @@ printf(
 );
 
 printf( '<ul>' );
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Walmart Item ID', 'product-reviews-importer' ),
-	esc_html__( 'Left blank — fill in with your Walmart Item IDs after export.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'SKU', 'product-reviews-importer' ),
-	esc_html__( 'Your WooCommerce product SKU.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Review Title', 'product-reviews-importer' ),
-	esc_html__( 'Left blank — WooCommerce reviews do not have titles.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Review Body', 'product-reviews-importer' ),
-	esc_html__( 'The full review text.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Review Rating', 'product-reviews-importer' ),
-	esc_html__( 'Star rating (1–5).', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Review Created Date', 'product-reviews-importer' ),
-	esc_html__( 'Formatted as MM/DD/YYYY per Walmart requirements.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Review User Name', 'product-reviews-importer' ),
-	esc_html__( 'The reviewer\'s name as it appears on your site.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'URL link', 'product-reviews-importer' ),
-	esc_html__( 'Link to the product page on your website.', 'product-reviews-importer' )
-);
-printf(
-	'<li><strong>%s</strong> — %s</li>',
-	esc_html__( 'Incentivized Review', 'product-reviews-importer' ),
-	esc_html__( 'Defaults to "No" — update manually if applicable.', 'product-reviews-importer' )
-);
+// Header names are Walmart's and appear untranslated, exactly as in the exported file.
+foreach ( $pri_exporter->get_walmart_columns() as $pri_column_header => $pri_column_description ) {
+	printf(
+		'<li><strong>%s</strong> — %s</li>',
+		esc_html( $pri_column_header ),
+		esc_html( $pri_column_description )
+	);
+}
 printf( '</ul>' );
 
 if ( $pri_review_count > 0 ) {
 	printf(
 		'<p>%s</p>',
-		sprintf(
-			/* translators: %d: number of approved reviews */
-			esc_html__( 'There are currently %d approved reviews to export.', 'product-reviews-importer' ),
-			(int) $pri_review_count
+		esc_html(
+			sprintf(
+				/* translators: %d: number of approved reviews */
+				_n( 'There is currently %d approved review to export.', 'There are currently %d approved reviews to export.', $pri_review_count, 'product-reviews-importer' ),
+				(int) $pri_review_count
+			)
 		)
 	);
 

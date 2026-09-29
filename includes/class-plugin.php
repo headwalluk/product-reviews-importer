@@ -107,7 +107,7 @@ class Plugin {
 		add_submenu_page(
 			'woocommerce',
 			__( 'Product Reviews Importer', 'product-reviews-importer' ),
-			__( 'Import Reviews', 'product-reviews-importer' ),
+			_x( 'Import Reviews', 'admin menu label', 'product-reviews-importer' ),
 			ADMIN_CAPABILITY,
 			ADMIN_PAGE_SLUG,
 			array( $this->get_admin_hooks(), 'render_admin_page' )
@@ -184,7 +184,7 @@ class Plugin {
 		$settings_link = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( admin_url( 'admin.php?page=' . ADMIN_PAGE_SLUG . '#settings' ) ),
-			esc_html__( 'Settings', 'product-reviews-importer' )
+			esc_html_x( 'Settings', 'plugin action link', 'product-reviews-importer' )
 		);
 
 		array_unshift( $links, $settings_link );

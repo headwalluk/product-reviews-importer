@@ -1,8 +1,5 @@
-# Copyright (C) 2026 Paul Faulkner
-# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Language: nl_NL\n"
 "Project-Id-Version: Product Reviews Importer 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-reviews-importer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -12,6 +9,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-23T19:57:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: product-reviews-importer\n"
 
@@ -41,330 +40,251 @@ msgstr "Paul Faulkner"
 msgid "https://headwall-hosting.com/"
 msgstr "https://headwall-hosting.com/"
 
-#: admin-templates/main-page.php:27
-msgid "Secondary menu"
-msgstr "Submenu"
-
-#: admin-templates/main-page.php:31
-msgid "Import"
-msgstr "Importeren"
-
-#: admin-templates/main-page.php:35
-msgid "Export"
-msgstr "Exporteren"
-
-#: admin-templates/main-page.php:39
-#: includes/class-plugin.php:187
-msgid "Settings"
-msgstr "Instellingen"
-
-#: admin-templates/main-page.php:43
-msgid "Help"
-msgstr "Hulp"
-
-#: admin-templates/tab-export.php:23
+#: views/tab-export.php:23
 msgid "Walmart Review Syndication"
 msgstr "Walmart-recensies delen"
 
-#: admin-templates/tab-export.php:28
+#: views/tab-export.php:28
 msgid "Export all approved product reviews in the format required for Walmart review syndication. The exported CSV follows Walmart's specification with the following columns:"
 msgstr "Exporteer alle goedgekeurde productrecensies in het formaat dat vereist is voor de verspreiding van recensies door Walmart. Het geëxporteerde CSV-bestand voldoet aan de specificaties van Walmart en bevat de volgende kolommen:"
 
-#: admin-templates/tab-export.php:34
-msgid "Walmart Item ID"
-msgstr "Walmart-artikelcode"
-
-#: admin-templates/tab-export.php:35
+#: includes/class-review-exporter.php:72
 msgid "Left blank — fill in with your Walmart Item IDs after export."
 msgstr "Leeg gelaten — vul hier na het exporteren uw Walmart-artikel-ID’s in."
 
-#: admin-templates/tab-export.php:39
-msgid "SKU"
-msgstr "SKU"
-
-#: admin-templates/tab-export.php:40
+#: includes/class-review-exporter.php:73
 msgid "Your WooCommerce product SKU."
 msgstr "De SKU van uw WooCommerce-product."
 
-#: admin-templates/tab-export.php:44
-msgid "Review Title"
-msgstr "Titel van de recensie"
-
-#: admin-templates/tab-export.php:45
+#: includes/class-review-exporter.php:74
 msgid "Left blank — WooCommerce reviews do not have titles."
 msgstr "Leeg gelaten — WooCommerce-recensies hebben geen titel."
 
-#: admin-templates/tab-export.php:49
-msgid "Review Body"
-msgstr "Beoordelingsinstantie"
-
-#: admin-templates/tab-export.php:50
+#: includes/class-review-exporter.php:75
 msgid "The full review text."
 msgstr "De volledige recensie."
 
-#: admin-templates/tab-export.php:54
-msgid "Review Rating"
-msgstr "Beoordeling"
-
-#: admin-templates/tab-export.php:55
+#: includes/class-review-exporter.php:76
 msgid "Star rating (1–5)."
 msgstr "Sterrenbeoordeling (1–5)."
 
-#: admin-templates/tab-export.php:59
-msgid "Review Created Date"
-msgstr "Datum van aanmaak van de recensie"
-
-#: admin-templates/tab-export.php:60
-msgid "Formatted as MM/DD/YYYY per Walmart requirements."
-msgstr "Opgemaakt in de notatie MM/DD/JJJJ, conform de voorschriften van Walmart."
-
-#: admin-templates/tab-export.php:64
-msgid "Review User Name"
-msgstr "Beoordeling Gebruikersnaam"
-
-#: admin-templates/tab-export.php:65
+#: includes/class-review-exporter.php:82
 msgid "The reviewer's name as it appears on your site."
 msgstr "De naam van de recensent zoals die op uw website staat vermeld."
 
-#: admin-templates/tab-export.php:69
-msgid "URL link"
-msgstr "URL-link"
-
-#: admin-templates/tab-export.php:70
+#: includes/class-review-exporter.php:83
 msgid "Link to the product page on your website."
 msgstr "Link naar de productpagina op uw website."
 
-#: admin-templates/tab-export.php:74
-msgid "Incentivized Review"
-msgstr "Beoordeling op basis van een beloning"
-
-#: admin-templates/tab-export.php:75
-msgid "Defaults to \"No\" — update manually if applicable."
-msgstr "Standaard ingesteld op \\\"Nee\\\" — pas dit indien nodig handmatig aan."
-
-#. translators: %d: number of approved reviews
-#: admin-templates/tab-export.php:84
-#, php-format
-msgid "There are currently %d approved reviews to export."
-msgstr "Er zijn momenteel %d goedgekeurde beoordelingen om te exporteren."
-
-#: admin-templates/tab-export.php:98
+#: views/tab-export.php:63
 msgid "Export Walmart CSV"
 msgstr "Exporteer naar Walmart CSV"
 
-#: admin-templates/tab-export.php:103
+#: views/tab-export.php:68
 msgid "No approved reviews to export. Import some reviews first, or check that existing reviews are approved."
 msgstr "Er zijn geen goedgekeurde beoordelingen om te exporteren. Importeer eerst enkele beoordelingen of controleer of de bestaande beoordelingen zijn goedgekeurd."
 
-#: admin-templates/tab-help.php:19
+#: views/tab-help.php:19
 msgid "How to Import Product Reviews"
 msgstr "Productrecensies importeren"
 
-#: admin-templates/tab-help.php:25
+#: views/tab-help.php:25
 msgid "CSV File Format"
 msgstr "CSV-bestandsformaat"
 
-#: admin-templates/tab-help.php:29
+#: views/tab-help.php:29
 msgid "Your CSV file must include the following columns (all values should be quoted):"
 msgstr "Uw CSV-bestand moet de volgende kolommen bevatten (alle waarden moeten tussen aanhalingstekens staan):"
 
-#: admin-templates/tab-help.php:50
+#: views/tab-help.php:50
 msgid "Sample CSV"
 msgstr "Voorbeeld-CSV"
 
-#: admin-templates/tab-help.php:60
+#: views/tab-help.php:60
 msgid "Important Notes"
 msgstr "Belangrijke opmerkingen"
 
-#: admin-templates/tab-help.php:65
+#: views/tab-help.php:65
 msgid "Reviews are matched to products using the SKU field"
 msgstr "Recensies worden aan producten gekoppeld aan de hand van het SKU-veld"
 
-#: admin-templates/tab-help.php:69
+#: views/tab-help.php:69
 msgid "If a product variation SKU is provided, the review will be attached to the parent product"
 msgstr "Als er een SKU voor een productvariant wordt opgegeven, wordt de recensie gekoppeld aan het hoofdproduct"
 
-#: admin-templates/tab-help.php:73
+#: views/tab-help.php:73
 msgid "Duplicate reviews (same email + product) will update the existing review"
 msgstr "Bij dubbele beoordelingen (zelfde e-mailadres + product) wordt de bestaande beoordeling bijgewerkt"
 
-#: admin-templates/tab-help.php:77
+#: views/tab-help.php:77
 msgid "Review text supports line breaks and basic formatting"
 msgstr "De tekst in de recensie ondersteunt regeleinden en eenvoudige opmaak"
 
-#: admin-templates/tab-help.php:81
+#: views/tab-help.php:81
 msgid "Invalid rows will be skipped and reported in the import results"
 msgstr "Ongeldige rijen worden overgeslagen en vermeld in de importresultaten"
 
-#: admin-templates/tab-help.php:88
+#: views/tab-help.php:88
 msgid "Troubleshooting"
 msgstr "Problemen oplossen"
 
-#: admin-templates/tab-help.php:92
+#: views/tab-help.php:92
 msgid "Product not found errors:"
 msgstr "Fouten bij het zoeken naar producten:"
 
-#: admin-templates/tab-help.php:93
+#: views/tab-help.php:93
 msgid "Verify that the SKU exactly matches a product in your store. SKUs are case-sensitive."
 msgstr "Controleer of de SKU exact overeenkomt met een product in uw winkel. Bij SKU’s wordt onderscheid gemaakt tussen hoofdletters en kleine letters."
 
-#: admin-templates/tab-help.php:97
+#: views/tab-help.php:97
 msgid "Invalid email errors:"
 msgstr "Fouten met ongeldige e-mailadressen:"
 
-#: admin-templates/tab-help.php:98
+#: views/tab-help.php:98
 msgid "Ensure email addresses are in valid format (e.g., user@example.com)."
 msgstr "Zorg ervoor dat e-mailadressen een geldige indeling hebben (bijv. user@example.com)."
 
-#: admin-templates/tab-help.php:102
+#: views/tab-help.php:102
 msgid "Invalid star rating errors:"
 msgstr "Fouten met ongeldige sterrenbeoordelingen:"
 
-#: admin-templates/tab-help.php:103
+#: views/tab-help.php:103
 msgid "Star ratings must be whole numbers from 1 to 5."
 msgstr "Sterbeoordelingen moeten hele getallen zijn tussen 1 en 5."
 
-#: admin-templates/tab-help.php:107
+#: views/tab-help.php:107
 msgid "Review text too short:"
 msgstr "De recensietekst is te kort:"
 
-#: admin-templates/tab-help.php:108
+#: views/tab-help.php:108
 msgid "Check the minimum review length setting in the Settings tab."
 msgstr "Controleer de instelling voor de minimale lengte van een recensie op het tabblad Instellingen."
 
-#: admin-templates/tab-help.php:114
+#: views/tab-help.php:114
 msgid "Developer Hooks"
 msgstr "Ontwikkelaars-hooks"
 
-#: admin-templates/tab-help.php:118
+#: views/tab-help.php:118
 msgid "The following filter hooks are available for developers to extend or customize plugin functionality:"
 msgstr "De volgende filterhooks zijn beschikbaar voor ontwikkelaars om de functionaliteit van plug-ins uit te breiden of aan te passen:"
 
-#: admin-templates/tab-help.php:122
-msgid "product_reviews_importer_csv_field_definitions"
-msgstr "productrecensies-importer-csv-velddefinities"
-
-#: admin-templates/tab-help.php:123
+#: views/tab-help.php:123
 msgid "Customize CSV field definitions, add custom fields, or modify existing field behavior."
 msgstr "Pas CSV-velddefinities aan, voeg aangepaste velden toe of wijzig het gedrag van bestaande velden."
 
-#: admin-templates/tab-import.php:20
+#: views/tab-import.php:20
 msgid "Import Reviews from CSV"
 msgstr "Recensies importeren vanuit CSV"
 
-#: admin-templates/tab-import.php:27
+#: views/tab-import.php:27
 msgid "Step 1: Upload CSV File"
 msgstr "Stap 1: CSV-bestand uploaden"
 
-#: admin-templates/tab-import.php:44
+#: views/tab-import.php:44
 msgid "Select a CSV file containing product reviews. The file must include the following columns:"
 msgstr "Selecteer een CSV-bestand met productrecensies. Het bestand moet de volgende kolommen bevatten:"
 
-#: admin-templates/tab-import.php:52
+#: views/tab-import.php:52
 msgid "Sample CSV Format"
 msgstr "Voorbeeld van een CSV-formaat"
 
-#: admin-templates/tab-import.php:60
+#: views/tab-import.php:60
 msgid "More details on CSV format and import options..."
 msgstr "Meer informatie over het CSV-formaat en importmogelijkheden..."
 
-#: admin-templates/tab-import.php:66
+#: views/tab-import.php:66
 msgid "Important:"
 msgstr "Belangrijk:"
 
-#: admin-templates/tab-import.php:67
+#: views/tab-import.php:67
 msgid "Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews."
 msgstr "Als je het e-mailadres van de auteur weglaat, worden dubbele vermeldingen niet gedetecteerd. Als je hetzelfde bestand opnieuw importeert, ontstaan er dubbele beoordelingen."
 
-#: admin-templates/tab-import.php:76
+#: views/tab-import.php:76
 msgid "Upload and Validate"
 msgstr "Uploaden en valideren"
 
-#: admin-templates/tab-import.php:84
+#: views/tab-import.php:84
 msgid "Validation Results"
 msgstr "Validatieresultaten"
 
-#: admin-templates/tab-import.php:90
+#: views/tab-import.php:90
 msgid "Start Import"
 msgstr "Importeren starten"
 
-#: admin-templates/tab-import.php:100
+#: views/tab-import.php:100
 msgid "Import Progress"
 msgstr "Voortgang van het importeren"
 
-#: admin-templates/tab-import.php:107
+#: views/tab-import.php:107
 msgid "Preparing import..."
 msgstr "Import wordt voorbereid..."
 
-#: admin-templates/tab-import.php:115
+#: views/tab-import.php:115
 msgid "Import Results"
 msgstr "Resultaten importeren"
 
-#: admin-templates/tab-import.php:120
+#: views/tab-import.php:120
 msgid "Import Another File"
 msgstr "Een ander bestand importeren"
 
-#: admin-templates/tab-settings.php:22
+#: views/tab-settings.php:22
 msgid "Settings not available."
 msgstr "Deze instellingen zijn niet beschikbaar."
 
-#: admin-templates/tab-settings.php:31
+#: views/tab-settings.php:31
 msgid "Import Settings"
 msgstr "Instellingen importeren"
 
-#: admin-templates/tab-settings.php:42
+#: views/tab-settings.php:42
 msgid "Create User Accounts"
 msgstr "Gebruikersaccounts aanmaken"
 
-#: admin-templates/tab-settings.php:47
+#: views/tab-settings.php:47
 msgid "Create WordPress user accounts for new reviewers (Customer role)"
 msgstr "Maak WordPress-gebruikersaccounts aan voor nieuwe recensenten (rol: Klant)"
 
-#: admin-templates/tab-settings.php:51
+#: views/tab-settings.php:51
 msgid "If disabled, reviews will be created as guest comments (user_id = 0)."
 msgstr "Als deze optie is uitgeschakeld, worden beoordelingen aangemaakt als gastreacties (user_id = 0)."
 
-#: admin-templates/tab-settings.php:58
+#: views/tab-settings.php:58
 msgid "Minimum Review Length"
 msgstr "Minimale lengte van de recensie"
 
-#: admin-templates/tab-settings.php:64
-msgid "characters"
-msgstr "tekens"
-
-#: admin-templates/tab-settings.php:68
+#: views/tab-settings.php:68
 msgid "Reviews shorter than this will be rejected during import."
 msgstr "Recensies die korter zijn dan dit, worden tijdens het importeren afgewezen."
 
-#: admin-templates/tab-settings.php:75
+#: views/tab-settings.php:75
 msgid "Default IP Address"
 msgstr "Standaard IP-adres"
 
-#: admin-templates/tab-settings.php:85
+#: views/tab-settings.php:85
 msgid "Used when CSV does not provide an author IP address. Leave blank to use server IP."
 msgstr "Gebruik dit wanneer CSV geen IP-adres van de auteur verstrekt. Laat dit veld leeg om het IP-adres van de server te gebruiken."
 
-#: admin-templates/tab-settings.php:90
+#: views/tab-settings.php:90
 msgid "Auto-Approve Reviews"
 msgstr "Recensies automatisch goedkeuren"
 
-#: admin-templates/tab-settings.php:95
+#: views/tab-settings.php:95
 msgid "Automatically approve imported reviews"
 msgstr "Geïmporteerde beoordelingen automatisch goedkeuren"
 
-#: admin-templates/tab-settings.php:99
+#: views/tab-settings.php:99
 msgid "If disabled, imported reviews will require manual moderation."
 msgstr "Als deze optie is uitgeschakeld, moeten geïmporteerde beoordelingen handmatig worden gemodereerd."
 
-#: admin-templates/tab-settings.php:104
+#: views/tab-settings.php:104
 msgid "Mark as Verified Purchase"
 msgstr "Markeren als geverifieerde aankoop"
 
-#: admin-templates/tab-settings.php:109
+#: views/tab-settings.php:109
 msgid "Mark imported reviews as verified purchases"
 msgstr "Mark heeft beoordelingen geïmporteerd als geverifieerde aankopen"
 
-#: admin-templates/tab-settings.php:113
+#: views/tab-settings.php:113
 msgid "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
 msgstr "Schakel deze optie in als je hebt gecontroleerd of de beoordelingen afkomstig zijn van daadwerkelijke aankopen (bijvoorbeeld bij het importeren vanuit een andere WooCommerce-winkel)."
 
@@ -392,86 +312,64 @@ msgstr "Sterrenbeoordeling 1-5 (verplicht)"
 msgid "IP address (optional)"
 msgstr "IP-adres (optioneel)"
 
-#: functions-private.php:163
-msgid "Date in Y-m-d H:i:s T format (optional)"
-msgstr "Datum in de notatie J-m-d H:i:s T (optioneel)"
-
-#: functions-private.php:281
+#: functions-private.php:285
 msgid "Product Reviews Importer requires WooCommerce to be installed and active."
 msgstr "Voor de module 'Productrecensies importeren' moet WooCommerce geïnstalleerd en geactiveerd zijn."
 
-#: includes/class-admin-hooks.php:79
+#: includes/class-admin-hooks.php:92
 msgid "You do not have sufficient permissions to access this page."
 msgstr "U hebt onvoldoende rechten om deze pagina te openen."
 
-#: includes/class-admin-hooks.php:86
+#: includes/class-admin-hooks.php:99
 msgid "Product Reviews Importer requires WooCommerce to be installed and activated."
 msgstr "Voor de module 'Product Reviews Importer' moet WooCommerce zijn geïnstalleerd en geactiveerd."
 
-#: includes/class-admin-hooks.php:159
-#: includes/class-admin-hooks.php:276
+#: includes/class-admin-hooks.php:172
+#: includes/class-admin-hooks.php:297
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr "De veiligheidscontrole is mislukt."
 
-#: includes/class-admin-hooks.php:165
-#: includes/class-admin-hooks.php:282
+#: includes/class-admin-hooks.php:178
+#: includes/class-admin-hooks.php:303
 msgid "Insufficient permissions."
 msgstr "Onvoldoende rechten."
 
-#: includes/class-admin-hooks.php:171
+#: includes/class-admin-hooks.php:184
 msgid "No file uploaded."
 msgstr "Er is geen bestand geüpload."
 
-#: includes/class-admin-hooks.php:180
+#: includes/class-admin-hooks.php:193
 msgid "File upload failed."
 msgstr "Het uploaden van het bestand is mislukt."
 
-#: includes/class-admin-hooks.php:187
+#: includes/class-admin-hooks.php:200
 msgid "Invalid file type. Only CSV files are allowed."
 msgstr "Ongeldig bestandstype. Alleen CSV-bestanden zijn toegestaan."
 
-#: includes/class-admin-hooks.php:194
+#: includes/class-admin-hooks.php:207
 msgid "File too large. Maximum size is 10MB."
 msgstr "Het bestand is te groot. De maximale grootte is 10 MB."
 
-#: includes/class-admin-hooks.php:226
+#: includes/class-admin-hooks.php:239
 msgid "Failed to read CSV file."
 msgstr "Het lukte niet om het CSV-bestand te lezen."
 
-#: includes/class-admin-hooks.php:249
+#: includes/class-admin-hooks.php:264
 msgid "File uploaded successfully."
 msgstr "Het bestand is succesvol geüpload."
 
-#: includes/class-admin-hooks.php:292
+#: includes/class-admin-hooks.php:313
 msgid "Invalid upload ID."
 msgstr "Ongeldige upload-ID."
 
-#: includes/class-admin-hooks.php:300
+#: includes/class-admin-hooks.php:321
 msgid "Upload session expired. Please upload the file again."
 msgstr "De uploadsessie is verlopen. Upload het bestand opnieuw."
 
-#: includes/class-admin-hooks.php:307
+#: includes/class-admin-hooks.php:328
 msgid "CSV file not found."
 msgstr "CSV-bestand niet gevonden."
-
-#. translators: 1: Success count, 2: Updated count, 3: Error count
-#: includes/class-admin-hooks.php:336
-#, php-format
-msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred."
-msgstr "Import voltooid! Er zijn %1$d nieuwe beoordelingen aangemaakt en %2$d bestaande beoordelingen bijgewerkt. Er zijn %3$d fouten opgetreden."
-
-#. translators: 1: Success count, 2: Updated count
-#: includes/class-admin-hooks.php:344
-#, php-format
-msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews."
-msgstr "Import voltooid! Er zijn %1$d nieuwe recensies aangemaakt en %2$d bestaande recensies bijgewerkt."
-
-#. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:389
-#, php-format
-msgid "Processed %1$d of %2$d rows..."
-msgstr "%1$d van %2$d rijen verwerkt..."
 
 #: includes/class-csv-importer.php:285
 msgid "Unable to read CSV file."
@@ -487,10 +385,165 @@ msgstr "Er ontbreken verplichte kolommen: %s"
 msgid "CSV file contains no data rows."
 msgstr "Het CSV-bestand bevat geen gegevensrijen."
 
-#: includes/class-plugin.php:110
-msgid "Import Reviews"
-msgstr "Importbeoordelingen"
-
 #: includes/class-review-exporter.php:37
 msgid "You do not have sufficient permissions."
 msgstr "U hebt onvoldoende rechten."
+
+#. translators: %s: PHP date format the CSV must use, e.g. Y-m-d H:i:s T
+#: functions-private.php:165
+#, php-format
+msgid "Date in %s format (optional)"
+msgstr "Datum in %s-formaat (optioneel)"
+
+#: includes/class-admin-hooks.php:68
+msgid "Please select a CSV file."
+msgstr "Kies een CSV-bestand."
+
+#: includes/class-admin-hooks.php:69
+msgid "Please select a valid CSV file."
+msgstr "Kies een geldig CSV-bestand."
+
+#: includes/class-admin-hooks.php:70
+msgid "Uploading and validating CSV file..."
+msgstr "CSV-bestand wordt geüpload en gecontroleerd..."
+
+#: includes/class-admin-hooks.php:71
+msgid "Upload failed. Please try again."
+msgstr "Het uploaden is mislukt. Probeer het nog eens."
+
+#: includes/class-admin-hooks.php:72
+msgid "No file uploaded. Please upload a CSV file first."
+msgstr "Er is geen bestand geüpload. Upload eerst een CSV-bestand."
+
+#: includes/class-admin-hooks.php:73
+msgctxt "button label while an import runs"
+msgid "Importing..."
+msgstr "Bezig met importeren..."
+
+#: includes/class-admin-hooks.php:74
+msgid "Starting import..."
+msgstr "Importeren wordt gestart..."
+
+#. translators: %s: error message returned by the server
+#: includes/class-admin-hooks.php:76
+#, php-format
+msgid "Import failed. %s"
+msgstr "Importeren is mislukt. %s"
+
+#. translators: %d: CSV row number
+#: includes/class-admin-hooks.php:78
+#, php-format
+msgid "Row %d:"
+msgstr "Rij %d:"
+
+#. translators: %d: number of reviews found in the uploaded CSV
+#: includes/class-admin-hooks.php:267
+#, php-format
+msgid "Found %d review to import."
+msgid_plural "Found %d reviews to import."
+msgstr[0] "Er is %d recensie gevonden om te importeren."
+msgstr[1] "Er zijn %d beoordelingen gevonden om te importeren."
+
+#: includes/class-admin-hooks.php:355
+msgid "Import complete!"
+msgstr "Importeren voltooid!"
+
+#. translators: %d: number of reviews created
+#: includes/class-admin-hooks.php:358
+#, php-format
+msgid "Created %d new review."
+msgid_plural "Created %d new reviews."
+msgstr[0] "Er is %d nieuwe recensie aangemaakt."
+msgstr[1] "Er zijn %d nieuwe beoordelingen aangemaakt."
+
+#. translators: %d: number of existing reviews updated
+#: includes/class-admin-hooks.php:363
+#, php-format
+msgid "Updated %d existing review."
+msgid_plural "Updated %d existing reviews."
+msgstr[0] "%d bestaande recensie bijgewerkt."
+msgstr[1] "%d bestaande beoordelingen bijgewerkt."
+
+#. translators: %d: number of rows that failed to import
+#: includes/class-admin-hooks.php:371
+#, php-format
+msgid "%d error occurred."
+msgid_plural "%d errors occurred."
+msgstr[0] "Er is %d fout opgetreden."
+msgstr[1] "Er zijn %d fouten opgetreden."
+
+#. translators: %d: number of rows that failed to import
+#: includes/class-admin-hooks.php:386
+#, php-format
+msgid "Error details (%d error)"
+msgid_plural "Error details (%d errors)"
+msgstr[0] "Foutdetails (%d fout)"
+msgstr[1] "Foutdetails (%d fouten)"
+
+#. translators: 1: Number of rows processed, 2: Total rows
+#: includes/class-admin-hooks.php:422
+#, php-format
+msgid "Processed %1$d of %2$d row..."
+msgid_plural "Processed %1$d of %2$d rows..."
+msgstr[0] "%1$d van %2$d rij verwerkt..."
+msgstr[1] "%1$d van %2$d rijen verwerkt..."
+
+#: includes/class-plugin.php:110
+msgctxt "admin menu label"
+msgid "Import Reviews"
+msgstr "Recensies importeren"
+
+#: includes/class-plugin.php:187
+msgctxt "plugin action link"
+msgid "Settings"
+msgstr "Instellingen"
+
+#. translators: %s: date format required by Walmart, e.g. MM/DD/YYYY
+#: includes/class-review-exporter.php:79
+#, php-format
+msgid "Formatted as %s per Walmart requirements."
+msgstr "Opgemaakt als %s volgens de vereisten van Walmart."
+
+#. translators: %s: the literal value written to the CSV column, "No"
+#: includes/class-review-exporter.php:86
+#, php-format
+msgid "Defaults to \"%s\" — update manually if applicable."
+msgstr "Standaard ingesteld op \"%s\" — pas dit indien nodig handmatig aan."
+
+#: views/main-page.php:27
+msgctxt "accessible label for the admin page tabs"
+msgid "Secondary menu"
+msgstr "Secundair menu"
+
+#: views/main-page.php:31
+msgctxt "admin page tab label"
+msgid "Import"
+msgstr "Importeren"
+
+#: views/main-page.php:35
+msgctxt "admin page tab label"
+msgid "Export"
+msgstr "Exporteren"
+
+#: views/main-page.php:39
+msgctxt "admin page tab label"
+msgid "Settings"
+msgstr "Instellingen"
+
+#: views/main-page.php:43
+msgctxt "admin page tab label"
+msgid "Help"
+msgstr "Help"
+
+#. translators: %d: number of approved reviews
+#: views/tab-export.php:48
+#, php-format
+msgid "There is currently %d approved review to export."
+msgid_plural "There are currently %d approved reviews to export."
+msgstr[0] "Er is momenteel %d goedgekeurde beoordeling om te exporteren."
+msgstr[1] "Er zijn momenteel %d goedgekeurde beoordelingen om te exporteren."
+
+#: views/tab-settings.php:64
+msgctxt "unit shown after the minimum review length input"
+msgid "characters"
+msgstr "tekens"

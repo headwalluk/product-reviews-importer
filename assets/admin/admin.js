@@ -76,19 +76,19 @@
             const file = fileInput.files[0];
 
             if (!file) {
-                this.showMessage('Please select a CSV file.', 'error');
+                this.showMessage(productReviewsImporter.i18n.selectFile, 'error');
                 return;
             }
 
             // Validate file type
             if (!file.name.toLowerCase().endsWith('.csv')) {
-                this.showMessage('Please select a valid CSV file.', 'error');
+                this.showMessage(productReviewsImporter.i18n.invalidFile, 'error');
                 return;
             }
 
             // Show loading state
             $('#pri-validation-results').show();
-            $('#pri-validation-messages').html('<p>Uploading and validating CSV file...</p>');
+            $('#pri-validation-messages').html($('<p>').text(productReviewsImporter.i18n.uploading));
             $('#pri-upload-btn').prop('disabled', true);
 
             // Prepare form data
@@ -110,10 +110,7 @@
                         this.totalRows = response.data.totalRows;
                         this.processed = 0;
 
-                        this.showMessage(
-                            `File uploaded successfully! Found ${this.totalRows} reviews to import.`,
-                            'success'
-                        );
+                        this.showMessage(response.message, 'success');
                         $('#pri-import-controls').show();
                         $('#pri-upload-form').hide();
                     } else {
@@ -122,7 +119,7 @@
                     }
                 },
                 error: (xhr) => {
-                    this.showMessage('Upload failed. Please try again.', 'error');
+                    this.showMessage(productReviewsImporter.i18n.uploadFailed, 'error');
                     $('#pri-upload-btn').prop('disabled', false);
                 }
             });
@@ -130,13 +127,13 @@
 
         startImport: function() {
             if (!this.uploadId) {
-                this.showMessage('No file uploaded. Please upload a CSV file first.', 'error');
+                this.showMessage(productReviewsImporter.i18n.noFileUploaded, 'error');
                 return;
             }
 
             // Disable and hide import controls
             const $importBtn = $('#pri-start-import');
-            $importBtn.prop('disabled', true).text('Importing...');
+            $importBtn.prop('disabled', true).text(productReviewsImporter.i18n.importing);
             $('#pri-import-controls').hide();
             $('#pri-validation-results').hide();
 
@@ -146,7 +143,7 @@
 
             // Reset progress
             this.processed = 0;
-            this.updateProgress(0, 'Starting import...');
+            this.updateProgress(0, productReviewsImporter.i18n.startingImport);
 
             // Start batch processing
             this.processBatch(0);
@@ -190,18 +187,16 @@
 						error: error,
 						response: xhr.responseText
 					});
-					let errorMsg = 'Import failed. ';
+					let errorDetail = error;
 					if (xhr.responseText) {
 						try {
 							const errorData = JSON.parse(xhr.responseText);
-							errorMsg += errorData.message || error;
-						} catch (e) {
-							errorMsg += error;
+							errorDetail = errorData.message || error;
+						} catch (parseError) {
+							console.error('Import batch response was not JSON:', parseError);
 						}
-					} else {
-						errorMsg += error;
 					}
-					this.showResults(false, errorMsg);
+					this.showResults(false, productReviewsImporter.i18n.importFailed.replace('%s', errorDetail));
 				}
 			});
 		},
@@ -222,11 +217,11 @@
 			// Add detailed error list if errors occurred
 			if (data && data.errorList && data.errorList.length > 0) {
 				resultHTML += '<div class=\"pri-error-details\">';
-				resultHTML += `<h4>Error Details (${data.errorList.length} errors)</h4>`;
+				resultHTML += `<h4>${data.errorHeading}</h4>`;
 				resultHTML += '<ul class=\"pri-error-list\">';
 				
 				data.errorList.forEach((error) => {
-					resultHTML += `<li><strong>Row ${error.row}:</strong> ${error.message}</li>`;
+					resultHTML += `<li><strong>${productReviewsImporter.i18n.errorRowLabel.replace('%d', error.row)}</strong> ${error.message}</li>`;
 				});
 				
 				resultHTML += '</ul></div>';

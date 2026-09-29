@@ -61,6 +61,35 @@ class Review_Exporter {
 	}
 
 	/**
+	 * Get the Walmart CSV columns, keyed by the untranslated header with a translated description.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return array<string, string> Column descriptions keyed by header.
+	 */
+	public function get_walmart_columns(): array {
+		return array(
+			'Walmart Item ID'     => __( 'Left blank — fill in with your Walmart Item IDs after export.', 'product-reviews-importer' ),
+			'SKU'                 => __( 'Your WooCommerce product SKU.', 'product-reviews-importer' ),
+			'Review Title'        => __( 'Left blank — WooCommerce reviews do not have titles.', 'product-reviews-importer' ),
+			'Review Body'         => __( 'The full review text.', 'product-reviews-importer' ),
+			'Review Rating'       => __( 'Star rating (1–5).', 'product-reviews-importer' ),
+			'Review Created Date' => sprintf(
+				/* translators: %s: date format required by Walmart, e.g. MM/DD/YYYY */
+				__( 'Formatted as %s per Walmart requirements.', 'product-reviews-importer' ),
+				WALMART_DATE_FORMAT_LABEL
+			),
+			'Review User Name'    => __( 'The reviewer\'s name as it appears on your site.', 'product-reviews-importer' ),
+			'URL link'            => __( 'Link to the product page on your website.', 'product-reviews-importer' ),
+			'Incentivized Review' => sprintf(
+				/* translators: %s: the literal value written to the CSV column, "No" */
+				__( 'Defaults to "%s" — update manually if applicable.', 'product-reviews-importer' ),
+				WALMART_INCENTIVIZED_DEFAULT
+			),
+		);
+	}
+
+	/**
 	 * Get Walmart CSV column headers.
 	 *
 	 * @since 1.2.0
@@ -68,17 +97,7 @@ class Review_Exporter {
 	 * @return array Column headers.
 	 */
 	private function get_walmart_headers(): array {
-		return array(
-			'Walmart Item ID',
-			'SKU',
-			'Review Title',
-			'Review Body',
-			'Review Rating',
-			'Review Created Date',
-			'Review User Name',
-			'URL link',
-			'Incentivized Review',
-		);
+		return array_keys( $this->get_walmart_columns() );
 	}
 
 	/**
@@ -102,13 +121,13 @@ class Review_Exporter {
 				continue;
 			}
 
-			$rating = (int) get_comment_meta( $review->comment_ID, 'rating', true );
+			$rating = (int) get_comment_meta( $review->comment_ID, META_RATING, true );
 
 			// Walmart requires whole numbers 1-5, round down any half-stars.
 			$rating = max( MIN_STAR_RATING, min( MAX_STAR_RATING, $rating ) );
 
 			// Format date as MM/DD/YYYY per Walmart specification.
-			$date = gmdate( 'm/d/Y', strtotime( $review->comment_date ) );
+			$date = gmdate( WALMART_DATE_FORMAT, strtotime( $review->comment_date ) );
 
 			// Strip HTML from review body — Walmart expects plain text.
 			$review_body = wp_strip_all_tags( $review->comment_content );
@@ -122,7 +141,7 @@ class Review_Exporter {
 				$date,
 				$review->comment_author,
 				get_permalink( $product_id ),
-				'No',
+				WALMART_INCENTIVIZED_DEFAULT,
 			);
 		}
 

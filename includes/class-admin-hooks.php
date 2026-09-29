@@ -64,6 +64,19 @@ class Admin_Hooks {
 				'uploadNonce' => wp_create_nonce( NONCE_CSV_UPLOAD ),
 				'importNonce' => wp_create_nonce( NONCE_CSV_IMPORT ),
 				'batchSize'   => BATCH_SIZE,
+				'i18n'        => array(
+					'selectFile'     => __( 'Please select a CSV file.', 'product-reviews-importer' ),
+					'invalidFile'    => __( 'Please select a valid CSV file.', 'product-reviews-importer' ),
+					'uploading'      => __( 'Uploading and validating CSV file...', 'product-reviews-importer' ),
+					'uploadFailed'   => __( 'Upload failed. Please try again.', 'product-reviews-importer' ),
+					'noFileUploaded' => __( 'No file uploaded. Please upload a CSV file first.', 'product-reviews-importer' ),
+					'importing'      => _x( 'Importing...', 'button label while an import runs', 'product-reviews-importer' ),
+					'startingImport' => __( 'Starting import...', 'product-reviews-importer' ),
+					/* translators: %s: error message returned by the server */
+					'importFailed'   => __( 'Import failed. %s', 'product-reviews-importer' ),
+					/* translators: %d: CSV row number */
+					'errorRowLabel'  => __( 'Row %d:', 'product-reviews-importer' ),
+				),
 			)
 		);
 	}
@@ -246,8 +259,16 @@ class Admin_Hooks {
 
 		// Return success response.
 		$response['success'] = true;
-		$response['message'] = __( 'File uploaded successfully.', 'product-reviews-importer' );
-		$response['data']    = array(
+		$response['message'] = sprintf(
+			'%s %s',
+			__( 'File uploaded successfully.', 'product-reviews-importer' ),
+			sprintf(
+				/* translators: %d: number of reviews found in the uploaded CSV */
+				_n( 'Found %d review to import.', 'Found %d reviews to import.', $upload_data['total_rows'], 'product-reviews-importer' ),
+				$upload_data['total_rows']
+			)
+		);
+		$response['data'] = array(
 			'uploadId'  => $upload_id,
 			'totalRows' => $upload_data['total_rows'],
 			'headers'   => $headers,
@@ -328,32 +349,44 @@ class Admin_Hooks {
 			delete_transient( TRANSIENT_UPLOAD_DATA . $upload_id );
 			delete_transient( TRANSIENT_IMPORT_PROGRESS . $upload_id );
 
-			// Build completion message.
-			$error_count = count( $progress['errors'] );
-			if ( $error_count > 0 ) {
-				$response['message'] = sprintf(
-					/* translators: 1: Success count, 2: Updated count, 3: Error count */
-					__( 'Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred.', 'product-reviews-importer' ),
-					$progress['success'],
-					$progress['updated'],
-					$error_count
-				);
-			} else {
-				$response['message'] = sprintf(
-					/* translators: 1: Success count, 2: Updated count */
-					__( 'Import complete! Created %1$d new reviews, updated %2$d existing reviews.', 'product-reviews-importer' ),
-					$progress['success'],
+			// Build completion message, one sentence per count so each takes its own plural form.
+			$error_count       = count( $progress['errors'] );
+			$message_sentences = array(
+				__( 'Import complete!', 'product-reviews-importer' ),
+				sprintf(
+					/* translators: %d: number of reviews created */
+					_n( 'Created %d new review.', 'Created %d new reviews.', $progress['success'], 'product-reviews-importer' ),
+					$progress['success']
+				),
+				sprintf(
+					/* translators: %d: number of existing reviews updated */
+					_n( 'Updated %d existing review.', 'Updated %d existing reviews.', $progress['updated'], 'product-reviews-importer' ),
 					$progress['updated']
+				),
+			);
+
+			if ( $error_count > 0 ) {
+				$message_sentences[] = sprintf(
+					/* translators: %d: number of rows that failed to import */
+					_n( '%d error occurred.', '%d errors occurred.', $error_count, 'product-reviews-importer' ),
+					$error_count
 				);
 			}
 
+			$response['message'] = implode( ' ', $message_sentences );
+
 			$response['success'] = true;
 			$response['data']    = array(
-				'complete'   => true,
-				'success'    => $progress['success'],
-				'updated'    => $progress['updated'],
-				'errorCount' => $error_count,
-				'errorList'  => $progress['errors'],
+				'complete'     => true,
+				'success'      => $progress['success'],
+				'updated'      => $progress['updated'],
+				'errorCount'   => $error_count,
+				'errorHeading' => sprintf(
+					/* translators: %d: number of rows that failed to import */
+					_n( 'Error details (%d error)', 'Error details (%d errors)', $error_count, 'product-reviews-importer' ),
+					$error_count
+				),
+				'errorList'    => $progress['errors'],
 			);
 			wp_send_json( $response );
 		}
@@ -386,7 +419,7 @@ class Admin_Hooks {
 		$response['success'] = true;
 		$response['message'] = sprintf(
 			/* translators: 1: Number of rows processed, 2: Total rows */
-			__( 'Processed %1$d of %2$d rows...', 'product-reviews-importer' ),
+			_n( 'Processed %1$d of %2$d row...', 'Processed %1$d of %2$d rows...', $upload_data['total_rows'], 'product-reviews-importer' ),
 			$progress['processed'],
 			$upload_data['total_rows']
 		);

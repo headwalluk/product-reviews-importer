@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - In-plugin GitHub updater: releases published on GitHub now arrive as standard WordPress plugin updates. Disable with the `product_reviews_importer_updater_enabled` filter
 
+### Changed
+- Messages with a count use proper plural forms (`_n()`), so "1 review" no longer reads "1 reviews", and locales with more than two plural forms translate correctly
+- Short labels (tab names, menu and action links) carry translator context (`_x()`)
+- Admin JavaScript messages are now translatable
+- Export tab lists the Walmart column headers untranslated, exactly as they appear in the exported file
+
+### Fixed
+- en_GB: the Export tab showed `\"No\"` with literal backslashes
+
 ### Planned
 - Import history tracking UI
 - Additional export formats and syndication targets

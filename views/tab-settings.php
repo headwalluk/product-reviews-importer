@@ -61,7 +61,7 @@ printf(
 	'<input type="number" id="pri_min_review_length" name="%s" value="%d" min="1" class="small-text" /> %s',
 	esc_attr( OPT_MIN_REVIEW_LENGTH ),
 	absint( $pri_settings_instance->get_min_review_length() ),
-	esc_html__( 'characters', 'product-reviews-importer' )
+	esc_html_x( 'characters', 'unit shown after the minimum review length input', 'product-reviews-importer' )
 );
 printf(
 	'<p class="description">%s</p>',

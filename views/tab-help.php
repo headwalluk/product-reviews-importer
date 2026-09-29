@@ -118,8 +118,8 @@ printf(
 	esc_html__( 'The following filter hooks are available for developers to extend or customize plugin functionality:', 'product-reviews-importer' )
 );
 printf(
-	'<p><strong>%s</strong><br />%s</p>',
-	esc_html__( 'product_reviews_importer_csv_field_definitions', 'product-reviews-importer' ),
+	'<p><strong><code>%s</code></strong><br />%s</p>',
+	'product_reviews_importer_csv_field_definitions',
 	esc_html__( 'Customize CSV field definitions, add custom fields, or modify existing field behavior.', 'product-reviews-importer' )
 );
 printf(

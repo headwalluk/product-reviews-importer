@@ -160,7 +160,11 @@ function get_csv_field_definitions(): array {
 			),
 			'Review Date'  => array(
 				'required'    => false,
-				'description' => __( 'Date in Y-m-d H:i:s T format (optional)', 'product-reviews-importer' ),
+				'description' => sprintf(
+					/* translators: %s: PHP date format the CSV must use, e.g. Y-m-d H:i:s T */
+					__( 'Date in %s format (optional)', 'product-reviews-importer' ),
+					DATE_FORMAT
+				),
 				'map_to'      => 'review_date',
 				'sample'      => '2026-01-15 14:30:00 GMT',
 			),

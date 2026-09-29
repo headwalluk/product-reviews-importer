@@ -24,23 +24,23 @@ printf(
 // Tab navigation.
 printf(
 	'<nav class="nav-tab-wrapper wp-clearfix" aria-label="%s">',
-	esc_attr__( 'Secondary menu', 'product-reviews-importer' )
+	esc_attr_x( 'Secondary menu', 'accessible label for the admin page tabs', 'product-reviews-importer' )
 );
 printf(
 	'<a href="#import" class="nav-tab nav-tab-active" data-tab="import">%s</a>',
-	esc_html__( 'Import', 'product-reviews-importer' )
+	esc_html_x( 'Import', 'admin page tab label', 'product-reviews-importer' )
 );
 printf(
 	'<a href="#export" class="nav-tab" data-tab="export">%s</a>',
-	esc_html__( 'Export', 'product-reviews-importer' )
+	esc_html_x( 'Export', 'admin page tab label', 'product-reviews-importer' )
 );
 printf(
 	'<a href="#settings" class="nav-tab" data-tab="settings">%s</a>',
-	esc_html__( 'Settings', 'product-reviews-importer' )
+	esc_html_x( 'Settings', 'admin page tab label', 'product-reviews-importer' )
 );
 printf(
 	'<a href="#help" class="nav-tab" data-tab="help">%s</a>',
-	esc_html__( 'Help', 'product-reviews-importer' )
+	esc_html_x( 'Help', 'admin page tab label', 'product-reviews-importer' )
 );
 printf( '</nav>' );
 

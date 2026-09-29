@@ -1,8 +1,5 @@
-# Copyright (C) 2026 Paul Faulkner
-# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Language: en_GB\n"
 "Project-Id-Version: Product Reviews Importer 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/product-reviews-importer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -12,6 +9,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-23T19:57:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: product-reviews-importer\n"
 
@@ -41,330 +40,251 @@ msgstr "Paul Faulkner"
 msgid "https://headwall-hosting.com/"
 msgstr "https://headwall-hosting.com/"
 
-#: admin-templates/main-page.php:27
-msgid "Secondary menu"
-msgstr "Secondary menu"
-
-#: admin-templates/main-page.php:31
-msgid "Import"
-msgstr "Import"
-
-#: admin-templates/main-page.php:35
-msgid "Export"
-msgstr "Export"
-
-#: admin-templates/main-page.php:39
-#: includes/class-plugin.php:187
-msgid "Settings"
-msgstr "Settings"
-
-#: admin-templates/main-page.php:43
-msgid "Help"
-msgstr "Help"
-
-#: admin-templates/tab-export.php:23
+#: views/tab-export.php:23
 msgid "Walmart Review Syndication"
 msgstr "Walmart Review Syndication"
 
-#: admin-templates/tab-export.php:28
+#: views/tab-export.php:28
 msgid "Export all approved product reviews in the format required for Walmart review syndication. The exported CSV follows Walmart's specification with the following columns:"
 msgstr "Export all approved product reviews in the format required for Walmart review syndication. The exported CSV follows Walmart's specification with the following columns:"
 
-#: admin-templates/tab-export.php:34
-msgid "Walmart Item ID"
-msgstr "Walmart Item ID"
-
-#: admin-templates/tab-export.php:35
+#: includes/class-review-exporter.php:72
 msgid "Left blank — fill in with your Walmart Item IDs after export."
 msgstr "Left blank — fill in with your Walmart Item IDs after export."
 
-#: admin-templates/tab-export.php:39
-msgid "SKU"
-msgstr "SKU"
-
-#: admin-templates/tab-export.php:40
+#: includes/class-review-exporter.php:73
 msgid "Your WooCommerce product SKU."
 msgstr "Your WooCommerce product SKU."
 
-#: admin-templates/tab-export.php:44
-msgid "Review Title"
-msgstr "Review Title"
-
-#: admin-templates/tab-export.php:45
+#: includes/class-review-exporter.php:74
 msgid "Left blank — WooCommerce reviews do not have titles."
 msgstr "Left blank — WooCommerce reviews do not have titles."
 
-#: admin-templates/tab-export.php:49
-msgid "Review Body"
-msgstr "Review Body"
-
-#: admin-templates/tab-export.php:50
+#: includes/class-review-exporter.php:75
 msgid "The full review text."
 msgstr "The full review text."
 
-#: admin-templates/tab-export.php:54
-msgid "Review Rating"
-msgstr "Review Rating"
-
-#: admin-templates/tab-export.php:55
+#: includes/class-review-exporter.php:76
 msgid "Star rating (1–5)."
 msgstr "Star rating (1–5)."
 
-#: admin-templates/tab-export.php:59
-msgid "Review Created Date"
-msgstr "Review Created Date"
-
-#: admin-templates/tab-export.php:60
-msgid "Formatted as MM/DD/YYYY per Walmart requirements."
-msgstr "Formatted as MM/DD/YYYY per Walmart requirements."
-
-#: admin-templates/tab-export.php:64
-msgid "Review User Name"
-msgstr "Review User Name"
-
-#: admin-templates/tab-export.php:65
+#: includes/class-review-exporter.php:82
 msgid "The reviewer's name as it appears on your site."
 msgstr "The reviewer's name as it appears on your site."
 
-#: admin-templates/tab-export.php:69
-msgid "URL link"
-msgstr "URL link"
-
-#: admin-templates/tab-export.php:70
+#: includes/class-review-exporter.php:83
 msgid "Link to the product page on your website."
 msgstr "Link to the product page on your website."
 
-#: admin-templates/tab-export.php:74
-msgid "Incentivized Review"
-msgstr "Incentivized Review"
-
-#: admin-templates/tab-export.php:75
-msgid "Defaults to \"No\" — update manually if applicable."
-msgstr "Defaults to \\\"No\\\" — update manually if applicable."
-
-#. translators: %d: number of approved reviews
-#: admin-templates/tab-export.php:84
-#, php-format
-msgid "There are currently %d approved reviews to export."
-msgstr "There are currently %d approved reviews to export."
-
-#: admin-templates/tab-export.php:98
+#: views/tab-export.php:63
 msgid "Export Walmart CSV"
 msgstr "Export to Walmart CSV"
 
-#: admin-templates/tab-export.php:103
+#: views/tab-export.php:68
 msgid "No approved reviews to export. Import some reviews first, or check that existing reviews are approved."
 msgstr "No approved reviews to export. Import some reviews first, or check that existing reviews are approved."
 
-#: admin-templates/tab-help.php:19
+#: views/tab-help.php:19
 msgid "How to Import Product Reviews"
 msgstr "How to Import Product Reviews"
 
-#: admin-templates/tab-help.php:25
+#: views/tab-help.php:25
 msgid "CSV File Format"
 msgstr "CSV File Format"
 
-#: admin-templates/tab-help.php:29
+#: views/tab-help.php:29
 msgid "Your CSV file must include the following columns (all values should be quoted):"
 msgstr "Your CSV file must include the following columns (all values should be quoted):"
 
-#: admin-templates/tab-help.php:50
+#: views/tab-help.php:50
 msgid "Sample CSV"
 msgstr "Sample CSV"
 
-#: admin-templates/tab-help.php:60
+#: views/tab-help.php:60
 msgid "Important Notes"
 msgstr "Important Notes"
 
-#: admin-templates/tab-help.php:65
+#: views/tab-help.php:65
 msgid "Reviews are matched to products using the SKU field"
 msgstr "Reviews are matched to products using the SKU field"
 
-#: admin-templates/tab-help.php:69
+#: views/tab-help.php:69
 msgid "If a product variation SKU is provided, the review will be attached to the parent product"
 msgstr "If a product variation SKU is provided, the review will be attached to the parent product"
 
-#: admin-templates/tab-help.php:73
+#: views/tab-help.php:73
 msgid "Duplicate reviews (same email + product) will update the existing review"
 msgstr "Duplicate reviews (same email + product) will update the existing review"
 
-#: admin-templates/tab-help.php:77
+#: views/tab-help.php:77
 msgid "Review text supports line breaks and basic formatting"
 msgstr "Review text supports line breaks and basic formatting"
 
-#: admin-templates/tab-help.php:81
+#: views/tab-help.php:81
 msgid "Invalid rows will be skipped and reported in the import results"
 msgstr "Invalid rows will be skipped and reported in the import results"
 
-#: admin-templates/tab-help.php:88
+#: views/tab-help.php:88
 msgid "Troubleshooting"
 msgstr "Troubleshooting"
 
-#: admin-templates/tab-help.php:92
+#: views/tab-help.php:92
 msgid "Product not found errors:"
 msgstr "Product not found errors:"
 
-#: admin-templates/tab-help.php:93
+#: views/tab-help.php:93
 msgid "Verify that the SKU exactly matches a product in your store. SKUs are case-sensitive."
 msgstr "Verify that the SKU exactly matches a product in your store. SKUs are case-sensitive."
 
-#: admin-templates/tab-help.php:97
+#: views/tab-help.php:97
 msgid "Invalid email errors:"
 msgstr "Invalid email errors:"
 
-#: admin-templates/tab-help.php:98
+#: views/tab-help.php:98
 msgid "Ensure email addresses are in valid format (e.g., user@example.com)."
 msgstr "Ensure email addresses are in valid format (e.g., user@example.com)."
 
-#: admin-templates/tab-help.php:102
+#: views/tab-help.php:102
 msgid "Invalid star rating errors:"
 msgstr "Invalid star rating errors:"
 
-#: admin-templates/tab-help.php:103
+#: views/tab-help.php:103
 msgid "Star ratings must be whole numbers from 1 to 5."
 msgstr "Star ratings must be whole numbers from 1 to 5."
 
-#: admin-templates/tab-help.php:107
+#: views/tab-help.php:107
 msgid "Review text too short:"
 msgstr "Review text too short:"
 
-#: admin-templates/tab-help.php:108
+#: views/tab-help.php:108
 msgid "Check the minimum review length setting in the Settings tab."
 msgstr "Check the minimum review length setting in the Settings tab."
 
-#: admin-templates/tab-help.php:114
+#: views/tab-help.php:114
 msgid "Developer Hooks"
 msgstr "Developer Hooks"
 
-#: admin-templates/tab-help.php:118
+#: views/tab-help.php:118
 msgid "The following filter hooks are available for developers to extend or customize plugin functionality:"
 msgstr "The following filter hooks are available for developers to extend or customize plugin functionality:"
 
-#: admin-templates/tab-help.php:122
-msgid "product_reviews_importer_csv_field_definitions"
-msgstr "product_reviews_importer_csv_field_definitions"
-
-#: admin-templates/tab-help.php:123
+#: views/tab-help.php:123
 msgid "Customize CSV field definitions, add custom fields, or modify existing field behavior."
 msgstr "Customize CSV field definitions, add custom fields, or modify existing field behavior."
 
-#: admin-templates/tab-import.php:20
+#: views/tab-import.php:20
 msgid "Import Reviews from CSV"
 msgstr "Import Reviews from CSV"
 
-#: admin-templates/tab-import.php:27
+#: views/tab-import.php:27
 msgid "Step 1: Upload CSV File"
 msgstr "Step 1: Upload CSV File"
 
-#: admin-templates/tab-import.php:44
+#: views/tab-import.php:44
 msgid "Select a CSV file containing product reviews. The file must include the following columns:"
 msgstr "Select a CSV file containing product reviews. The file must include the following columns:"
 
-#: admin-templates/tab-import.php:52
+#: views/tab-import.php:52
 msgid "Sample CSV Format"
 msgstr "Sample CSV Format"
 
-#: admin-templates/tab-import.php:60
+#: views/tab-import.php:60
 msgid "More details on CSV format and import options..."
 msgstr "More details on CSV format and import options..."
 
-#: admin-templates/tab-import.php:66
+#: views/tab-import.php:66
 msgid "Important:"
 msgstr "Important:"
 
-#: admin-templates/tab-import.php:67
+#: views/tab-import.php:67
 msgid "Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews."
 msgstr "Omitting Author Email prevents duplicate detection. Re-importing the same file will create duplicate reviews."
 
-#: admin-templates/tab-import.php:76
+#: views/tab-import.php:76
 msgid "Upload and Validate"
 msgstr "Upload and Validate"
 
-#: admin-templates/tab-import.php:84
+#: views/tab-import.php:84
 msgid "Validation Results"
 msgstr "Validation Results"
 
-#: admin-templates/tab-import.php:90
+#: views/tab-import.php:90
 msgid "Start Import"
 msgstr "Start Import"
 
-#: admin-templates/tab-import.php:100
+#: views/tab-import.php:100
 msgid "Import Progress"
 msgstr "Import Progress"
 
-#: admin-templates/tab-import.php:107
+#: views/tab-import.php:107
 msgid "Preparing import..."
 msgstr "Preparing import..."
 
-#: admin-templates/tab-import.php:115
+#: views/tab-import.php:115
 msgid "Import Results"
 msgstr "Import Results"
 
-#: admin-templates/tab-import.php:120
+#: views/tab-import.php:120
 msgid "Import Another File"
 msgstr "Import Another File"
 
-#: admin-templates/tab-settings.php:22
+#: views/tab-settings.php:22
 msgid "Settings not available."
 msgstr "Settings not available."
 
-#: admin-templates/tab-settings.php:31
+#: views/tab-settings.php:31
 msgid "Import Settings"
 msgstr "Import Settings"
 
-#: admin-templates/tab-settings.php:42
+#: views/tab-settings.php:42
 msgid "Create User Accounts"
 msgstr "Create User Accounts"
 
-#: admin-templates/tab-settings.php:47
+#: views/tab-settings.php:47
 msgid "Create WordPress user accounts for new reviewers (Customer role)"
 msgstr "Create WordPress user accounts for new reviewers (Customer role)"
 
-#: admin-templates/tab-settings.php:51
+#: views/tab-settings.php:51
 msgid "If disabled, reviews will be created as guest comments (user_id = 0)."
 msgstr "If disabled, reviews will be created as guest comments (user_id = 0)."
 
-#: admin-templates/tab-settings.php:58
+#: views/tab-settings.php:58
 msgid "Minimum Review Length"
 msgstr "Minimum Review Length"
 
-#: admin-templates/tab-settings.php:64
-msgid "characters"
-msgstr "characters"
-
-#: admin-templates/tab-settings.php:68
+#: views/tab-settings.php:68
 msgid "Reviews shorter than this will be rejected during import."
 msgstr "Reviews shorter than this will be rejected during import."
 
-#: admin-templates/tab-settings.php:75
+#: views/tab-settings.php:75
 msgid "Default IP Address"
 msgstr "Default IP Address"
 
-#: admin-templates/tab-settings.php:85
+#: views/tab-settings.php:85
 msgid "Used when CSV does not provide an author IP address. Leave blank to use server IP."
 msgstr "Used when CSV does not provide an author IP address. Leave blank to use server IP."
 
-#: admin-templates/tab-settings.php:90
+#: views/tab-settings.php:90
 msgid "Auto-Approve Reviews"
 msgstr "Auto-Approve Reviews"
 
-#: admin-templates/tab-settings.php:95
+#: views/tab-settings.php:95
 msgid "Automatically approve imported reviews"
 msgstr "Automatically approve imported reviews"
 
-#: admin-templates/tab-settings.php:99
+#: views/tab-settings.php:99
 msgid "If disabled, imported reviews will require manual moderation."
 msgstr "If disabled, imported reviews will require manual moderation."
 
-#: admin-templates/tab-settings.php:104
+#: views/tab-settings.php:104
 msgid "Mark as Verified Purchase"
 msgstr "Mark as Verified Purchase"
 
-#: admin-templates/tab-settings.php:109
+#: views/tab-settings.php:109
 msgid "Mark imported reviews as verified purchases"
 msgstr "Mark imported reviews as verified purchases"
 
-#: admin-templates/tab-settings.php:113
+#: views/tab-settings.php:113
 msgid "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
 msgstr "Enable this if you have verified that the reviews came from actual purchases (e.g., importing from another WooCommerce store)."
 
@@ -392,86 +312,64 @@ msgstr "Star rating 1-5 (required)"
 msgid "IP address (optional)"
 msgstr "IP address (optional)"
 
-#: functions-private.php:163
-msgid "Date in Y-m-d H:i:s T format (optional)"
-msgstr "Date in Y-m-d H:i:s T format (optional)"
-
-#: functions-private.php:281
+#: functions-private.php:285
 msgid "Product Reviews Importer requires WooCommerce to be installed and active."
 msgstr "Product Reviews Importer requires WooCommerce to be installed and active."
 
-#: includes/class-admin-hooks.php:79
+#: includes/class-admin-hooks.php:92
 msgid "You do not have sufficient permissions to access this page."
 msgstr "You do not have sufficient permissions to access this page."
 
-#: includes/class-admin-hooks.php:86
+#: includes/class-admin-hooks.php:99
 msgid "Product Reviews Importer requires WooCommerce to be installed and activated."
 msgstr "Product Reviews Importer requires WooCommerce to be installed and activated."
 
-#: includes/class-admin-hooks.php:159
-#: includes/class-admin-hooks.php:276
+#: includes/class-admin-hooks.php:172
+#: includes/class-admin-hooks.php:297
 #: includes/class-review-exporter.php:33
 msgid "Security check failed."
 msgstr "Security check failed."
 
-#: includes/class-admin-hooks.php:165
-#: includes/class-admin-hooks.php:282
+#: includes/class-admin-hooks.php:178
+#: includes/class-admin-hooks.php:303
 msgid "Insufficient permissions."
 msgstr "Insufficient permissions."
 
-#: includes/class-admin-hooks.php:171
+#: includes/class-admin-hooks.php:184
 msgid "No file uploaded."
 msgstr "No file uploaded."
 
-#: includes/class-admin-hooks.php:180
+#: includes/class-admin-hooks.php:193
 msgid "File upload failed."
 msgstr "File upload failed."
 
-#: includes/class-admin-hooks.php:187
+#: includes/class-admin-hooks.php:200
 msgid "Invalid file type. Only CSV files are allowed."
 msgstr "Invalid file type. Only CSV files are allowed."
 
-#: includes/class-admin-hooks.php:194
+#: includes/class-admin-hooks.php:207
 msgid "File too large. Maximum size is 10MB."
 msgstr "File too large. Maximum size is 10MB."
 
-#: includes/class-admin-hooks.php:226
+#: includes/class-admin-hooks.php:239
 msgid "Failed to read CSV file."
 msgstr "Failed to read CSV file."
 
-#: includes/class-admin-hooks.php:249
+#: includes/class-admin-hooks.php:264
 msgid "File uploaded successfully."
 msgstr "File uploaded successfully."
 
-#: includes/class-admin-hooks.php:292
+#: includes/class-admin-hooks.php:313
 msgid "Invalid upload ID."
 msgstr "Invalid upload ID."
 
-#: includes/class-admin-hooks.php:300
+#: includes/class-admin-hooks.php:321
 msgid "Upload session expired. Please upload the file again."
 msgstr "Upload session expired. Please upload the file again."
 
-#: includes/class-admin-hooks.php:307
+#: includes/class-admin-hooks.php:328
 msgid "CSV file not found."
 msgstr "CSV file not found."
-
-#. translators: 1: Success count, 2: Updated count, 3: Error count
-#: includes/class-admin-hooks.php:336
-#, php-format
-msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred."
-msgstr "Import complete! Created %1$d new reviews, updated %2$d existing reviews. %3$d errors occurred."
-
-#. translators: 1: Success count, 2: Updated count
-#: includes/class-admin-hooks.php:344
-#, php-format
-msgid "Import complete! Created %1$d new reviews, updated %2$d existing reviews."
-msgstr "Import complete! Created %1$d new reviews, updated %2$d existing reviews."
-
-#. translators: 1: Number of rows processed, 2: Total rows
-#: includes/class-admin-hooks.php:389
-#, php-format
-msgid "Processed %1$d of %2$d rows..."
-msgstr "Processed %1$d of %2$d rows..."
 
 #: includes/class-csv-importer.php:285
 msgid "Unable to read CSV file."
@@ -487,10 +385,165 @@ msgstr "Missing required columns: %s"
 msgid "CSV file contains no data rows."
 msgstr "CSV file contains no data rows."
 
-#: includes/class-plugin.php:110
-msgid "Import Reviews"
-msgstr "Import Reviews"
-
 #: includes/class-review-exporter.php:37
 msgid "You do not have sufficient permissions."
 msgstr "You do not have sufficient permissions."
+
+#. translators: %s: PHP date format the CSV must use, e.g. Y-m-d H:i:s T
+#: functions-private.php:165
+#, php-format
+msgid "Date in %s format (optional)"
+msgstr "Date in %s format (optional)"
+
+#: includes/class-admin-hooks.php:68
+msgid "Please select a CSV file."
+msgstr "Please select a CSV file."
+
+#: includes/class-admin-hooks.php:69
+msgid "Please select a valid CSV file."
+msgstr "Please select a valid CSV file."
+
+#: includes/class-admin-hooks.php:70
+msgid "Uploading and validating CSV file..."
+msgstr "Uploading and validating CSV file..."
+
+#: includes/class-admin-hooks.php:71
+msgid "Upload failed. Please try again."
+msgstr "Upload failed. Please try again."
+
+#: includes/class-admin-hooks.php:72
+msgid "No file uploaded. Please upload a CSV file first."
+msgstr "No file uploaded. Please upload a CSV file first."
+
+#: includes/class-admin-hooks.php:73
+msgctxt "button label while an import runs"
+msgid "Importing..."
+msgstr "Importing..."
+
+#: includes/class-admin-hooks.php:74
+msgid "Starting import..."
+msgstr "Starting import..."
+
+#. translators: %s: error message returned by the server
+#: includes/class-admin-hooks.php:76
+#, php-format
+msgid "Import failed. %s"
+msgstr "Import failed. %s"
+
+#. translators: %d: CSV row number
+#: includes/class-admin-hooks.php:78
+#, php-format
+msgid "Row %d:"
+msgstr "Row %d:"
+
+#. translators: %d: number of reviews found in the uploaded CSV
+#: includes/class-admin-hooks.php:267
+#, php-format
+msgid "Found %d review to import."
+msgid_plural "Found %d reviews to import."
+msgstr[0] "Found %d review to import."
+msgstr[1] "Found %d reviews to import."
+
+#: includes/class-admin-hooks.php:355
+msgid "Import complete!"
+msgstr "Import complete!"
+
+#. translators: %d: number of reviews created
+#: includes/class-admin-hooks.php:358
+#, php-format
+msgid "Created %d new review."
+msgid_plural "Created %d new reviews."
+msgstr[0] "Created %d new review."
+msgstr[1] "Created %d new reviews."
+
+#. translators: %d: number of existing reviews updated
+#: includes/class-admin-hooks.php:363
+#, php-format
+msgid "Updated %d existing review."
+msgid_plural "Updated %d existing reviews."
+msgstr[0] "Updated %d existing review."
+msgstr[1] "Updated %d existing reviews."
+
+#. translators: %d: number of rows that failed to import
+#: includes/class-admin-hooks.php:371
+#, php-format
+msgid "%d error occurred."
+msgid_plural "%d errors occurred."
+msgstr[0] "%d error occurred."
+msgstr[1] "%d errors occurred."
+
+#. translators: %d: number of rows that failed to import
+#: includes/class-admin-hooks.php:386
+#, php-format
+msgid "Error details (%d error)"
+msgid_plural "Error details (%d errors)"
+msgstr[0] "Error details (%d error)"
+msgstr[1] "Error details (%d errors)"
+
+#. translators: 1: Number of rows processed, 2: Total rows
+#: includes/class-admin-hooks.php:422
+#, php-format
+msgid "Processed %1$d of %2$d row..."
+msgid_plural "Processed %1$d of %2$d rows..."
+msgstr[0] "Processed %1$d of %2$d row..."
+msgstr[1] "Processed %1$d of %2$d rows..."
+
+#: includes/class-plugin.php:110
+msgctxt "admin menu label"
+msgid "Import Reviews"
+msgstr "Import Reviews"
+
+#: includes/class-plugin.php:187
+msgctxt "plugin action link"
+msgid "Settings"
+msgstr "Settings"
+
+#. translators: %s: date format required by Walmart, e.g. MM/DD/YYYY
+#: includes/class-review-exporter.php:79
+#, php-format
+msgid "Formatted as %s per Walmart requirements."
+msgstr "Formatted as %s per Walmart requirements."
+
+#. translators: %s: the literal value written to the CSV column, "No"
+#: includes/class-review-exporter.php:86
+#, php-format
+msgid "Defaults to \"%s\" — update manually if applicable."
+msgstr "Defaults to \"%s\" — update manually if applicable."
+
+#: views/main-page.php:27
+msgctxt "accessible label for the admin page tabs"
+msgid "Secondary menu"
+msgstr "Secondary menu"
+
+#: views/main-page.php:31
+msgctxt "admin page tab label"
+msgid "Import"
+msgstr "Import"
+
+#: views/main-page.php:35
+msgctxt "admin page tab label"
+msgid "Export"
+msgstr "Export"
+
+#: views/main-page.php:39
+msgctxt "admin page tab label"
+msgid "Settings"
+msgstr "Settings"
+
+#: views/main-page.php:43
+msgctxt "admin page tab label"
+msgid "Help"
+msgstr "Help"
+
+#. translators: %d: number of approved reviews
+#: views/tab-export.php:48
+#, php-format
+msgid "There is currently %d approved review to export."
+msgid_plural "There are currently %d approved reviews to export."
+msgstr[0] "There is currently %d approved review to export."
+msgstr[1] "There are currently %d approved reviews to export."
+
+#: views/tab-settings.php:64
+msgctxt "unit shown after the minimum review length input"
+msgid "characters"
+msgstr "characters"

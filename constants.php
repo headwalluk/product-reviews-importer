@@ -59,6 +59,11 @@ const NONCE_EXPORT     = 'pri_export';
 // Export action.
 const EXPORT_ACTION_WALMART = 'pri_export_walmart_csv';
 
+// Walmart syndication CSV values, fixed by Walmart's specification.
+const WALMART_DATE_FORMAT          = 'm/d/Y';
+const WALMART_DATE_FORMAT_LABEL    = 'MM/DD/YYYY';
+const WALMART_INCENTIVIZED_DEFAULT = 'No';
+
 // Transient keys.
 const TRANSIENT_UPLOAD_DATA     = 'pri_upload_data_';
 const TRANSIENT_IMPORT_PROGRESS = 'pri_import_progress_';
