@@ -11,11 +11,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Get version from tag
         id: get_version
         run: |
@@ -23,36 +23,65 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/v}
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "Plugin version: ${VERSION}"
-      
+
+      - name: Verify version numbers agree
+        env:
+          TAG_VERSION: ${{ steps.get_version.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          # The updater compares the installed header version against the tag,
+          # so a mismatch here ships a permanent false "update available".
+          HEADER_VERSION=$(sed -n 's/^ \* Version:[[:space:]]*\(.*\)$/\1/p' product-reviews-importer.php | head -1 | tr -d '[:space:]')
+          CONSTANT_VERSION=$(sed -n "s/^define( 'PRODUCT_REVIEWS_IMPORTER_VERSION', '\(.*\)' );[[:space:]]*$/\1/p" product-reviews-importer.php | head -1 | tr -d '[:space:]')
+          README_VERSION=$(sed -n 's/^Stable tag:[[:space:]]*\(.*\)$/\1/p' readme.txt | head -1 | tr -d '[:space:]')
+
+          echo "Git tag ............................ ${TAG_VERSION}"
+          echo "Plugin header ...................... ${HEADER_VERSION}"
+          echo "PRODUCT_REVIEWS_IMPORTER_VERSION ... ${CONSTANT_VERSION}"
+          echo "readme.txt stable tag .............. ${README_VERSION}"
+
+          VERSION_MISMATCH=0
+          for CANDIDATE_VERSION in "${HEADER_VERSION}" "${CONSTANT_VERSION}" "${README_VERSION}"; do
+            if [ "${CANDIDATE_VERSION}" != "${TAG_VERSION}" ]; then
+              VERSION_MISMATCH=1
+            fi
+          done
+
+          if [ "${VERSION_MISMATCH}" -ne 0 ]; then
+            echo "::error::Version mismatch. The plugin header, PRODUCT_REVIEWS_IMPORTER_VERSION and the readme.txt stable tag must all read ${TAG_VERSION}."
+            exit 1
+          fi
+
+          echo "All version numbers agree on ${TAG_VERSION}."
+
       - name: Prepare plugin directory
         run: |
           mkdir -p build
           rsync -av --exclude-from=.distignore ./ build/product-reviews-importer/
-      
-      - name: Create versioned zip
+
+      - name: Build release zips
+        # Build the versioned zip once, then copy it to the generic
+        # filename so both artifacts are guaranteed byte-identical
+        # (same SHA256, just different filenames).
         run: |
           cd build
           zip -r product-reviews-importer-${{ steps.get_version.outputs.version }}.zip product-reviews-importer/
+          cp product-reviews-importer-${{ steps.get_version.outputs.version }}.zip product-reviews-importer.zip
           cd ..
-      
-      - name: Create generic zip
-        run: |
-          cd build
-          zip -r product-reviews-importer.zip product-reviews-importer/
-          cd ..
-      
+
       - name: Upload versioned zip as artifact
         uses: actions/upload-artifact@v4
         with:
           name: product-reviews-importer-${{ steps.get_version.outputs.version }}
           path: build/product-reviews-importer-${{ steps.get_version.outputs.version }}.zip
-      
+
       - name: Upload generic zip as artifact
         uses: actions/upload-artifact@v4
         with:
           name: product-reviews-importer
           path: build/product-reviews-importer.zip
-      
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -61,10 +90,14 @@ jobs:
             build/product-reviews-importer.zip
           body: |
             **Product Reviews Importer v${{ steps.get_version.outputs.version }}**
-            
-            Download the zip file and install via WordPress admin or upload to your plugins directory.
-            
-            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
+
+            Import and export WooCommerce product reviews.
+
+            Download `product-reviews-importer.zip` and install via WordPress admin (Plugins → Add New → Upload Plugin), or upload to your `wp-content/plugins/` directory.
+
+            Sites running a previous version will receive this update automatically via the in-plugin GitHub updater.
+
+            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for full release notes.
           draft: false
           prerelease: false
         env:
